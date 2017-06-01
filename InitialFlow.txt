@@ -1,0 +1,12 @@
+Synthesize Design (Design Compiler)
+1: Read in files
+2: Link/uniquify design
+3: Compile
+
+Simulate/Power Analysis (VCS + PrimeTime)
+1: Run simv/Set up PT options
+2: Convert vpd2vcd
+3: Give PT verilog files and vcd
+4: Generate waveform
+
+
