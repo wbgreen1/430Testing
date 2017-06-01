@@ -1,0 +1,192 @@
+Cleanup...
+ =======================================================
+| Start simulation:             dma_dbg_arbiter
+ =======================================================
+
+ Seed:    -29065995
+
+Compile, link & generate IHEX file (Program Memory: 4096 B, Data Memory: 1024 B, Peripheral Space: 512 B)...
+
+$ msp430-elf-as      -alsm pmem.s43 -o pmem.o > pmem.l43
+$ msp430-elf-objdump -xdsStr pmem.o >> pmem.l43
+$ msp430-elf-ld      -T ./pmem.x pmem.o -o pmem.elf
+$ msp430-elf-objcopy -O ihex pmem.elf pmem.ihex
+
+Convert IHEX file to Verilog MEMH format...
+Start Verilog simulation...
+Running: vcs -sverilog -f ../src/submit.f +define+SEED=-29065995 +define+DMA_VERIF +define+NODUMP -R -debug_pp +vcs+lic+wait +v2k +define+VPD_FILE
+
+Warning-[LNX_OS_VERUN] Unsupported Linux version
+  Linux version 'CentOS Linux release 7.2.1511 (Core) ' is not supported on 
+  'x86_64' officially, assuming linux compatibility by default. Set 
+  VCS_ARCH_OVERRIDE to linux or suse32 to override.
+  Please refer to release notes for information on supported platforms.
+
+                         Chronologic VCS (TM)
+          Version L-2016.06-SP1 -- Wed Apr 12 16:59:28 2017
+               Copyright (c) 1991-2016 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file '../../../bench/verilog/tb_openMSP430.v'
+Parsing included file '../../../bench/verilog/timescale.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../rtl/verilog/openMSP430_defines.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/registers.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dbg_uart_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dbg_i2c_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dma_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file 'stimulus.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing design file '../../../bench/verilog/ram.v'
+Parsing design file '../../../bench/verilog/io_cell.v'
+Parsing design file '../../../bench/verilog/msp_debug.v'
+Parsing design file '../../../rtl/verilog/openMSP430_defines.v'
+Parsing design file '../../../rtl/verilog/openMSP430.v'
+Parsing design file '../../../rtl/verilog/omsp_frontend.v'
+Parsing design file '../../../rtl/verilog/omsp_execution_unit.v'
+Parsing design file '../../../rtl/verilog/omsp_register_file.v'
+Parsing design file '../../../rtl/verilog/omsp_alu.v'
+Parsing design file '../../../rtl/verilog/omsp_sfr.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_module.v'
+Parsing design file '../../../rtl/verilog/omsp_mem_backbone.v'
+Parsing design file '../../../rtl/verilog/omsp_watchdog.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_uart.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_i2c.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_hwbrk.v'
+Parsing design file '../../../rtl/verilog/omsp_multiplier.v'
+Parsing design file '../../../rtl/verilog/omsp_sync_reset.v'
+Parsing design file '../../../rtl/verilog/omsp_sync_cell.v'
+Parsing design file '../../../rtl/verilog/omsp_scan_mux.v'
+Parsing design file '../../../rtl/verilog/omsp_and_gate.v'
+Parsing design file '../../../rtl/verilog/omsp_wakeup_cell.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_gate.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_mux.v'
+Parsing design file '../../../rtl/verilog/periph/omsp_gpio.v'
+Parsing design file '../../../rtl/verilog/periph/omsp_timerA.v'
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_defines.v'.
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_undefines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA_defines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA.v'.
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_undefines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA.v'.
+Parsing design file '../../../rtl/verilog/periph/template_periph_8b.v'
+Parsing design file '../../../rtl/verilog/periph/template_periph_16b.v'
+Top Level Modules:
+       tb_openMSP430
+       omsp_dbg_i2c
+       omsp_dbg_hwbrk
+       omsp_clock_mux
+TimeScale is 1 ns / 100 ps
+Starting vcs inline pass...
+18 unique modules to generate
+recompiling module tb_openMSP430
+recompiling module ram
+recompiling module io_cell
+recompiling module msp_debug
+recompiling module openMSP430
+recompiling module omsp_sfr
+recompiling module omsp_mem_backbone
+recompiling module omsp_watchdog
+recompiling module omsp_dbg
+recompiling module omsp_dbg_i2c
+recompiling module omsp_dbg_hwbrk
+recompiling module omsp_multiplier
+recompiling module omsp_sync_cell
+recompiling module omsp_clock_mux
+recompiling module omsp_gpio
+recompiling module omsp_timerA
+recompiling module template_periph_8b
+recompiling module template_periph_16b
+All of 18 modules done
+rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++  -o ../simv   -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -m32 -m32 -rdynamic   objs/amcQw_d.o   _21650_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libzerosoft_rt_stubs.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvirsim.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/liberrorinf.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsnpsmalloc.so    /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvcsnew.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsimprofile.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libuclinative.so   -Wl,-whole-archive /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvcsucli.so -Wl,-no-whole-archive          /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcs_save_restore_new.o /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/ctype-stubs_32.a -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+Chronologic VCS simulator copyright 1991-2016
+Contains Synopsys proprietary information.
+Compiler version L-2016.06-SP1; Runtime version L-2016.06-SP1;  Apr 12 16:59 2017
+ ===============================================
+|                 START SIMULATION              |
+ ===============================================
+START DBG BURST   0:   write=0  /  pmem_sel=0  /  size= 21  /  offset= 35
+START DBG BURST   1:   write=0  /  pmem_sel=0  /  size= 26  /  offset= 53
+START DBG BURST   2:   write=1  /  pmem_sel=1  /  size= 61  /  offset= 18
+START DBG BURST   3:   write=1  /  pmem_sel=0  /  size= 57  /  offset=  9
+START DBG BURST   4:   write=0  /  pmem_sel=0  /  size= 17  /  offset= 36
+START DBG BURST   5:   write=0  /  pmem_sel=1  /  size= 10  /  offset=  3
+START DBG BURST   6:   write=0  /  pmem_sel=0  /  size= 34  /  offset= 47
+START DBG BURST   7:   write=1  /  pmem_sel=1  /  size= 34  /  offset= 24
+START DBG BURST   8:   write=1  /  pmem_sel=0  /  size= 21  /  offset= 59
+START DBG BURST   9:   write=1  /  pmem_sel=0  /  size= 33  /  offset= 60
+START DBG BURST  10:   write=0  /  pmem_sel=1  /  size= 28  /  offset= 12
+START DBG BURST  11:   write=0  /  pmem_sel=0  /  size= 31  /  offset=  7
+START DBG BURST  12:   write=1  /  pmem_sel=0  /  size= 21  /  offset= 39
+START DBG BURST  13:   write=0  /  pmem_sel=0  /  size= 58  /  offset=  1
+START DBG BURST  14:   write=0  /  pmem_sel=1  /  size= 60  /  offset= 31
+START DBG BURST  15:   write=0  /  pmem_sel=0  /  size= 43  /  offset= 55
+START DBG BURST  16:   write=0  /  pmem_sel=1  /  size= 14  /  offset= 21
+START DBG BURST  17:   write=1  /  pmem_sel=1  /  size= 28  /  offset= 58
+START DBG BURST  18:   write=0  /  pmem_sel=0  /  size= 20  /  offset= 18
+START DBG BURST  19:   write=1  /  pmem_sel=1  /  size= 31  /  offset=  3
+START DBG BURST  20:   write=0  /  pmem_sel=1  /  size= 32  /  offset=  0
+START DBG BURST  21:   write=1  /  pmem_sel=0  /  size= 51  /  offset= 16
+START DBG BURST  22:   write=0  /  pmem_sel=1  /  size= 45  /  offset= 22
+START DBG BURST  23:   write=0  /  pmem_sel=0  /  size= 10  /  offset= 25
+START DBG BURST  24:   write=0  /  pmem_sel=0  /  size= 37  /  offset=  1
+START DBG BURST  25:   write=1  /  pmem_sel=0  /  size= 49  /  offset= 16
+START DBG BURST  26:   write=1  /  pmem_sel=1  /  size= 58  /  offset= 22
+START DBG BURST  27:   write=0  /  pmem_sel=0  /  size= 46  /  offset= 41
+START DBG BURST  28:   write=1  /  pmem_sel=0  /  size= 26  /  offset= 35
+START DBG BURST  29:   write=0  /  pmem_sel=0  /  size= 28  /  offset= 46
+START DBG BURST  30:   write=0  /  pmem_sel=0  /  size= 43  /  offset= 25
+START DBG BURST  31:   write=1  /  pmem_sel=0  /  size= 45  /  offset= 51
+START DBG BURST  32:   write=0  /  pmem_sel=0  /  size= 20  /  offset= 25
+START DBG BURST  33:   write=0  /  pmem_sel=1  /  size= 13  /  offset= 63
+START DBG BURST  34:   write=1  /  pmem_sel=0  /  size= 12  /  offset= 24
+START DBG BURST  35:   write=1  /  pmem_sel=0  /  size= 24  /  offset=  5
+START DBG BURST  36:   write=1  /  pmem_sel=0  /  size= 57  /  offset= 40
+START DBG BURST  37:   write=1  /  pmem_sel=0  /  size= 36  /  offset= 37
+START DBG BURST  38:   write=1  /  pmem_sel=0  /  size= 40  /  offset= 50
+START DBG BURST  39:   write=0  /  pmem_sel=1  /  size= 51  /  offset= 50
+START DBG BURST  40:   write=1  /  pmem_sel=0  /  size= 11  /  offset= 32
+START DBG BURST  41:   write=0  /  pmem_sel=1  /  size= 18  /  offset= 52
+START DBG BURST  42:   write=1  /  pmem_sel=1  /  size= 28  /  offset= 41
+START DBG BURST  43:   write=0  /  pmem_sel=1  /  size= 25  /  offset= 21
+START DBG BURST  44:   write=0  /  pmem_sel=1  /  size= 16  /  offset= 26
+START DBG BURST  45:   write=0  /  pmem_sel=0  /  size= 15  /  offset= 37
+START DBG BURST  46:   write=0  /  pmem_sel=0  /  size= 41  /  offset= 43
+START DBG BURST  47:   write=1  /  pmem_sel=0  /  size= 34  /  offset= 37
+START DBG BURST  48:   write=1  /  pmem_sel=1  /  size= 54  /  offset= 44
+START DBG BURST  49:   write=0  /  pmem_sel=1  /  size= 23  /  offset= 46
+
+
+DBG REPORT: Total Accesses: 1636 Total RD: 825 Total WR: 811
+            Total Errors:   0 Error RD: 0 Error WR: 0
+
+
+ ===============================================
+|               SIMULATION PASSED               |
+ ===============================================
+
+DMA REPORT: Total Accesses: 187667 Total RD: 62359 Total WR: 125308
+            Total Errors:   0 Error RD: 0 Error WR: 0
+
+SIMULATION SEED:   -29065995
+
+$finish called from file "../../../bench/verilog/tb_openMSP430.v", line 750.
+$finish at simulation time             94812500
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 9481250000 ps
+CPU Time:      1.480 seconds;       Data structure size:   0.2Mb
+Wed Apr 12 16:59:32 2017
+CPU time: 1.394 seconds to compile + .449 seconds to elab + .185 seconds to link + 1.709 seconds in simulation

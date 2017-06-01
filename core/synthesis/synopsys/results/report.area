@@ -1,0 +1,32 @@
+ 
+****************************************
+Report : area
+Design : openMSP430
+Version: L-2016.03-SP5
+Date   : Thu Apr 13 17:50:28 2017
+****************************************
+
+Library(s) Used:
+
+    saed32rvt_ss0p7v25c (File: /home/eceftl6/Documents/Research/430Testing/core/synthesis/synopsys/library/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p7v25c.db)
+
+Number of ports:                         2384
+Number of nets:                          7634
+Number of cells:                         4912
+Number of combinational cells:           3899
+Number of sequential cells:               906
+Number of macros/black boxes:               0
+Number of buf/inv:                        709
+Number of references:                      13
+
+Combinational area:               8917.404708
+Buf/Inv area:                      953.802439
+Noncombinational area:            6880.694817
+Macro/Black Box area:                0.000000
+Net Interconnect area:            4239.219762
+
+Total cell area:                 15798.099525
+Total area:                      20037.319287
+1
+
+NAND2 equivalent cell area: 10360.3334625

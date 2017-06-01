@@ -1,0 +1,68 @@
+In mode: all_dft...
+  Pre-DFT DRC enabled
+
+Information: Starting test design rule checking. (TEST-222)
+  Loading test protocol
+  ...basic checks...
+  ...basic sequential cell checks...
+  	...checking for scan equivalents...
+  ...checking vector rules...
+  ...checking pre-dft rules...
+
+-----------------------------------------------------------------
+Begin Modeling violations...
+
+Warning: Cell clock_module_0/clock_gate_mclk/enable_latch_reg (LATCHX1_RVT) is not scannable. (TEST-126)
+Information: There are 33 other cells with the same violation. (TEST-171)
+
+Modeling violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+Begin Pre-DFT violations...
+
+ Warning: Clock dco_clk can capture new data on LS input CLK of DLAT multiplier_0/clock_gate_reshi/enable_latch_reg. (D13-1)
+         Source of violation: input CLK of DFF dbg_0/mem_addr_reg[2].
+Information: There are 9 other cells with the same violation. (TEST-171)
+ Warning: Clock dco_clk can capture new data on TE input CLK of DFF clock_module_0/dco_enable_reg. (D14-1)
+         Source of violation: input CLK of DFF clock_module_0/dco_disable_reg.
+ Warning: dco_clk clock path affected by new capture on LS input CLK of DLAT execution_unit_0/register_file_0/clock_gate_r15/enable_latch_reg. (D15-1)
+         Source of violation: input CLK of DLAT clock_module_0/clock_gate_mclk/enable_latch_reg.
+Information: There are 29 other cells with the same violation. (TEST-171)
+
+Pre-DFT violations completed...
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+  DRC Report
+
+  Total violations: 75
+
+-----------------------------------------------------------------
+
+34 MODELING VIOLATIONS
+    34 Cell is not scannable violations (TEST-126)
+
+41 PRE-DFT VIOLATIONS
+    10 Data path affected by clock captured by clock in level sensitive clock_port violations (D13)
+     1 Data path affected by clock captured by clock in trailing edge clock_port violation (D14)
+    30 Clock path affected by clock captured by clock in level sensitive clock_port violations (D15)
+
+
+Warning: Violations occurred during test design rule checking. (TEST-124)
+
+-----------------------------------------------------------------
+  Sequential Cell Report
+
+  1 out of 769 sequential cells have violations
+
+-----------------------------------------------------------------
+
+SEQUENTIAL CELLS WITH VIOLATIONS
+      *   1 cell has capture violations
+SEQUENTIAL CELLS WITHOUT VIOLATIONS
+      * 708 cells are valid scan cells
+      *  26 cells are non-scan shift-register cells
+
+Information: Test design rule checking completed. (TEST-123)
+1

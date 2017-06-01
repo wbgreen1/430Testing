@@ -1,0 +1,163 @@
+
+#====================================================================================================================================================#
+#                                                                                                                                                    #
+#                                                                    DETAILED REPORT                                                                 #
+#                                                                                                                                                    #
+#====================================================================================================================================================#
+#                            ||           ||               ||  DMA IF TRANSFER  ||                                                                   #
+#          TEST NAME         ||  RESULT   ||      SEED     ||-------------------||                              REPLAY COMMAND                       #
+#                            ||           ||               ||  Total  |  Error  ||                                                                   #
+#============================++===========++===============++=========+=========++===================================================================#
+#                            ||           ||               ||         |         ||                                                                   #
+#   c-jump_jc                || [32m PASSED  (B[m ||  -1507861817  ||      4  |     0   ||  (B[m../bin/msp430sim -seed  -1507861817   c-jump_jc               (B[m   #
+#   c-jump_jeq               || [32m PASSED  (B[m ||   -646315528  ||      4  |     0   ||  (B[m../bin/msp430sim -seed   -646315528   c-jump_jeq              (B[m   #
+#   c-jump_jge               || [32m PASSED  (B[m ||    833932317  ||      4  |     0   ||  (B[m../bin/msp430sim -seed    833932317   c-jump_jge              (B[m   #
+#   c-jump_jl                || [32m PASSED  (B[m ||   1130836772  ||      4  |     0   ||  (B[m../bin/msp430sim -seed   1130836772   c-jump_jl               (B[m   #
+#   c-jump_jmp               || [32m PASSED  (B[m ||    842405817  ||      4  |     0   ||  (B[m../bin/msp430sim -seed    842405817   c-jump_jmp              (B[m   #
+#   c-jump_jnc               || [32m PASSED  (B[m ||  -1236978410  ||      4  |     0   ||  (B[m../bin/msp430sim -seed  -1236978410   c-jump_jnc              (B[m   #
+#   c-jump_jne               || [32m PASSED  (B[m ||  -1428145955  ||      4  |     0   ||  (B[m../bin/msp430sim -seed  -1428145955   c-jump_jne              (B[m   #
+#   c-jump_jn                || [32m PASSED  (B[m ||  -1428541790  ||      4  |     0   ||  (B[m../bin/msp430sim -seed  -1428541790   c-jump_jn               (B[m   #
+#   clock_module_asic_lfxt   || (B[m SKIPPED (B[m ||  -1694611432  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1694611432   clock_module_asic_lfxt  (B[m   #
+#   clock_module_asic        || [32m PASSED  (B[m ||   1185745696  ||    130  |     0   ||  (B[m../bin/msp430sim -seed   1185745696   clock_module_asic       (B[m   #
+#   clock_module_asic_mclk   || [32m PASSED  (B[m ||  -1234330036  ||    105  |     0   ||  (B[m../bin/msp430sim -seed  -1234330036   clock_module_asic_mclk  (B[m   #
+#   clock_module_asic_smclk  || [32m PASSED  (B[m ||  -1606809574  ||    105  |     0   ||  (B[m../bin/msp430sim -seed  -1606809574   clock_module_asic_smclk (B[m   #
+#   clock_module             || (B[m SKIPPED (B[m ||  -1992783673  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1992783673   clock_module            (B[m   #
+#   cpu_startup_asic         || [32m PASSED  (B[m ||  -1044678093  ||   1106  |     0   ||  (B[m../bin/msp430sim -seed  -1044678093   cpu_startup_asic        (B[m   #
+#   dbg_i2c_cpu              || (B[m SKIPPED (B[m ||  -1258690564  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1258690564   dbg_i2c_cpu             (B[m   #
+#   dbg_i2c_halt_irq         || (B[m SKIPPED (B[m ||  -1240176732  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1240176732   dbg_i2c_halt_irq        (B[m   #
+#   dbg_i2c_hwbrk0           || (B[m SKIPPED (B[m ||  -1765850817  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1765850817   dbg_i2c_hwbrk0          (B[m   #
+#   dbg_i2c_hwbrk1           || (B[m SKIPPED (B[m ||   1482469563  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1482469563   dbg_i2c_hwbrk1          (B[m   #
+#   dbg_i2c_hwbrk2           || (B[m SKIPPED (B[m ||   1697447949  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1697447949   dbg_i2c_hwbrk2          (B[m   #
+#   dbg_i2c_hwbrk3           || (B[m SKIPPED (B[m ||  -1880411656  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1880411656   dbg_i2c_hwbrk3          (B[m   #
+#   dbg_i2c                  || (B[m SKIPPED (B[m ||   1873423870  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1873423870   dbg_i2c                 (B[m   #
+#   dbg_i2c_mem              || (B[m SKIPPED (B[m ||  -1019913724  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1019913724   dbg_i2c_mem             (B[m   #
+#   dbg_i2c_onoff_asic       || (B[m SKIPPED (B[m ||    652404185  ||      0  |     0   ||  (B[m../bin/msp430sim -seed    652404185   dbg_i2c_onoff_asic      (B[m   #
+#   dbg_i2c_onoff            || (B[m SKIPPED (B[m ||  -1161987465  ||      0  |     0   ||  (B[m../bin/msp430sim -seed  -1161987465   dbg_i2c_onoff           (B[m   #
+#   dbg_i2c_rdwr             || (B[m SKIPPED (B[m ||   1677738952  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1677738952   dbg_i2c_rdwr            (B[m   #
+#   dbg_i2c_sync             || (B[m SKIPPED (B[m ||   2146222078  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   2146222078   dbg_i2c_sync            (B[m   #
+#   dbg_uart_cpu             || [32m PASSED  (B[m ||   -605672358  ||   3080  |     0   ||  (B[m../bin/msp430sim -seed   -605672358   dbg_uart_cpu            (B[m   #
+#   dbg_uart_halt_irq        || [32m PASSED  (B[m ||   2142546415  ||    539  |     0   ||  (B[m../bin/msp430sim -seed   2142546415   dbg_uart_halt_irq       (B[m   #
+#   dbg_uart_hwbrk0          || (B[m SKIPPED (B[m ||   -962957029  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   -962957029   dbg_uart_hwbrk0         (B[m   #
+#   dbg_uart_hwbrk1          || (B[m SKIPPED (B[m ||    283364431  ||      0  |     0   ||  (B[m../bin/msp430sim -seed    283364431   dbg_uart_hwbrk1         (B[m   #
+#   dbg_uart_hwbrk2          || (B[m SKIPPED (B[m ||   -906926263  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   -906926263   dbg_uart_hwbrk2         (B[m   #
+#   dbg_uart_hwbrk3          || (B[m SKIPPED (B[m ||   -667110773  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   -667110773   dbg_uart_hwbrk3         (B[m   #
+#   dbg_uart                 || [32m PASSED  (B[m ||   -656372854  ||   5845  |     0   ||  (B[m../bin/msp430sim -seed   -656372854   dbg_uart                (B[m   #
+#   dbg_uart_mem             || [32m PASSED  (B[m ||    686145935  ||    226  |     0   ||  (B[m../bin/msp430sim -seed    686145935   dbg_uart_mem            (B[m   #
+#   dbg_uart_onoff_asic      || [32m PASSED  (B[m ||   -521743382  ||    748  |     0   ||  (B[m../bin/msp430sim -seed   -521743382   dbg_uart_onoff_asic     (B[m   #
+#   dbg_uart_onoff           || (B[m SKIPPED (B[m ||   1873644438  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1873644438   dbg_uart_onoff          (B[m   #
+#   dbg_uart_rdwr            || [32m PASSED  (B[m ||    552558609  ||   8028  |     0   ||  (B[m../bin/msp430sim -seed    552558609   dbg_uart_rdwr           (B[m   #
+#   dbg_uart_sync            || [32m PASSED  (B[m ||   -709635067  ||  4363911  |     0   ||  (B[m../bin/msp430sim -seed   -709635067   dbg_uart_sync           (B[m   #
+#   dma_dbg_arbiter          || [32m PASSED  (B[m ||    -29065995  ||  187667  |     0   ||  (B[m../bin/msp430sim -seed    -29065995   dma_dbg_arbiter         (B[m   #
+#   dma_lpm0_asic            || [32m PASSED  (B[m ||  -1960428435  ||   3419  |     0   ||  (B[m../bin/msp430sim -seed  -1960428435   dma_lpm0_asic           (B[m   #
+#   dma_lpm1_asic            || [32m PASSED  (B[m ||  -1923237046  ||    856  |     0   ||  (B[m../bin/msp430sim -seed  -1923237046   dma_lpm1_asic           (B[m   #
+#   dma_lpm2_asic            || [32m PASSED  (B[m ||   1423474177  ||    847  |     0   ||  (B[m../bin/msp430sim -seed   1423474177   dma_lpm2_asic           (B[m   #
+#   dma_lpm3_asic            || [32m PASSED  (B[m ||  -1994433134  ||    424  |     0   ||  (B[m../bin/msp430sim -seed  -1994433134   dma_lpm3_asic           (B[m   #
+#   dma_lpm4_asic            || [32m PASSED  (B[m ||    976682756  ||    459  |     0   ||  (B[m../bin/msp430sim -seed    976682756   dma_lpm4_asic           (B[m   #
+#   dma_rdwr_16b             || [32m PASSED  (B[m ||   1620433836  ||  35221  |     0   ||  (B[m../bin/msp430sim -seed   1620433836   dma_rdwr_16b            (B[m   #
+#   dma_rdwr_8b              || [32m PASSED  (B[m ||   1284140058  ||  65617  |     0   ||  (B[m../bin/msp430sim -seed   1284140058   dma_rdwr_8b             (B[m   #
+#   dma_resp                 || [32m PASSED  (B[m ||   -967924712  ||  98309  |     0   ||  (B[m../bin/msp430sim -seed   -967924712   dma_resp                (B[m   #
+#   gpio_irq                 || [32m PASSED  (B[m ||   -234358938  ||    886  |     0   ||  (B[m../bin/msp430sim -seed   -234358938   gpio_irq                (B[m   #
+#   gpio_rdwr                || [32m PASSED  (B[m ||   -132337343  ||   1091  |     0   ||  (B[m../bin/msp430sim -seed   -132337343   gpio_rdwr               (B[m   #
+#   irq32                    || (B[m SKIPPED (B[m ||   -158520453  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   -158520453   irq32                   (B[m   #
+#   irq64                    || (B[m SKIPPED (B[m ||   1053244602  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1053244602   irq64                   (B[m   #
+#   lp_modes_asic            || [32m PASSED  (B[m ||   -108475895  ||    225  |     0   ||  (B[m../bin/msp430sim -seed   -108475895   lp_modes_asic           (B[m   #
+#   lp_modes_dbg_asic        || [32m PASSED  (B[m ||   1562141539  ||   1489  |     0   ||  (B[m../bin/msp430sim -seed   1562141539   lp_modes_dbg_asic       (B[m   #
+#   mpy_basic                || [32m PASSED  (B[m ||  -1567485454  ||    633  |     0   ||  (B[m../bin/msp430sim -seed  -1567485454   mpy_basic               (B[m   #
+#   nmi                      || [32m PASSED  (B[m ||   -222281693  ||    122  |     0   ||  (B[m../bin/msp430sim -seed   -222281693   nmi                     (B[m   #
+#   op_modes_asic            || [32m PASSED  (B[m ||  -1003373494  ||    249  |     0   ||  (B[m../bin/msp430sim -seed  -1003373494   op_modes_asic           (B[m   #
+#   op_modes                 || (B[m SKIPPED (B[m ||   -332145136  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   -332145136   op_modes                (B[m   #
+#   scan                     || [32m PASSED  (B[m ||   1754879653  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1754879653   scan                    (B[m   #
+#   sfr                      || [32m PASSED  (B[m ||    176472271  ||     79  |     0   ||  (B[m../bin/msp430sim -seed    176472271   sfr                     (B[m   #
+#   sing-op_call             || [32m PASSED  (B[m ||  -1979423218  ||    122  |     0   ||  (B[m../bin/msp430sim -seed  -1979423218   sing-op_call            (B[m   #
+#   sing-op_call_rom-rd      || [32m PASSED  (B[m ||    888253184  ||     23  |     0   ||  (B[m../bin/msp430sim -seed    888253184   sing-op_call_rom-rd     (B[m   #
+#   sing-op_push             || [32m PASSED  (B[m ||   1766143761  ||    418  |     0   ||  (B[m../bin/msp430sim -seed   1766143761   sing-op_push            (B[m   #
+#   sing-op_push_rom-rd      || [32m PASSED  (B[m ||    -31459812  ||    109  |     0   ||  (B[m../bin/msp430sim -seed    -31459812   sing-op_push_rom-rd     (B[m   #
+#   sing-op_reti             || [32m PASSED  (B[m ||    809086579  ||    127  |     0   ||  (B[m../bin/msp430sim -seed    809086579   sing-op_reti            (B[m   #
+#   sing-op_rra              || [32m PASSED  (B[m ||  -2103008788  ||    465  |     0   ||  (B[m../bin/msp430sim -seed  -2103008788   sing-op_rra             (B[m   #
+#   sing-op_rrc              || [32m PASSED  (B[m ||  -1447135026  ||    465  |     0   ||  (B[m../bin/msp430sim -seed  -1447135026   sing-op_rrc             (B[m   #
+#   sing-op_swpb             || [32m PASSED  (B[m ||   1512017765  ||     74  |     0   ||  (B[m../bin/msp430sim -seed   1512017765   sing-op_swpb            (B[m   #
+#   sing-op_sxt              || [32m PASSED  (B[m ||   1753047275  ||     74  |     0   ||  (B[m../bin/msp430sim -seed   1753047275   sing-op_sxt             (B[m   #
+#   tA_capture               || (B[m SKIPPED (B[m ||   1610497242  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1610497242   tA_capture              (B[m   #
+#   tA_clkmux                || (B[m SKIPPED (B[m ||   1740031577  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1740031577   tA_clkmux               (B[m   #
+#   tA_compare               || (B[m SKIPPED (B[m ||    329404264  ||      0  |     0   ||  (B[m../bin/msp430sim -seed    329404264   tA_compare              (B[m   #
+#   tA_modes                 || (B[m SKIPPED (B[m ||   1729505162  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   1729505162   tA_modes                (B[m   #
+#   tA_output                || (B[m SKIPPED (B[m ||   -218479593  ||      0  |     0   ||  (B[m../bin/msp430sim -seed   -218479593   tA_output               (B[m   #
+#   template_periph_16b      || [32m PASSED  (B[m ||   -303174198  ||     71  |     0   ||  (B[m../bin/msp430sim -seed   -303174198   template_periph_16b     (B[m   #
+#   template_periph_8b       || [32m PASSED  (B[m ||   1028995971  ||     50  |     0   ||  (B[m../bin/msp430sim -seed   1028995971   template_periph_8b      (B[m   #
+#   two-op_add-b             || [32m PASSED  (B[m ||   1917151760  ||    689  |     0   ||  (B[m../bin/msp430sim -seed   1917151760   two-op_add-b            (B[m   #
+#   two-op_addc              || [32m PASSED  (B[m ||     53435120  ||      4  |     0   ||  (B[m../bin/msp430sim -seed     53435120   two-op_addc             (B[m   #
+#   two-op_add               || [32m PASSED  (B[m ||   2093657676  ||    336  |     0   ||  (B[m../bin/msp430sim -seed   2093657676   two-op_add              (B[m   #
+#   two-op_add_rom-rd        || [32m PASSED  (B[m ||   1314590108  ||     93  |     0   ||  (B[m../bin/msp430sim -seed   1314590108   two-op_add_rom-rd       (B[m   #
+#   two-op_and               || [32m PASSED  (B[m ||  -1551378510  ||      4  |     0   ||  (B[m../bin/msp430sim -seed  -1551378510   two-op_and              (B[m   #
+#   two-op_autoincr-b        || [32m PASSED  (B[m ||   -884750068  ||    253  |     0   ||  (B[m../bin/msp430sim -seed   -884750068   two-op_autoincr-b       (B[m   #
+#   two-op_autoincr          || [32m PASSED  (B[m ||   1363444066  ||    253  |     0   ||  (B[m../bin/msp430sim -seed   1363444066   two-op_autoincr         (B[m   #
+#   two-op_bic               || [32m PASSED  (B[m ||  -1618157774  ||      4  |     0   ||  (B[m../bin/msp430sim -seed  -1618157774   two-op_bic              (B[m   #
+#   two-op_bis               || [32m PASSED  (B[m ||   1780580522  ||      4  |     0   ||  (B[m../bin/msp430sim -seed   1780580522   two-op_bis              (B[m   #
+#   two-op_bit               || [32m PASSED  (B[m ||   -349318898  ||      4  |     0   ||  (B[m../bin/msp430sim -seed   -349318898   two-op_bit              (B[m   #
+#   two-op_cmp               || [32m PASSED  (B[m ||   1971319792  ||      8  |     0   ||  (B[m../bin/msp430sim -seed   1971319792   two-op_cmp              (B[m   #
+#   two-op_dadd              || [32m PASSED  (B[m ||   -808022037  ||      4  |     0   ||  (B[m../bin/msp430sim -seed   -808022037   two-op_dadd             (B[m   #
+#   two-op_mov-b             || [32m PASSED  (B[m ||  -1226295653  ||    711  |     0   ||  (B[m../bin/msp430sim -seed  -1226295653   two-op_mov-b            (B[m   #
+#   two-op_mov               || [32m PASSED  (B[m ||     23074953  ||    267  |     0   ||  (B[m../bin/msp430sim -seed     23074953   two-op_mov              (B[m   #
+#   two-op_subc              || [32m PASSED  (B[m ||   1573527358  ||      4  |     0   ||  (B[m../bin/msp430sim -seed   1573527358   two-op_subc             (B[m   #
+#   two-op_sub               || [32m PASSED  (B[m ||    740778789  ||      4  |     0   ||  (B[m../bin/msp430sim -seed    740778789   two-op_sub              (B[m   #
+#   two-op_xor               || [32m PASSED  (B[m ||   -745437295  ||      4  |     0   ||  (B[m../bin/msp430sim -seed   -745437295   two-op_xor              (B[m   #
+#   wdt_clkmux               || [32m PASSED  (B[m ||   2130606696  ||   1642  |     0   ||  (B[m../bin/msp430sim -seed   2130606696   wdt_clkmux              (B[m   #
+#   wdt_interval             || [32m PASSED  (B[m ||   2069626189  ||    105  |     0   ||  (B[m../bin/msp430sim -seed   2069626189   wdt_interval            (B[m   #
+#   wdt_watchdog             || [32m PASSED  (B[m ||   1017769523  ||  16722  |     0   ||  (B[m../bin/msp430sim -seed   1017769523   wdt_watchdog            (B[m   #
+#   wdt_wkup                 || [32m PASSED  (B[m ||  -2111395899  ||    127  |     0   ||  (B[m../bin/msp430sim -seed  -2111395899   wdt_wkup                (B[m   #
+#                            ||           ||               ||         |         ||                                                                   #
+#====================================================================================================================================================#
+
+
+#===================================================================#
+#                          SKIPPED & FAILED TESTS                   #
+#===================================================================#
+
+ SKIPPED TESTS:
+                 -  ./log/0/clock_module_asic_lfxt.log
+                 -  ./log/0/clock_module.log
+                 -  ./log/0/dbg_i2c_cpu.log
+                 -  ./log/0/dbg_i2c_halt_irq.log
+                 -  ./log/0/dbg_i2c_hwbrk0.log
+                 -  ./log/0/dbg_i2c_hwbrk1.log
+                 -  ./log/0/dbg_i2c_hwbrk2.log
+                 -  ./log/0/dbg_i2c_hwbrk3.log
+                 -  ./log/0/dbg_i2c.log
+                 -  ./log/0/dbg_i2c_mem.log
+                 -  ./log/0/dbg_i2c_onoff_asic.log
+                 -  ./log/0/dbg_i2c_onoff.log
+                 -  ./log/0/dbg_i2c_rdwr.log
+                 -  ./log/0/dbg_i2c_sync.log
+                 -  ./log/0/dbg_uart_hwbrk0.log
+                 -  ./log/0/dbg_uart_hwbrk1.log
+                 -  ./log/0/dbg_uart_hwbrk2.log
+                 -  ./log/0/dbg_uart_hwbrk3.log
+                 -  ./log/0/dbg_uart_onoff.log
+                 -  ./log/0/irq32.log
+                 -  ./log/0/irq64.log
+                 -  ./log/0/op_modes.log
+                 -  ./log/0/tA_capture.log
+                 -  ./log/0/tA_clkmux.log
+                 -  ./log/0/tA_compare.log
+                 -  ./log/0/tA_modes.log
+                 -  ./log/0/tA_output.log
+
+
+
+
+#===================================================================#
+#                            SUMMARY REPORT                         #
+#===================================================================#
+
+         +-----------------------------------
+         | Number of PASSED  tests :[1m[32m 69 (B[m
+         | Number of SKIPPED tests :[1m[32m 27 (B[m
+         | Number of FAILED  tests :[1m[31m 0 (B[m
+         | Number of ABORTED tests :[1m[31m 0 (B[m
+         |----------------------------------
+         | Number of tests         : 96
+         +----------------------------------
+
+         Make sure passed+skipped == total
+
+

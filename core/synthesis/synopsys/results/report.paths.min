@@ -1,0 +1,419 @@
+ 
+****************************************
+Report : timing
+        -path end
+        -delay min
+        -nworst 2
+        -max_paths 200
+Design : openMSP430
+Version: L-2016.03-SP5
+Date   : Thu Apr 13 17:50:25 2017
+****************************************
+
+Operating Conditions: ss0p7v25c   Library: saed32rvt_ss0p7v25c
+Wire Load Model Mode: top
+
+Endpoint                         Path Delay     Path Required     Slack
+------------------------------------------------------------------------
+mem_backbone_0/pmem_dout_bckup_reg[15]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[14]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[13]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[12]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[11]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[10]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[9]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[8]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[7]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[6]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[5]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[4]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[3]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[2]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[1]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[0]/D (SDFFARX1_RVT)
+                                   20.00 r           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[15]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[14]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[13]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[12]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[11]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[10]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[9]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[8]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[7]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[6]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[5]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[4]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[3]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[2]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[1]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/pmem_dout_bckup_reg[0]/D (SDFFARX1_RVT)
+                                   20.00 f           19.97         0.03
+mem_backbone_0/per_dout_val_reg[15]/D (SDFFARX1_RVT)
+                                   20.02 f           19.97         0.05
+mem_backbone_0/per_dout_val_reg[15]/D (SDFFARX1_RVT)
+                                   20.02 r           19.97         0.05
+mem_backbone_0/per_dout_val_reg[14]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+mem_backbone_0/per_dout_val_reg[10]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+mem_backbone_0/per_dout_val_reg[7]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+mem_backbone_0/per_dout_val_reg[6]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+mem_backbone_0/per_dout_val_reg[3]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+mem_backbone_0/per_dout_val_reg[2]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+frontend_0/inst_src_bin_reg[2]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+frontend_0/inst_src_bin_reg[3]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+frontend_0/inst_dest_bin_reg[1]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+mem_backbone_0/per_dout_val_reg[3]/D (SDFFARX1_RVT)
+                                   20.03 r           19.97         0.06
+mem_backbone_0/per_dout_val_reg[14]/D (SDFFARX1_RVT)
+                                   20.03 r           19.97         0.06
+mem_backbone_0/per_dout_val_reg[10]/D (SDFFARX1_RVT)
+                                   20.03 r           19.97         0.06
+mem_backbone_0/per_dout_val_reg[7]/D (SDFFARX1_RVT)
+                                   20.03 r           19.97         0.06
+mem_backbone_0/per_dout_val_reg[6]/D (SDFFARX1_RVT)
+                                   20.03 r           19.97         0.06
+mem_backbone_0/per_dout_val_reg[2]/D (SDFFARX1_RVT)
+                                   20.03 r           19.97         0.06
+frontend_0/inst_dest_bin_reg[0]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+frontend_0/inst_dext_reg[0]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.06
+frontend_0/inst_dest_bin_reg[3]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.07
+frontend_0/inst_dest_bin_reg[2]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.07
+frontend_0/inst_src_bin_reg[1]/D (SDFFARX1_RVT)
+                                   20.03 f           19.97         0.07
+dbg_0/dbg_uart_0/rxd_buf_reg[0]/D (DFFASX1_RVT)
+                                   20.06 f           19.99         0.07
+execution_unit_0/mdb_in_buf_reg[9]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[15]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[14]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[13]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[12]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[11]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[10]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[8]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+frontend_0/inst_jmp_bin_reg[2]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+frontend_0/inst_src_bin_reg[0]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+frontend_0/inst_src_bin_reg[2]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.07
+frontend_0/inst_src_bin_reg[3]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.07
+frontend_0/inst_dest_bin_reg[1]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.07
+dbg_0/dbg_uart_0/rxd_buf_reg[0]/D (DFFASX1_RVT)
+                                   20.06 r           19.99         0.07
+frontend_0/inst_dest_bin_reg[0]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.07
+frontend_0/inst_dext_reg[0]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[9]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[15]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[14]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[13]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[12]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[11]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[10]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+execution_unit_0/mdb_in_buf_reg[8]/D (SDFFARX1_RVT)
+                                   20.04 f           19.97         0.07
+frontend_0/inst_bw_reg/SI (SDFFARX2_RVT)
+                                   20.05 f           19.97         0.07
+frontend_0/inst_dest_bin_reg[2]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.08
+frontend_0/inst_dest_bin_reg[3]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.08
+frontend_0/inst_src_bin_reg[1]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.08
+mem_backbone_0/per_dout_val_reg[13]/D (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+mem_backbone_0/per_dout_val_reg[11]/D (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+mem_backbone_0/per_dout_val_reg[8]/D (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+mem_backbone_0/per_dout_val_reg[5]/D (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+mem_backbone_0/per_dout_val_reg[13]/D (SDFFARX1_RVT)
+                                   20.05 r           19.97         0.08
+mem_backbone_0/per_dout_val_reg[11]/D (SDFFARX1_RVT)
+                                   20.05 r           19.97         0.08
+mem_backbone_0/per_dout_val_reg[8]/D (SDFFARX1_RVT)
+                                   20.05 r           19.97         0.08
+mem_backbone_0/per_dout_val_reg[5]/D (SDFFARX1_RVT)
+                                   20.05 r           19.97         0.08
+watchdog_0/sync_reset_por/data_sync_reg[0]/SI (SDFFASX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/sync_reset_por/data_sync_reg[0]/SI (SDFFASX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/rxd_maj_reg/SI (SDFFASX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/sync_cnt_reg[3]/SI (SDFFASX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/cpu_ctl_reg[4]/SI (SDFFASX1_RVT)
+                                   20.05 f           19.97         0.08
+frontend_0/inst_irq_rst_reg/SI (SDFFASX1_RVT)
+                                   20.05 f           19.97         0.08
+frontend_0/inst_jmp_bin_reg[2]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.08
+frontend_0/inst_src_bin_reg[0]/D (SDFFARX1_RVT)
+                                   20.04 r           19.97         0.08
+watchdog_0/wdtifg_clr_reg_reg/SI (SDFFASRX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/sync_cell_mclk_dma_wkup/data_sync_reg[0]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[18]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[19]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/sync_cnt_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/sync_cnt_reg[0]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/sync_cnt_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[15]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[0]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[3]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[4]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[5]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[6]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[7]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[8]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[9]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[10]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[11]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[12]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[13]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_cnt_reg[14]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[17]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[16]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[15]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[14]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[13]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[12]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[11]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[10]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[9]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[8]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[7]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[6]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[5]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[4]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[3]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/xfer_buf_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/dbg_addr_reg[5]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/dbg_addr_reg[4]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/dbg_addr_reg[3]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/dbg_addr_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/dbg_addr_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+dbg_0/dbg_uart_0/dbg_bw_reg/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/bcsctl1_reg[5]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/bcsctl1_reg[4]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/bcsctl1_reg[3]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/bcsctl1_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/bcsctl1_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/mclk_div_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/mclk_div_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/bcsctl2_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/smclk_div_reg[0]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+clock_module_0/smclk_div_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[15]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[14]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[13]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[12]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[11]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[9]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[8]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[7]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[6]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[5]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[4]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[3]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r1_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[7]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[6]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[5]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[4]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[3]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r2_reg[0]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[15]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[14]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[13]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[12]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[11]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[10]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[9]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[8]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[7]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[6]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[5]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[4]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[3]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[2]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[1]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r3_reg[0]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[15]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[14]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[13]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[12]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[11]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[10]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[9]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+execution_unit_0/register_file_0/r4_reg[8]/SI (SDFFARX1_RVT)
+                                   20.05 f           19.97         0.08
+
+1

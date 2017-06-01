@@ -1,0 +1,135 @@
+Cleanup...
+ =======================================================
+| Start simulation:             dbg_i2c_hwbrk3
+ =======================================================
+
+ Seed:  -1880411656
+
+Compile, link & generate IHEX file (Program Memory: 4096 B, Data Memory: 1024 B, Peripheral Space: 512 B)...
+
+$ msp430-elf-as      -alsm pmem.s43 -o pmem.o > pmem.l43
+$ msp430-elf-objdump -xdsStr pmem.o >> pmem.l43
+$ msp430-elf-ld      -T ./pmem.x pmem.o -o pmem.elf
+$ msp430-elf-objcopy -O ihex pmem.elf pmem.ihex
+
+Convert IHEX file to Verilog MEMH format...
+Start Verilog simulation...
+Running: vcs -sverilog -f ../src/submit.f +define+SEED=-1880411656 +define+DMA_VERIF +define+NODUMP -R -debug_pp +vcs+lic+wait +v2k +define+VPD_FILE
+
+Warning-[LNX_OS_VERUN] Unsupported Linux version
+  Linux version 'CentOS Linux release 7.2.1511 (Core) ' is not supported on 
+  'x86_64' officially, assuming linux compatibility by default. Set 
+  VCS_ARCH_OVERRIDE to linux or suse32 to override.
+  Please refer to release notes for information on supported platforms.
+
+                         Chronologic VCS (TM)
+          Version L-2016.06-SP1 -- Wed Apr 12 16:57:58 2017
+               Copyright (c) 1991-2016 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file '../../../bench/verilog/tb_openMSP430.v'
+Parsing included file '../../../bench/verilog/timescale.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../rtl/verilog/openMSP430_defines.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/registers.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dbg_uart_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dbg_i2c_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dma_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file 'stimulus.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing design file '../../../bench/verilog/ram.v'
+Parsing design file '../../../bench/verilog/io_cell.v'
+Parsing design file '../../../bench/verilog/msp_debug.v'
+Parsing design file '../../../rtl/verilog/openMSP430_defines.v'
+Parsing design file '../../../rtl/verilog/openMSP430.v'
+Parsing design file '../../../rtl/verilog/omsp_frontend.v'
+Parsing design file '../../../rtl/verilog/omsp_execution_unit.v'
+Parsing design file '../../../rtl/verilog/omsp_register_file.v'
+Parsing design file '../../../rtl/verilog/omsp_alu.v'
+Parsing design file '../../../rtl/verilog/omsp_sfr.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_module.v'
+Parsing design file '../../../rtl/verilog/omsp_mem_backbone.v'
+Parsing design file '../../../rtl/verilog/omsp_watchdog.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_uart.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_i2c.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_hwbrk.v'
+Parsing design file '../../../rtl/verilog/omsp_multiplier.v'
+Parsing design file '../../../rtl/verilog/omsp_sync_reset.v'
+Parsing design file '../../../rtl/verilog/omsp_sync_cell.v'
+Parsing design file '../../../rtl/verilog/omsp_scan_mux.v'
+Parsing design file '../../../rtl/verilog/omsp_and_gate.v'
+Parsing design file '../../../rtl/verilog/omsp_wakeup_cell.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_gate.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_mux.v'
+Parsing design file '../../../rtl/verilog/periph/omsp_gpio.v'
+Parsing design file '../../../rtl/verilog/periph/omsp_timerA.v'
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_defines.v'.
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_undefines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA_defines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA.v'.
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_undefines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA.v'.
+Parsing design file '../../../rtl/verilog/periph/template_periph_8b.v'
+Parsing design file '../../../rtl/verilog/periph/template_periph_16b.v'
+Top Level Modules:
+       tb_openMSP430
+       omsp_dbg_i2c
+       omsp_dbg_hwbrk
+       omsp_clock_mux
+TimeScale is 1 ns / 100 ps
+Starting vcs inline pass...
+16 unique modules to generate
+recompiling module tb_openMSP430
+recompiling module ram
+recompiling module msp_debug
+recompiling module omsp_sfr
+recompiling module omsp_mem_backbone
+recompiling module omsp_watchdog
+recompiling module omsp_dbg
+recompiling module omsp_dbg_i2c
+recompiling module omsp_dbg_hwbrk
+recompiling module omsp_multiplier
+recompiling module omsp_sync_cell
+recompiling module omsp_clock_mux
+recompiling module omsp_gpio
+recompiling module omsp_timerA
+recompiling module template_periph_8b
+recompiling module template_periph_16b
+All of 16 modules done
+rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++  -o ../simv   -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -m32 -m32 -rdynamic   objs/amcQw_d.o   _6373_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libzerosoft_rt_stubs.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvirsim.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/liberrorinf.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsnpsmalloc.so    /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvcsnew.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsimprofile.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libuclinative.so   -Wl,-whole-archive /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvcsucli.so -Wl,-no-whole-archive          /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcs_save_restore_new.o /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/ctype-stubs_32.a -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+Chronologic VCS simulator copyright 1991-2016
+Contains Synopsys proprietary information.
+Compiler version L-2016.06-SP1; Runtime version L-2016.06-SP1;  Apr 12 16:58 2017
+ ===============================================
+|                 START SIMULATION              |
+ ===============================================
+ ===============================================
+|               SIMULATION SKIPPED              |
+                |   (serial debug interface I2C not included)   |
+ ===============================================
+
+DMA REPORT: Total Accesses: 0 Total RD: 0 Total WR: 0
+            Total Errors:   0 Error RD: 0 Error WR: 0
+
+SIMULATION SEED: -1880411656
+
+$finish called from file "../../../bench/verilog/tb_openMSP430.v", line 790.
+$finish at simulation time                    0
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 000 ps
+CPU Time:      0.380 seconds;       Data structure size:   0.2Mb
+Wed Apr 12 16:58:01 2017
+CPU time: 1.382 seconds to compile + .461 seconds to elab + .187 seconds to link + .551 seconds in simulation

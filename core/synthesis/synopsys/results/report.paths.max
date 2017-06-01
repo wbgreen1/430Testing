@@ -1,0 +1,321 @@
+ 
+****************************************
+Report : timing
+        -path end
+        -delay max
+        -nworst 2
+        -max_paths 200
+Design : openMSP430
+Version: L-2016.03-SP5
+Date   : Thu Apr 13 17:50:18 2017
+****************************************
+
+Operating Conditions: ss0p7v25c   Library: saed32rvt_ss0p7v25c
+Wire Load Model Mode: top
+
+Endpoint                         Path Delay     Path Required     Slack
+------------------------------------------------------------------------
+mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                   44.06 f           44.06         0.00
+mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                   44.06 f           44.06         0.00
+frontend_0/clock_gate_pc/enable_latch_reg/D (LATCHX1_RVT)
+                                   38.56 f           40.00         1.44
+frontend_0/clock_gate_pc/enable_latch_reg/D (LATCHX1_RVT)
+                                   38.52 f           40.00         1.48
+mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                   38.41 r           40.00         1.59
+mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                   38.38 r           40.00         1.62
+frontend_0/clock_gate_inst_sext/enable_latch_reg/D (LATCHX1_RVT)
+                                   36.69 r           40.00         3.31
+frontend_0/clock_gate_inst_sext/enable_latch_reg/D (LATCHX1_RVT)
+                                   36.65 r           40.00         3.35
+multiplier_0/clock_gate_reslo/enable_latch_reg/D (LASRQX1_RVT)
+                                   35.18 r           40.00         4.82
+multiplier_0/clock_gate_reshi/enable_latch_reg/D (LASRQX1_RVT)
+                                   35.18 r           40.00         4.82
+multiplier_0/clock_gate_reslo/enable_latch_reg/D (LASRQX1_RVT)
+                                   35.13 r           40.00         4.87
+multiplier_0/clock_gate_reshi/enable_latch_reg/D (LASRQX1_RVT)
+                                   35.13 r           40.00         4.87
+dbg_freeze (out)                   21.02 r           26.00         4.98
+dbg_freeze (out)                   20.86 f           26.00         5.14
+multiplier_0/clock_gate_reslo/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.82 r           40.00         5.18
+multiplier_0/clock_gate_reshi/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.82 r           40.00         5.18
+multiplier_0/clock_gate_reslo/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.73 r           40.00         5.27
+multiplier_0/clock_gate_reshi/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.73 r           40.00         5.27
+multiplier_0/clock_gate_op2/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.73 r           40.00         5.27
+multiplier_0/clock_gate_op2/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.68 r           40.00         5.32
+frontend_0/clock_gate_decode/enable_latch_reg/D (LATCHX1_RVT)
+                                   34.62 f           40.00         5.38
+frontend_0/clock_gate_decode/enable_latch_reg/D (LATCHX1_RVT)
+                                   34.58 f           40.00         5.42
+watchdog_0/clock_gate_wdtctl/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.48 f           40.00         5.52
+watchdog_0/clock_gate_wdtctl/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.47 f           40.00         5.53
+multiplier_0/clock_gate_op1/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.38 r           40.00         5.62
+multiplier_0/clock_gate_op2/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.37 r           40.00         5.63
+multiplier_0/clock_gate_op1/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.33 r           40.00         5.67
+multiplier_0/clock_gate_op2/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.28 r           40.00         5.72
+frontend_0/clock_gate_irq_num/enable_latch_reg/D (LATCHX1_RVT)
+                                   34.26 f           40.00         5.74
+frontend_0/clock_gate_irq_num/enable_latch_reg/D (LATCHX1_RVT)
+                                   34.21 f           40.00         5.79
+watchdog_0/clock_gate_wdtctl/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.12 f           40.00         5.88
+watchdog_0/clock_gate_wdtctl/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.11 f           40.00         5.89
+multiplier_0/clock_gate_op1/enable_latch_reg/D (LASRQX1_RVT)
+                                   34.02 r           40.00         5.98
+multiplier_0/clock_gate_op1/enable_latch_reg/D (LASRQX1_RVT)
+                                   33.93 r           40.00         6.07
+frontend_0/clock_gate_pc/enable_latch_reg/D (LATCHX1_RVT)
+                                   32.30 f           40.00         7.70
+frontend_0/clock_gate_pc/enable_latch_reg/D (LATCHX1_RVT)
+                                   32.26 f           40.00         7.74
+puc_rst (out)                      21.44 r           30.00         8.56
+puc_rst (out)                      21.43 f           30.00         8.57
+clock_module_0/clock_gate_dma_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   31.02 r           40.00         8.98
+clock_module_0/clock_gate_dma_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   31.01 f           40.00         8.99
+clock_module_0/clock_gate_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   30.78 r           40.00         9.22
+clock_module_0/clock_gate_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   30.74 r           40.00         9.26
+clock_module_0/clock_gate_dma_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   30.66 r           40.00         9.34
+clock_module_0/clock_gate_dma_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   30.65 f           40.00         9.35
+clock_module_0/clock_gate_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   30.42 r           40.00         9.58
+clock_module_0/clock_gate_mclk/enable_latch_reg/D (LATCHX1_RVT)
+                                   30.37 f           40.00         9.63
+frontend_0/clock_gate_inst_sext/enable_latch_reg/D (LATCHX1_RVT)
+                                   28.50 r           40.00        11.50
+frontend_0/clock_gate_inst_sext/enable_latch_reg/D (LATCHX1_RVT)
+                                   28.48 r           40.00        11.52
+frontend_0/clock_gate_decode/enable_latch_reg/D (LATCHX1_RVT)
+                                   26.43 f           40.00        13.57
+frontend_0/clock_gate_decode/enable_latch_reg/D (LATCHX1_RVT)
+                                   26.41 f           40.00        13.59
+frontend_0/clock_gate_irq_num/enable_latch_reg/D (LATCHX1_RVT)
+                                   26.06 f           40.00        13.94
+frontend_0/clock_gate_irq_num/enable_latch_reg/D (LATCHX1_RVT)
+                                   26.05 f           40.00        13.95
+irq_acc[2] (out)                   21.75 r           36.00        14.25
+irq_acc[2] (out)                   21.74 r           36.00        14.26
+irq_acc[10] (out)                  21.73 r           36.00        14.27
+irq_acc[13] (out)                  21.73 r           36.00        14.27
+irq_acc[12] (out)                  21.73 r           36.00        14.27
+irq_acc[10] (out)                  21.72 r           36.00        14.28
+irq_acc[13] (out)                  21.72 r           36.00        14.28
+irq_acc[12] (out)                  21.72 r           36.00        14.28
+irq_acc[6] (out)                   21.72 r           36.00        14.28
+irq_acc[6] (out)                   21.71 r           36.00        14.29
+irq_acc[1] (out)                   21.69 r           36.00        14.31
+irq_acc[0] (out)                   21.69 r           36.00        14.31
+irq_acc[1] (out)                   21.68 r           36.00        14.32
+irq_acc[0] (out)                   21.68 r           36.00        14.32
+irq_acc[9] (out)                   21.65 r           36.00        14.35
+irq_acc[8] (out)                   21.65 r           36.00        14.35
+irq_acc[5] (out)                   21.65 r           36.00        14.35
+irq_acc[4] (out)                   21.65 r           36.00        14.35
+irq_acc[9] (out)                   21.64 r           36.00        14.36
+irq_acc[8] (out)                   21.64 r           36.00        14.36
+irq_acc[5] (out)                   21.64 r           36.00        14.36
+irq_acc[4] (out)                   21.64 r           36.00        14.36
+irq_acc[3] (out)                   21.63 r           36.00        14.37
+irq_acc[3] (out)                   21.62 r           36.00        14.38
+irq_acc[11] (out)                  21.45 r           36.00        14.55
+irq_acc[7] (out)                   21.45 r           36.00        14.55
+irq_acc[11] (out)                  21.44 r           36.00        14.56
+irq_acc[7] (out)                   21.44 r           36.00        14.56
+pmem_addr[10] (out)                44.63 r           59.36        14.73
+pmem_addr[9] (out)                 44.63 r           59.36        14.73
+pmem_addr[8] (out)                 44.63 r           59.36        14.73
+pmem_addr[7] (out)                 44.63 r           59.36        14.73
+pmem_addr[6] (out)                 44.63 r           59.36        14.73
+pmem_addr[5] (out)                 44.63 r           59.36        14.73
+pmem_addr[4] (out)                 44.63 r           59.36        14.73
+pmem_addr[3] (out)                 44.63 r           59.36        14.73
+pmem_addr[2] (out)                 44.63 r           59.36        14.73
+pmem_addr[1] (out)                 44.63 r           59.36        14.73
+pmem_addr[0] (out)                 44.63 r           59.36        14.73
+pmem_addr[10] (out)                44.60 r           59.36        14.76
+pmem_addr[9] (out)                 44.60 r           59.36        14.76
+pmem_addr[8] (out)                 44.60 r           59.36        14.76
+pmem_addr[7] (out)                 44.60 r           59.36        14.76
+pmem_addr[6] (out)                 44.60 r           59.36        14.76
+pmem_addr[5] (out)                 44.60 r           59.36        14.76
+pmem_addr[4] (out)                 44.60 r           59.36        14.76
+pmem_addr[3] (out)                 44.60 r           59.36        14.76
+pmem_addr[2] (out)                 44.60 r           59.36        14.76
+pmem_addr[1] (out)                 44.60 r           59.36        14.76
+pmem_addr[0] (out)                 44.60 r           59.36        14.76
+mem_backbone_0/dma_ready_dly_reg/D (SDFFARX1_RVT)
+                                   44.26 f           59.26        15.00
+mem_backbone_0/dma_ready_dly_reg/D (SDFFARX1_RVT)
+                                   44.26 f           59.26        15.00
+pmem_cen (out)                     44.33 f           59.37        15.04
+pmem_cen (out)                     44.31 f           59.37        15.06
+mem_backbone_0/pmem_dout_bckup_sel_reg/D (SDFFARX1_RVT)
+                                   44.09 f           59.26        15.17
+mem_backbone_0/pmem_dout_bckup_sel_reg/D (SDFFARX1_RVT)
+                                   44.09 f           59.26        15.17
+mem_backbone_0/ext_mem_din_sel_reg[1]/D (SDFFARX1_RVT)
+                                   43.97 f           59.20        15.23
+mem_backbone_0/ext_mem_din_sel_reg[1]/D (SDFFARX1_RVT)
+                                   43.97 f           59.20        15.23
+pmem_wen[1] (out)                  44.23 f           59.56        15.33
+pmem_wen[0] (out)                  44.23 f           59.56        15.33
+pmem_wen[1] (out)                  44.21 f           59.56        15.35
+pmem_wen[0] (out)                  44.21 f           59.56        15.35
+frontend_0/pmem_busy_reg/D (SDFFARX1_RVT)
+                                   43.80 f           59.27        15.47
+frontend_0/pmem_busy_reg/D (SDFFARX1_RVT)
+                                   43.77 f           59.27        15.49
+mem_backbone_0/fe_pmem_en_dly_reg/D (SDFFARX1_RVT)
+                                   43.56 f           59.23        15.67
+mem_backbone_0/fe_pmem_en_dly_reg/D (SDFFARX1_RVT)
+                                   43.53 f           59.23        15.69
+execution_unit_0/register_file_0/clock_gate_r1/enable_latch_reg/D (LASRQX1_RVT)
+                                   24.10 f           40.00        15.90
+execution_unit_0/register_file_0/clock_gate_r1/enable_latch_reg/D (LASRQX1_RVT)
+                                   24.05 r           40.00        15.95
+execution_unit_0/mdb_out_nxt_reg[15]/D (SDFFARX1_RVT)
+                                   43.21 f           59.26        16.05
+execution_unit_0/register_file_0/clock_gate_r2/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.95 f           40.00        16.05
+execution_unit_0/mdb_out_nxt_reg[14]/D (SDFFARX1_RVT)
+                                   43.18 f           59.26        16.08
+execution_unit_0/mdb_out_nxt_reg[15]/D (SDFFARX1_RVT)
+                                   43.17 f           59.26        16.09
+execution_unit_0/register_file_0/clock_gate_r4/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r5/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r6/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r7/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r8/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r9/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r10/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r11/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r12/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r13/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r14/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r15/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 f           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r4/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r5/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r6/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r7/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r8/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r9/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r10/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r11/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r12/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r13/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r14/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/register_file_0/clock_gate_r15/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.89 r           40.00        16.11
+execution_unit_0/mdb_out_nxt_reg[14]/D (SDFFARX1_RVT)
+                                   43.14 f           59.26        16.12
+execution_unit_0/register_file_0/clock_gate_r2/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.81 r           40.00        16.19
+execution_unit_0/mdb_out_nxt_reg[13]/D (SDFFARX1_RVT)
+                                   42.90 f           59.26        16.36
+execution_unit_0/mdb_out_nxt_reg[13]/D (SDFFARX1_RVT)
+                                   42.86 f           59.26        16.40
+frontend_0/pc_reg[15]/D (SDFFARX1_RVT)
+                                   42.67 f           59.22        16.55
+frontend_0/pc_reg[14]/D (SDFFARX1_RVT)
+                                   42.68 f           59.24        16.56
+frontend_0/pc_reg[15]/D (SDFFARX1_RVT)
+                                   42.92 r           59.48        16.56
+frontend_0/pc_reg[14]/D (SDFFARX1_RVT)
+                                   42.64 f           59.24        16.60
+execution_unit_0/mdb_out_nxt_reg[12]/D (SDFFARX1_RVT)
+                                   42.62 f           59.26        16.64
+execution_unit_0/mdb_out_nxt_reg[12]/D (SDFFARX1_RVT)
+                                   42.58 f           59.26        16.68
+execution_unit_0/register_file_0/clock_gate_r3/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.29 f           40.00        16.71
+execution_unit_0/register_file_0/clock_gate_r3/enable_latch_reg/D (LASRQX1_RVT)
+                                   23.18 r           40.00        16.82
+frontend_0/pc_reg[13]/D (SDFFARX1_RVT)
+                                   42.40 f           59.24        16.84
+per_we[1] (out)                    33.13 r           50.00        16.87
+frontend_0/pc_reg[13]/D (SDFFARX1_RVT)
+                                   42.36 f           59.24        16.88
+per_addr[0] (out)                  33.12 r           50.00        16.88
+per_addr[1] (out)                  33.09 r           50.00        16.91
+per_we[1] (out)                    33.08 r           50.00        16.92
+per_addr[0] (out)                  33.07 r           50.00        16.93
+per_we[0] (out)                    33.06 r           50.00        16.94
+per_din[4] (out)                   33.05 r           50.00        16.95
+per_din[0] (out)                   33.05 r           50.00        16.95
+per_addr[1] (out)                  33.04 r           50.00        16.96
+per_addr[2] (out)                  33.03 r           50.00        16.97
+per_din[1] (out)                   33.03 r           50.00        16.97
+per_din[3] (out)                   33.02 r           50.00        16.98
+per_din[7] (out)                   33.02 r           50.00        16.98
+per_din[6] (out)                   33.02 r           50.00        16.98
+per_din[5] (out)                   33.02 r           50.00        16.98
+per_din[2] (out)                   33.02 r           50.00        16.98
+per_we[0] (out)                    33.02 r           50.00        16.98
+per_addr[3] (out)                  33.01 r           50.00        16.99
+per_addr[5] (out)                  33.01 r           50.00        16.99
+per_addr[6] (out)                  33.01 r           50.00        16.99
+per_addr[7] (out)                  33.01 r           50.00        16.99
+per_addr[4] (out)                  33.01 r           50.00        16.99
+per_din[11] (out)                  33.00 r           50.00        17.00
+per_din[9] (out)                   33.00 r           50.00        17.00
+per_din[12] (out)                  33.00 r           50.00        17.00
+per_din[4] (out)                   33.00 r           50.00        17.00
+per_din[10] (out)                  33.00 r           50.00        17.00
+per_din[0] (out)                   33.00 r           50.00        17.00
+per_din[13] (out)                  33.00 r           50.00        17.00
+per_din[8] (out)                   33.00 r           50.00        17.00
+per_din[14] (out)                  32.99 r           50.00        17.01
+per_din[15] (out)                  32.99 r           50.00        17.01
+per_addr[2] (out)                  32.98 r           50.00        17.02
+per_din[1] (out)                   32.98 r           50.00        17.02
+per_din[3] (out)                   32.97 r           50.00        17.03
+per_din[7] (out)                   32.97 r           50.00        17.03
+per_din[6] (out)                   32.97 r           50.00        17.03
+per_din[5] (out)                   32.97 r           50.00        17.03
+
+1

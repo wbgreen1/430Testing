@@ -1,0 +1,2402 @@
+GAS LISTING pmem.s43 			page 1
+
+
+   1               	/*===========================================================================*/
+   2               	/* Copyright (C) 2001 Authors                                                */
+   3               	/*                                                                           */
+   4               	/* This source file may be used and distributed without restriction provided */
+   5               	/* that this copyright statement is not removed from the file and that any   */
+   6               	/* derivative work contains the original copyright notice and the associated */
+   7               	/* disclaimer.                                                               */
+   8               	/*                                                                           */
+   9               	/* This source file is free software; you can redistribute it and/or modify  */
+  10               	/* it under the terms of the GNU Lesser General Public License as published  */
+  11               	/* by the Free Software Foundation; either version 2.1 of the License, or    */
+  12               	/* (at your option) any later version.                                       */
+  13               	/*                                                                           */
+  14               	/* This source is distributed in the hope that it will be useful, but WITHOUT*/
+  15               	/* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or     */
+  16               	/* FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public       */
+  17               	/* License for more details.                                                 */
+  18               	/*                                                                           */
+  19               	/* You should have received a copy of the GNU Lesser General Public License  */
+  20               	/* along with this source; if not, write to the Free Software Foundation,    */
+  21               	/* Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA        */
+  22               	/*                                                                           */
+  23               	/*===========================================================================*/
+  24               	/*                          HARDWARE MULTIPLIER                              */
+  25               	/*---------------------------------------------------------------------------*/
+  26               	/* Test the hardware multiplier:                                             */
+  27               	/*                                - MPY  mode.                               */
+  28               	/*                                - MPYS mode.                               */
+  29               	/*                                - MAC  mode.                               */
+  30               	/*                                - MACS mode.                               */
+  31               	/*                                                                           */
+  32               	/* Author(s):                                                                */
+  33               	/*             - Olivier Girard,    olgirard@gmail.com                       */
+  34               	/*                                                                           */
+  35               	/*---------------------------------------------------------------------------*/
+  36               	/* $Rev: 18 $                                                                */
+  37               	/* $LastChangedBy: olivier.girard $                                          */
+  38               	/* $LastChangedDate: 2009-08-04 23:44:12 +0200 (Tue, 04 Aug 2009) $          */
+  39               	/*===========================================================================*/
+  40               	
+  41               	.include "pmem_defs.asm"
+   1               	/*===========================================================================*/
+   2               	/* Copyright (C) 2001 Authors                                                */
+   3               	/*                                                                           */
+   4               	/* This source file may be used and distributed without restriction provided */
+   5               	/* that this copyright statement is not removed from the file and that any   */
+   6               	/* derivative work contains the original copyright notice and the associated */
+   7               	/* disclaimer.                                                               */
+   8               	/*                                                                           */
+   9               	/* This source file is free software; you can redistribute it and/or modify  */
+  10               	/* it under the terms of the GNU Lesser General Public License as published  */
+  11               	/* by the Free Software Foundation; either version 2.1 of the License, or    */
+  12               	/* (at your option) any later version.                                       */
+  13               	/*                                                                           */
+  14               	/* This source is distributed in the hope that it will be useful, but WITHOUT*/
+  15               	/* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or     */
+  16               	/* FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public       */
+GAS LISTING pmem.s43 			page 2
+
+
+  17               	/* License for more details.                                                 */
+  18               	/*                                                                           */
+  19               	/* You should have received a copy of the GNU Lesser General Public License  */
+  20               	/* along with this source; if not, write to the Free Software Foundation,    */
+  21               	/* Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA        */
+  22               	/*                                                                           */
+  23               	/*===========================================================================*/
+  24               	/*                          MEMORY DEFINITION FILE                           */
+  25               	/*---------------------------------------------------------------------------*/
+  26               	/*                                                                           */
+  27               	/* Author(s):                                                                */
+  28               	/*             - Olivier Girard,    olgirard@gmail.com                       */
+  29               	/*                                                                           */
+  30               	/*---------------------------------------------------------------------------*/
+  31               	/* $Rev: 19 $                                                                */
+  32               	/* $LastChangedBy: olivier.girard $                                          */
+  33               	/* $LastChangedDate: 2009-08-04 23:47:15 +0200 (Tue, 04 Aug 2009) $          */
+  34               	/*===========================================================================*/
+  35               	
+  36               	.set    PER_LENGTH,     512
+  37               	
+  38               	/*---------------------------------------------------------------------------*/
+  39               	/*                                   SFR                                     */
+  40               	/*---------------------------------------------------------------------------*/
+  41               	.set    IE1,       0x0000
+  42               	.set    IE1_HI,    0x0001
+  43               	.set    IFG1,      0x0002
+  44               	.set    IFG1_HI,   0x0003
+  45               	.set    CPU_ID_LO, 0x0004
+  46               	.set    CPU_ID_HI, 0x0006
+  47               	.set    CPU_NR,    0x0008
+  48               	
+  49               	/*---------------------------------------------------------------------------*/
+  50               	/*                                    GPIOs                                  */
+  51               	/*---------------------------------------------------------------------------*/
+  52               	.set    P1IN,      0x0020
+  53               	.set    P1OUT,     0x0021
+  54               	.set    P1DIR,     0x0022
+  55               	.set    P1IFG,     0x0023
+  56               	.set    P1IES,     0x0024
+  57               	.set    P1IE,      0x0025
+  58               	.set    P1SEL,     0x0026
+  59               	
+  60               	.set    P2IN,      0x0028
+  61               	.set    P2OUT,     0x0029
+  62               	.set    P2DIR,     0x002A
+  63               	.set    P2IFG,     0x002B
+  64               	.set    P2IES,     0x002C
+  65               	.set    P2IE,      0x002D
+  66               	.set    P2SEL,     0x002E
+  67               	
+  68               	.set    P3IN,      0x0018
+  69               	.set    P3OUT,     0x0019
+  70               	.set    P3DIR,     0x001A
+  71               	.set    P3SEL,     0x001B
+  72               	
+  73               	.set    P4IN,      0x001C
+GAS LISTING pmem.s43 			page 3
+
+
+  74               	.set    P4OUT,     0x001D
+  75               	.set    P4DIR,     0x001E
+  76               	.set    P4SEL,     0x001F
+  77               	
+  78               	.set    P5IN,      0x0030
+  79               	.set    P5OUT,     0x0031
+  80               	.set    P5DIR,     0x0032
+  81               	.set    P5SEL,     0x0033
+  82               	
+  83               	.set    P6IN,      0x0034
+  84               	.set    P6OUT,     0x0035
+  85               	.set    P6DIR,     0x0036
+  86               	.set    P6SEL,     0x0037
+  87               	
+  88               	/*---------------------------------------------------------------------------*/
+  89               	/*                           BASIC CLOCK MODULE                              */
+  90               	/*---------------------------------------------------------------------------*/
+  91               	.set    BCSCTL1,   0x0057
+  92               	.set    BCSCTL2,   0x0058
+  93               	
+  94               	/*---------------------------------------------------------------------------*/
+  95               	/*                             WATCHDOG TIMER                                */
+  96               	/*---------------------------------------------------------------------------*/
+  97               	.set    WDTCTL,    0x0120
+  98               	
+  99               	/*---------------------------------------------------------------------------*/
+ 100               	/*                           HARDWARE MULTIPLIER                             */
+ 101               	/*---------------------------------------------------------------------------*/
+ 102               	.set    MPY,       0x0130
+ 103               	.set    MPYS,      0x0132
+ 104               	.set    MAC,       0x0134
+ 105               	.set    MACS,      0x0136
+ 106               	.set    OP2,       0x0138
+ 107               	.set    RESLO,     0x013A
+ 108               	.set    RESHI,     0x013C
+ 109               	.set    SUMEXT,    0x013E
+ 110               	
+ 111               	/*---------------------------------------------------------------------------*/
+ 112               	/*                                 TIMER A                                   */
+ 113               	/*---------------------------------------------------------------------------*/
+ 114               	.set    TACTL,     0x0160
+ 115               	.set    TAR,       0x0170
+ 116               	.set    TACCTL0,   0x0162
+ 117               	.set    TACCR0,    0x0172
+ 118               	.set    TACCTL1,   0x0164
+ 119               	.set    TACCR1,    0x0174
+ 120               	.set    TACCTL2,   0x0166
+ 121               	.set    TACCR2,    0x0176
+ 122               	.set    TAIV,      0x012E
+ 123               	
+ 124               	/*---------------------------------------------------------------------------*/
+ 125               	/*                          DATA MEMORY MAPPING                              */
+ 126               	/*---------------------------------------------------------------------------*/
+ 127               	.set    DMEM_BASE, .data
+ 128               	
+ 129               	.set    DMEM_200,  (DMEM_BASE+0x00)
+ 130               	.set    DMEM_201,  (DMEM_BASE+0x01)
+GAS LISTING pmem.s43 			page 4
+
+
+ 131               	.set    DMEM_202,  (DMEM_BASE+0x02)
+ 132               	.set    DMEM_203,  (DMEM_BASE+0x03)
+ 133               	.set    DMEM_204,  (DMEM_BASE+0x04)
+ 134               	.set    DMEM_205,  (DMEM_BASE+0x05)
+ 135               	.set    DMEM_206,  (DMEM_BASE+0x06)
+ 136               	.set    DMEM_207,  (DMEM_BASE+0x07)
+ 137               	.set    DMEM_208,  (DMEM_BASE+0x08)
+ 138               	.set    DMEM_209,  (DMEM_BASE+0x09)
+ 139               	.set    DMEM_20A,  (DMEM_BASE+0x0A)
+ 140               	.set    DMEM_20B,  (DMEM_BASE+0x0B)
+ 141               	.set    DMEM_20C,  (DMEM_BASE+0x0C)
+ 142               	.set    DMEM_20D,  (DMEM_BASE+0x0D)
+ 143               	.set    DMEM_20E,  (DMEM_BASE+0x0E)
+ 144               	.set    DMEM_20F,  (DMEM_BASE+0x0F)
+ 145               	
+ 146               	.set    DMEM_210,  (DMEM_BASE+0x10)
+ 147               	.set    DMEM_211,  (DMEM_BASE+0x11)
+ 148               	.set    DMEM_212,  (DMEM_BASE+0x12)
+ 149               	.set    DMEM_213,  (DMEM_BASE+0x13)
+ 150               	.set    DMEM_214,  (DMEM_BASE+0x14)
+ 151               	.set    DMEM_215,  (DMEM_BASE+0x15)
+ 152               	.set    DMEM_216,  (DMEM_BASE+0x16)
+ 153               	.set    DMEM_217,  (DMEM_BASE+0x17)
+ 154               	.set    DMEM_218,  (DMEM_BASE+0x18)
+ 155               	.set    DMEM_219,  (DMEM_BASE+0x19)
+ 156               	.set    DMEM_21A,  (DMEM_BASE+0x1A)
+ 157               	.set    DMEM_21B,  (DMEM_BASE+0x1B)
+ 158               	.set    DMEM_21C,  (DMEM_BASE+0x1C)
+ 159               	.set    DMEM_21D,  (DMEM_BASE+0x1D)
+ 160               	.set    DMEM_21E,  (DMEM_BASE+0x1E)
+ 161               	.set    DMEM_21F,  (DMEM_BASE+0x1F)
+ 162               	
+ 163               	.set    DMEM_220,  (DMEM_BASE+0x20)
+ 164               	.set    DMEM_221,  (DMEM_BASE+0x21)
+ 165               	.set    DMEM_222,  (DMEM_BASE+0x22)
+ 166               	.set    DMEM_223,  (DMEM_BASE+0x23)
+ 167               	.set    DMEM_224,  (DMEM_BASE+0x24)
+ 168               	.set    DMEM_225,  (DMEM_BASE+0x25)
+ 169               	.set    DMEM_226,  (DMEM_BASE+0x26)
+ 170               	.set    DMEM_227,  (DMEM_BASE+0x27)
+ 171               	.set    DMEM_228,  (DMEM_BASE+0x28)
+ 172               	.set    DMEM_229,  (DMEM_BASE+0x29)
+ 173               	.set    DMEM_22A,  (DMEM_BASE+0x2A)
+ 174               	.set    DMEM_22B,  (DMEM_BASE+0x2B)
+ 175               	.set    DMEM_22C,  (DMEM_BASE+0x2C)
+ 176               	.set    DMEM_22D,  (DMEM_BASE+0x2D)
+ 177               	.set    DMEM_22E,  (DMEM_BASE+0x2E)
+ 178               	.set    DMEM_22F,  (DMEM_BASE+0x2F)
+ 179               	
+ 180               	.set    DMEM_230,  (DMEM_BASE+0x30)
+ 181               	.set    DMEM_231,  (DMEM_BASE+0x31)
+ 182               	.set    DMEM_232,  (DMEM_BASE+0x32)
+ 183               	.set    DMEM_233,  (DMEM_BASE+0x33)
+ 184               	.set    DMEM_234,  (DMEM_BASE+0x34)
+ 185               	.set    DMEM_235,  (DMEM_BASE+0x35)
+ 186               	.set    DMEM_236,  (DMEM_BASE+0x36)
+ 187               	.set    DMEM_237,  (DMEM_BASE+0x37)
+GAS LISTING pmem.s43 			page 5
+
+
+ 188               	.set    DMEM_238,  (DMEM_BASE+0x38)
+ 189               	.set    DMEM_239,  (DMEM_BASE+0x39)
+ 190               	.set    DMEM_23A,  (DMEM_BASE+0x3A)
+ 191               	.set    DMEM_23B,  (DMEM_BASE+0x3B)
+ 192               	.set    DMEM_23C,  (DMEM_BASE+0x3C)
+ 193               	.set    DMEM_23D,  (DMEM_BASE+0x3D)
+ 194               	.set    DMEM_23E,  (DMEM_BASE+0x3E)
+ 195               	.set    DMEM_23F,  (DMEM_BASE+0x3F)
+ 196               	
+ 197               	.set    DMEM_240,  (DMEM_BASE+0x40)
+ 198               	.set    DMEM_241,  (DMEM_BASE+0x41)
+ 199               	.set    DMEM_242,  (DMEM_BASE+0x42)
+ 200               	.set    DMEM_243,  (DMEM_BASE+0x43)
+ 201               	.set    DMEM_244,  (DMEM_BASE+0x44)
+ 202               	.set    DMEM_245,  (DMEM_BASE+0x45)
+ 203               	.set    DMEM_246,  (DMEM_BASE+0x46)
+ 204               	.set    DMEM_247,  (DMEM_BASE+0x47)
+ 205               	.set    DMEM_248,  (DMEM_BASE+0x48)
+ 206               	.set    DMEM_249,  (DMEM_BASE+0x49)
+ 207               	.set    DMEM_24A,  (DMEM_BASE+0x4A)
+ 208               	.set    DMEM_24B,  (DMEM_BASE+0x4B)
+ 209               	.set    DMEM_24C,  (DMEM_BASE+0x4C)
+ 210               	.set    DMEM_24D,  (DMEM_BASE+0x4D)
+ 211               	.set    DMEM_24E,  (DMEM_BASE+0x4E)
+ 212               	.set    DMEM_24F,  (DMEM_BASE+0x4F)
+ 213               	
+ 214               	.set    DMEM_250,  (DMEM_BASE+0x50)
+ 215               	.set    DMEM_251,  (DMEM_BASE+0x51)
+ 216               	.set    DMEM_252,  (DMEM_BASE+0x52)
+ 217               	.set    DMEM_253,  (DMEM_BASE+0x53)
+ 218               	.set    DMEM_254,  (DMEM_BASE+0x54)
+ 219               	.set    DMEM_255,  (DMEM_BASE+0x55)
+ 220               	.set    DMEM_256,  (DMEM_BASE+0x56)
+ 221               	.set    DMEM_257,  (DMEM_BASE+0x57)
+ 222               	.set    DMEM_258,  (DMEM_BASE+0x58)
+ 223               	.set    DMEM_259,  (DMEM_BASE+0x59)
+ 224               	.set    DMEM_25A,  (DMEM_BASE+0x5A)
+ 225               	.set    DMEM_25B,  (DMEM_BASE+0x5B)
+ 226               	.set    DMEM_25C,  (DMEM_BASE+0x5C)
+ 227               	.set    DMEM_25D,  (DMEM_BASE+0x5D)
+ 228               	.set    DMEM_25E,  (DMEM_BASE+0x5E)
+ 229               	.set    DMEM_25F,  (DMEM_BASE+0x5F)
+ 230               	
+ 231               	.set    DMEM_260,  (DMEM_BASE+0x60)
+ 232               	.set    DMEM_261,  (DMEM_BASE+0x61)
+ 233               	.set    DMEM_262,  (DMEM_BASE+0x62)
+ 234               	.set    DMEM_263,  (DMEM_BASE+0x63)
+ 235               	.set    DMEM_264,  (DMEM_BASE+0x64)
+ 236               	.set    DMEM_265,  (DMEM_BASE+0x65)
+ 237               	.set    DMEM_266,  (DMEM_BASE+0x66)
+ 238               	.set    DMEM_267,  (DMEM_BASE+0x67)
+ 239               	.set    DMEM_268,  (DMEM_BASE+0x68)
+ 240               	.set    DMEM_269,  (DMEM_BASE+0x69)
+ 241               	.set    DMEM_26A,  (DMEM_BASE+0x6A)
+ 242               	.set    DMEM_26B,  (DMEM_BASE+0x6B)
+ 243               	.set    DMEM_26C,  (DMEM_BASE+0x6C)
+ 244               	.set    DMEM_26D,  (DMEM_BASE+0x6D)
+GAS LISTING pmem.s43 			page 6
+
+
+ 245               	.set    DMEM_26E,  (DMEM_BASE+0x6E)
+ 246               	.set    DMEM_26F,  (DMEM_BASE+0x6F)
+ 247               	
+ 248               	.set    DMEM_300,  (DMEM_BASE+0x100)
+ 249               	
+ 250               	/*---------------------------------------------------------------------------*/
+ 251               	/*                        PROGRAM MEMORY MAPPING                             */
+ 252               	/*---------------------------------------------------------------------------*/
+ 253               	
+ 254               	.set    PMEM_BASE,       .text
+ 255               	
+ 256               	.set    PMEM_LENGTH,     4096
+ 257               	.set    PMEM_EDE_LENGTH, 0
+  42               	
+  43               	.global main
+  44               	
+  45               	main:
+  46               		
+  47               	        /* --------------   UNSIGNED MULTIPLICATION   --------------- */
+  48               	
+  49 0000 8243 3A01 		mov #0x0000, &RESLO
+  50 0004 B240 00C0 		mov #0xC000, &RESHI
+  50      3C01 
+  51               	
+  52 000a B240 0431 		mov #0x3104, &MPY 	; 0x3104 * 0x0285 = 0x007B_7F14, ext=0x0000
+  52      3001 
+  53 0010 B240 8502 		mov #0x0285, &OP2
+  53      3801 
+  54               	
+  55 0016 1A42 3A01 		mov &RESLO,  R10
+  56 001a 1B42 3C01 		mov &RESHI,  R11
+  57 001e 1C42 3E01 		mov &SUMEXT, R12
+  58 0022 0343      		nop
+  59 0024 1F43      		mov #0x0001, R15
+  60 0026 0343      		nop
+  61 0028 0343      		nop
+  62 002a 0343      		nop
+  63 002c 0343      		nop
+  64               	
+  65 002e 8243 3A01 		mov #0x0000, &RESLO
+  66 0032 B240 00C0 		mov #0xC000, &RESHI
+  66      3C01 
+  67               	
+  68 0038 8243 3001 		mov #0x0000, &MPY 	; 0x0000 * 0x0000 = 0x0000_0000, ext=0x0000
+  69 003c 8243 3801 		mov #0x0000, &OP2
+  70               	
+  71 0040 1A42 3A01 		mov &RESLO,  R10
+  72 0044 1B42 3C01 		mov &RESHI,  R11
+  73 0048 1C42 3E01 		mov &SUMEXT, R12
+  74 004c 0343      		nop
+  75 004e 2F43      		mov #0x0002, R15
+  76 0050 0343      		nop
+  77 0052 0343      		nop
+  78 0054 0343      		nop
+  79 0056 0343      		nop
+  80               	
+  81 0058 8243 3A01 		mov #0x0000, &RESLO
+GAS LISTING pmem.s43 			page 7
+
+
+  82 005c B240 00C0 		mov #0xC000, &RESHI
+  82      3C01 
+  83               	
+  84 0062 9243 3001 		mov #0x0001, &MPY 	; 0x0001 * 0x0001 = 0x0000_0001, ext=0x0000
+  85 0066 9243 3801 		mov #0x0001, &OP2
+  86               	
+  87 006a 1A42 3A01 		mov &RESLO,  R10
+  88 006e 1B42 3C01 		mov &RESHI,  R11
+  89 0072 1C42 3E01 		mov &SUMEXT, R12
+  90 0076 0343      		nop
+  91 0078 3F40 0300 		mov #0x0003, R15
+  92 007c 0343      		nop
+  93 007e 0343      		nop
+  94 0080 0343      		nop
+  95 0082 0343      		nop
+  96               	
+  97 0084 8243 3A01 		mov #0x0000, &RESLO
+  98 0088 B240 00C0 		mov #0xC000, &RESHI
+  98      3C01 
+  99               	
+ 100 008e B240 FF7F 		mov #0x7FFF, &MPY 	; 0x7FFF * 0x7FFF = 0x3FFF_0001, ext=0x0000
+ 100      3001 
+ 101 0094 B240 FF7F 		mov #0x7FFF, &OP2
+ 101      3801 
+ 102               	
+ 103 009a 1A42 3A01 		mov &RESLO,  R10
+ 104 009e 1B42 3C01 		mov &RESHI,  R11
+ 105 00a2 1C42 3E01 		mov &SUMEXT, R12
+ 106 00a6 0343      		nop
+ 107 00a8 2F42      		mov #0x0004, R15
+ 108 00aa 0343      		nop
+ 109 00ac 0343      		nop
+ 110 00ae 0343      		nop
+ 111 00b0 0343      		nop
+ 112               	
+ 113 00b2 8243 3A01 		mov #0x0000, &RESLO
+ 114 00b6 B240 00C0 		mov #0xC000, &RESHI
+ 114      3C01 
+ 115               	
+ 116 00bc B243 3001 		mov #0xFFFF, &MPY 	; 0xFFFF * 0xFFFF = 0xFFFE_0001, ext=0x0000
+ 117 00c0 B243 3801 		mov #0xFFFF, &OP2
+ 118               	
+ 119 00c4 1A42 3A01 		mov &RESLO,  R10
+ 120 00c8 1B42 3C01 		mov &RESHI,  R11
+ 121 00cc 1C42 3E01 		mov &SUMEXT, R12
+ 122 00d0 0343      		nop
+ 123 00d2 3F40 0500 		mov #0x0005, R15
+ 124 00d6 0343      		nop
+ 125 00d8 0343      		nop
+ 126 00da 0343      		nop
+ 127 00dc 0343      		nop
+ 128               	
+ 129 00de 8243 3A01 		mov #0x0000, &RESLO
+ 130 00e2 B240 00C0 		mov #0xC000, &RESHI
+ 130      3C01 
+ 131               	
+ 132 00e8 B240 FF7F 		mov #0x7FFF, &MPY 	; 0x7FFF * 0xFFFF = 0x7FFE_8001, ext=0x0000
+GAS LISTING pmem.s43 			page 8
+
+
+ 132      3001 
+ 133 00ee B243 3801 		mov #0xFFFF, &OP2
+ 134               	
+ 135 00f2 1A42 3A01 		mov &RESLO,  R10
+ 136 00f6 1B42 3C01 		mov &RESHI,  R11
+ 137 00fa 1C42 3E01 		mov &SUMEXT, R12
+ 138 00fe 0343      		nop
+ 139 0100 3F40 0600 		mov #0x0006, R15
+ 140 0104 0343      		nop
+ 141 0106 0343      		nop
+ 142 0108 0343      		nop
+ 143 010a 0343      		nop
+ 144               	
+ 145 010c 8243 3A01 		mov #0x0000, &RESLO
+ 146 0110 B240 00C0 		mov #0xC000, &RESHI
+ 146      3C01 
+ 147               	
+ 148 0116 B240 0080 		mov #0x8000, &MPY 	; 0x8000 * 0x7FFF = 0x3FFF_8000, ext=0x0000
+ 148      3001 
+ 149 011c B240 FF7F 		mov #0x7FFF, &OP2
+ 149      3801 
+ 150               	
+ 151 0122 1A42 3A01 		mov &RESLO,  R10
+ 152 0126 1B42 3C01 		mov &RESHI,  R11
+ 153 012a 1C42 3E01 		mov &SUMEXT, R12
+ 154 012e 0343      		nop
+ 155 0130 3F40 0700 		mov #0x0007, R15
+ 156 0134 0343      		nop
+ 157 0136 0343      		nop
+ 158 0138 0343      		nop
+ 159 013a 0343      		nop
+ 160               	
+ 161 013c 8243 3A01 		mov #0x0000, &RESLO
+ 162 0140 B240 00C0 		mov #0xC000, &RESHI
+ 162      3C01 
+ 163               	
+ 164 0146 B240 0080 		mov #0x8000, &MPY 	; 0x8000 * 0xFFFF = 0x7FFF_8000, ext=0x0000
+ 164      3001 
+ 165 014c B243 3801 		mov #0xFFFF, &OP2
+ 166               	
+ 167 0150 1A42 3A01 		mov &RESLO,  R10
+ 168 0154 1B42 3C01 		mov &RESHI,  R11
+ 169 0158 1C42 3E01 		mov &SUMEXT, R12
+ 170 015c 0343      		nop
+ 171 015e 3F42      		mov #0x0008, R15
+ 172 0160 0343      		nop
+ 173 0162 0343      		nop
+ 174 0164 0343      		nop
+ 175 0166 0343      		nop
+ 176               	
+ 177 0168 8243 3A01 		mov #0x0000, &RESLO
+ 178 016c B240 00C0 		mov #0xC000, &RESHI
+ 178      3C01 
+ 179               	
+ 180 0172 B240 0080 		mov #0x8000, &MPY 	; 0x8000 * 0x8000 = 0x4000_0000, ext=0x0000
+ 180      3001 
+ 181 0178 B240 0080 		mov #0x8000, &OP2
+GAS LISTING pmem.s43 			page 9
+
+
+ 181      3801 
+ 182               	
+ 183 017e 1A42 3A01 		mov &RESLO,  R10
+ 184 0182 1B42 3C01 		mov &RESHI,  R11
+ 185 0186 1C42 3E01 		mov &SUMEXT, R12
+ 186 018a 0343      		nop
+ 187 018c 3F40 0900 		mov #0x0009, R15
+ 188 0190 0343      		nop
+ 189 0192 0343      		nop
+ 190 0194 0343      		nop
+ 191 0196 0343      		nop
+ 192               	
+ 193               	        /* --------------    SIGNED MULTIPLICATION    --------------- */
+ 194               	
+ 195 0198 8243 3A01 		mov #0x0000, &RESLO
+ 196 019c B240 00C0 		mov #0xC000, &RESHI
+ 196      3C01 
+ 197               	
+ 198 01a2 B240 0431 		mov #0x3104, &MPYS 	; 0x3104 * 0x8285 = 0xE7F9_7F14, ext=0xFFFF
+ 198      3201 
+ 199 01a8 B240 8582 		mov #0x8285, &OP2       ;  12548 * -32123
+ 199      3801 
+ 200               	
+ 201 01ae 1A42 3A01 		mov &RESLO,  R10
+ 202 01b2 1B42 3C01 		mov &RESHI,  R11
+ 203 01b6 1C42 3E01 		mov &SUMEXT, R12
+ 204 01ba 0343      		nop
+ 205 01bc 1F43      		mov #0x0001, R15
+ 206 01be 0343      		nop
+ 207 01c0 0343      		nop
+ 208 01c2 0343      		nop
+ 209 01c4 0343      		nop
+ 210               			
+ 211 01c6 8243 3A01 		mov #0x0000, &RESLO
+ 212 01ca B240 00C0 		mov #0xC000, &RESHI
+ 212      3C01 
+ 213               	
+ 214 01d0 8243 3201 		mov #0x0000, &MPYS 	; 0x0000 * 0x0000 = 0x0000_0000, ext=0x0000
+ 215 01d4 8243 3801 		mov #0x0000, &OP2
+ 216               	
+ 217 01d8 1A42 3A01 		mov &RESLO,  R10
+ 218 01dc 1B42 3C01 		mov &RESHI,  R11
+ 219 01e0 1C42 3E01 		mov &SUMEXT, R12
+ 220 01e4 0343      		nop
+ 221 01e6 2F43      		mov #0x0002, R15
+ 222 01e8 0343      		nop
+ 223 01ea 0343      		nop
+ 224 01ec 0343      		nop
+ 225 01ee 0343      		nop
+ 226               	
+ 227 01f0 8243 3A01 		mov #0x0000, &RESLO
+ 228 01f4 B240 00C0 		mov #0xC000, &RESHI
+ 228      3C01 
+ 229               	
+ 230 01fa 9243 3201 		mov #0x0001, &MPYS 	; 0x0001 * 0x0001 = 0x0000_0001, ext=0x0000
+ 231 01fe 9243 3801 		mov #0x0001, &OP2
+ 232               	
+GAS LISTING pmem.s43 			page 10
+
+
+ 233 0202 1A42 3A01 		mov &RESLO,  R10
+ 234 0206 1B42 3C01 		mov &RESHI,  R11
+ 235 020a 1C42 3E01 		mov &SUMEXT, R12
+ 236 020e 0343      		nop
+ 237 0210 3F40 0300 		mov #0x0003, R15
+ 238 0214 0343      		nop
+ 239 0216 0343      		nop
+ 240 0218 0343      		nop
+ 241 021a 0343      		nop
+ 242               	
+ 243 021c 8243 3A01 		mov #0x0000, &RESLO
+ 244 0220 B240 00C0 		mov #0xC000, &RESHI
+ 244      3C01 
+ 245               	
+ 246 0226 B240 FF7F 		mov #0x7FFF, &MPYS 	; 0x7FFF * 0x7FFF = 0x3FFF_0001, ext=0x0000
+ 246      3201 
+ 247 022c B240 FF7F 		mov #0x7FFF, &OP2
+ 247      3801 
+ 248               	
+ 249 0232 1A42 3A01 		mov &RESLO,  R10
+ 250 0236 1B42 3C01 		mov &RESHI,  R11
+ 251 023a 1C42 3E01 		mov &SUMEXT, R12
+ 252 023e 0343      		nop
+ 253 0240 2F42      		mov #0x0004, R15
+ 254 0242 0343      		nop
+ 255 0244 0343      		nop
+ 256 0246 0343      		nop
+ 257 0248 0343      		nop
+ 258               	
+ 259 024a 8243 3A01 		mov #0x0000, &RESLO
+ 260 024e B240 00C0 		mov #0xC000, &RESHI
+ 260      3C01 
+ 261               	
+ 262 0254 B243 3201 		mov #0xFFFF, &MPYS 	; 0xFFFF * 0xFFFF = 0x0000_0001, ext=0x0000
+ 263 0258 B243 3801 		mov #0xFFFF, &OP2
+ 264               	
+ 265 025c 1A42 3A01 		mov &RESLO,  R10
+ 266 0260 1B42 3C01 		mov &RESHI,  R11
+ 267 0264 1C42 3E01 		mov &SUMEXT, R12
+ 268 0268 0343      		nop
+ 269 026a 3F40 0500 		mov #0x0005, R15
+ 270 026e 0343      		nop
+ 271 0270 0343      		nop
+ 272 0272 0343      		nop
+ 273 0274 0343      		nop
+ 274               	
+ 275 0276 8243 3A01 		mov #0x0000, &RESLO
+ 276 027a B240 00C0 		mov #0xC000, &RESHI
+ 276      3C01 
+ 277               	
+ 278 0280 B240 FF7F 		mov #0x7FFF, &MPYS 	; 0x7FFF * 0xFFFF = 0xFFFF_8001, ext=0xFFFF
+ 278      3201 
+ 279 0286 B243 3801 		mov #0xFFFF, &OP2
+ 280               	
+ 281 028a 1A42 3A01 		mov &RESLO,  R10
+ 282 028e 1B42 3C01 		mov &RESHI,  R11
+ 283 0292 1C42 3E01 		mov &SUMEXT, R12
+GAS LISTING pmem.s43 			page 11
+
+
+ 284 0296 0343      		nop
+ 285 0298 3F40 0600 		mov #0x0006, R15
+ 286 029c 0343      		nop
+ 287 029e 0343      		nop
+ 288 02a0 0343      		nop
+ 289 02a2 0343      		nop
+ 290               	
+ 291 02a4 8243 3A01 		mov #0x0000, &RESLO
+ 292 02a8 B240 00C0 		mov #0xC000, &RESHI
+ 292      3C01 
+ 293               	
+ 294 02ae B240 0080 		mov #0x8000, &MPYS 	; 0x8000 * 0x7FFF = 0xC000_8000, ext=0xFFFF
+ 294      3201 
+ 295 02b4 B240 FF7F 		mov #0x7FFF, &OP2
+ 295      3801 
+ 296               	
+ 297 02ba 1A42 3A01 		mov &RESLO,  R10
+ 298 02be 1B42 3C01 		mov &RESHI,  R11
+ 299 02c2 1C42 3E01 		mov &SUMEXT, R12
+ 300 02c6 0343      		nop
+ 301 02c8 3F40 0700 		mov #0x0007, R15
+ 302 02cc 0343      		nop
+ 303 02ce 0343      		nop
+ 304 02d0 0343      		nop
+ 305 02d2 0343      		nop
+ 306               	
+ 307 02d4 8243 3A01 		mov #0x0000, &RESLO
+ 308 02d8 B240 00C0 		mov #0xC000, &RESHI
+ 308      3C01 
+ 309               	
+ 310 02de B240 0080 		mov #0x8000, &MPYS 	; 0x8000 * 0xFFFF = 0x0000_8000, ext=0x0000
+ 310      3201 
+ 311 02e4 B243 3801 		mov #0xFFFF, &OP2
+ 312               	
+ 313 02e8 1A42 3A01 		mov &RESLO,  R10
+ 314 02ec 1B42 3C01 		mov &RESHI,  R11
+ 315 02f0 1C42 3E01 		mov &SUMEXT, R12
+ 316 02f4 0343      		nop
+ 317 02f6 3F42      		mov #0x0008, R15
+ 318 02f8 0343      		nop
+ 319 02fa 0343      		nop
+ 320 02fc 0343      		nop
+ 321 02fe 0343      		nop
+ 322               	
+ 323 0300 8243 3A01 		mov #0x0000, &RESLO
+ 324 0304 B240 00C0 		mov #0xC000, &RESHI
+ 324      3C01 
+ 325               	
+ 326 030a B240 0080 		mov #0x8000, &MPYS 	; 0x8000 * 0x8000 = 0x4000_0000, ext=0x0000
+ 326      3201 
+ 327 0310 B240 0080 		mov #0x8000, &OP2
+ 327      3801 
+ 328               	
+ 329 0316 1A42 3A01 		mov &RESLO,  R10
+ 330 031a 1B42 3C01 		mov &RESHI,  R11
+ 331 031e 1C42 3E01 		mov &SUMEXT, R12
+ 332 0322 0343      		nop
+GAS LISTING pmem.s43 			page 12
+
+
+ 333 0324 3F40 0900 		mov #0x0009, R15
+ 334 0328 0343      		nop
+ 335 032a 0343      		nop
+ 336 032c 0343      		nop
+ 337 032e 0343      		nop
+ 338               	
+ 339               	        /* --------------   UNSIGNED MULTIPLY-ACCUMULATE   --------------- */
+ 340               	
+ 341 0330 8243 3A01 		mov #0x0000, &RESLO
+ 342 0334 B240 00C0 		mov #0xC000, &RESHI
+ 342      3C01 
+ 343               	
+ 344 033a B240 0431 		mov #0x3104, &MAC 	; 0xC000_0000 + (0x3104 * 0x0285) = 0x007B_7F14, ext=0x0000
+ 344      3401 
+ 345 0340 B240 8502 		mov #0x0285, &OP2
+ 345      3801 
+ 346               	
+ 347 0346 1A42 3A01 		mov &RESLO,  R10
+ 348 034a 1B42 3C01 		mov &RESHI,  R11
+ 349 034e 1C42 3E01 		mov &SUMEXT, R12
+ 350 0352 0343      		nop
+ 351 0354 1F43      		mov #0x0001, R15
+ 352 0356 0343      		nop
+ 353 0358 0343      		nop
+ 354 035a 0343      		nop
+ 355 035c 0343      		nop
+ 356               	
+ 357 035e 8243 3A01 		mov #0x0000, &RESLO
+ 358 0362 B240 00C0 		mov #0xC000, &RESHI
+ 358      3C01 
+ 359               	
+ 360 0368 8243 3401 		mov #0x0000, &MAC 	; 0xC000_0000 + (0x0000 * 0x0000) = 0xC000_0000, ext=0x0000
+ 361 036c 8243 3801 		mov #0x0000, &OP2
+ 362               	
+ 363 0370 1A42 3A01 		mov &RESLO,  R10
+ 364 0374 1B42 3C01 		mov &RESHI,  R11
+ 365 0378 1C42 3E01 		mov &SUMEXT, R12
+ 366 037c 0343      		nop
+ 367 037e 2F43      		mov #0x0002, R15
+ 368 0380 0343      		nop
+ 369 0382 0343      		nop
+ 370 0384 0343      		nop
+ 371 0386 0343      		nop
+ 372               	
+ 373 0388 8243 3A01 		mov #0x0000, &RESLO
+ 374 038c B240 00C0 		mov #0xC000, &RESHI
+ 374      3C01 
+ 375               	
+ 376 0392 9243 3401 		mov #0x0001, &MAC 	; 0xC000_0000 + (0x0001 * 0x0001) = 0xC000_0001, ext=0x0000
+ 377 0396 9243 3801 		mov #0x0001, &OP2
+ 378               	
+ 379 039a 1A42 3A01 		mov &RESLO,  R10
+ 380 039e 1B42 3C01 		mov &RESHI,  R11
+ 381 03a2 1C42 3E01 		mov &SUMEXT, R12
+ 382 03a6 0343      		nop
+ 383 03a8 3F40 0300 		mov #0x0003, R15
+ 384 03ac 0343      		nop
+GAS LISTING pmem.s43 			page 13
+
+
+ 385 03ae 0343      		nop
+ 386 03b0 0343      		nop
+ 387 03b2 0343      		nop
+ 388               	
+ 389 03b4 8243 3A01 		mov #0x0000, &RESLO
+ 390 03b8 B240 00C0 		mov #0xC000, &RESHI
+ 390      3C01 
+ 391               	
+ 392 03be B240 FF7F 		mov #0x7FFF, &MAC 	; 0xC000_0000 + (0x7FFF * 0x7FFF) = 0xFFFF_0001, ext=0x0000
+ 392      3401 
+ 393 03c4 B240 FF7F 		mov #0x7FFF, &OP2
+ 393      3801 
+ 394               	
+ 395 03ca 1A42 3A01 		mov &RESLO,  R10
+ 396 03ce 1B42 3C01 		mov &RESHI,  R11
+ 397 03d2 1C42 3E01 		mov &SUMEXT, R12
+ 398 03d6 0343      		nop
+ 399 03d8 2F42      		mov #0x0004, R15
+ 400 03da 0343      		nop
+ 401 03dc 0343      		nop
+ 402 03de 0343      		nop
+ 403 03e0 0343      		nop
+ 404               	
+ 405 03e2 8243 3A01 		mov #0x0000, &RESLO
+ 406 03e6 B240 00C0 		mov #0xC000, &RESHI
+ 406      3C01 
+ 407               	
+ 408 03ec B243 3401 		mov #0xFFFF, &MAC 	; 0xC000_0000 + (0xFFFF * 0xFFFF) = 0xBFFE_0001, ext=0x0001
+ 409 03f0 B243 3801 		mov #0xFFFF, &OP2
+ 410               	
+ 411 03f4 1A42 3A01 		mov &RESLO,  R10
+ 412 03f8 1B42 3C01 		mov &RESHI,  R11
+ 413 03fc 1C42 3E01 		mov &SUMEXT, R12
+ 414 0400 0343      		nop
+ 415 0402 3F40 0500 		mov #0x0005, R15
+ 416 0406 0343      		nop
+ 417 0408 0343      		nop
+ 418 040a 0343      		nop
+ 419 040c 0343      		nop
+ 420               	
+ 421 040e 8243 3A01 		mov #0x0000, &RESLO
+ 422 0412 B240 00C0 		mov #0xC000, &RESHI
+ 422      3C01 
+ 423               	
+ 424 0418 B240 FF7F 		mov #0x7FFF, &MAC 	; 0xC000_0000 + (0x7FFF * 0xFFFF) = 0x3FFE_8001, ext=0x0001
+ 424      3401 
+ 425 041e B243 3801 		mov #0xFFFF, &OP2
+ 426               	
+ 427 0422 1A42 3A01 		mov &RESLO,  R10
+ 428 0426 1B42 3C01 		mov &RESHI,  R11
+ 429 042a 1C42 3E01 		mov &SUMEXT, R12
+ 430 042e 0343      		nop
+ 431 0430 3F40 0600 		mov #0x0006, R15
+ 432 0434 0343      		nop
+ 433 0436 0343      		nop
+ 434 0438 0343      		nop
+ 435 043a 0343      		nop
+GAS LISTING pmem.s43 			page 14
+
+
+ 436               	
+ 437 043c 8243 3A01 		mov #0x0000, &RESLO
+ 438 0440 B240 00C0 		mov #0xC000, &RESHI
+ 438      3C01 
+ 439               	
+ 440 0446 B240 0080 		mov #0x8000, &MAC 	; 0xC000_0000 + (0x8000 * 0x7FFF) = 0xFFFF_8000, ext=0x0000
+ 440      3401 
+ 441 044c B240 FF7F 		mov #0x7FFF, &OP2
+ 441      3801 
+ 442               	
+ 443 0452 1A42 3A01 		mov &RESLO,  R10
+ 444 0456 1B42 3C01 		mov &RESHI,  R11
+ 445 045a 1C42 3E01 		mov &SUMEXT, R12
+ 446 045e 0343      		nop
+ 447 0460 3F40 0700 		mov #0x0007, R15
+ 448 0464 0343      		nop
+ 449 0466 0343      		nop
+ 450 0468 0343      		nop
+ 451 046a 0343      		nop
+ 452               	
+ 453 046c 8243 3A01 		mov #0x0000, &RESLO
+ 454 0470 B240 00C0 		mov #0xC000, &RESHI
+ 454      3C01 
+ 455               	
+ 456 0476 B240 0080 		mov #0x8000, &MAC 	; 0xC000_0000 + (0x8000 * 0xFFFF) = 0x3FFF_8000, ext=0x0001
+ 456      3401 
+ 457 047c B243 3801 		mov #0xFFFF, &OP2
+ 458               	
+ 459 0480 1A42 3A01 		mov &RESLO,  R10
+ 460 0484 1B42 3C01 		mov &RESHI,  R11
+ 461 0488 1C42 3E01 		mov &SUMEXT, R12
+ 462 048c 0343      		nop
+ 463 048e 3F42      		mov #0x0008, R15
+ 464 0490 0343      		nop
+ 465 0492 0343      		nop
+ 466 0494 0343      		nop
+ 467 0496 0343      		nop
+ 468               	
+ 469 0498 8243 3A01 		mov #0x0000, &RESLO
+ 470 049c B240 00C0 		mov #0xC000, &RESHI
+ 470      3C01 
+ 471               	
+ 472 04a2 B240 0080 		mov #0x8000, &MAC 	; 0xC000_0000 + (0x8000 * 0x8000) = 0x0000_0000, ext=0x0001
+ 472      3401 
+ 473 04a8 B240 0080 		mov #0x8000, &OP2
+ 473      3801 
+ 474               	
+ 475 04ae 1A42 3A01 		mov &RESLO,  R10
+ 476 04b2 1B42 3C01 		mov &RESHI,  R11
+ 477 04b6 1C42 3E01 		mov &SUMEXT, R12
+ 478 04ba 0343      		nop
+ 479 04bc 3F40 0900 		mov #0x0009, R15
+ 480 04c0 0343      		nop
+ 481 04c2 0343      		nop
+ 482 04c4 0343      		nop
+ 483 04c6 0343      		nop
+ 484               	
+GAS LISTING pmem.s43 			page 15
+
+
+ 485               		
+ 486               	        /* --------------   SIGNED MULTIPLY-ACCUMULATE   --------------- */
+ 487               	
+ 488 04c8 8243 3A01 		mov #0x0000, &RESLO
+ 489 04cc B240 00C0 		mov #0xC000, &RESHI
+ 489      3C01 
+ 490               	
+ 491 04d2 B240 0431 		mov #0x3104, &MACS 	; 0xC000_0000 + (0x3104 * 0x8285) = 0xA7F9_7F14, ext=0xFFFF
+ 491      3601 
+ 492 04d8 B240 8582 		mov #0x8285, &OP2
+ 492      3801 
+ 493               	
+ 494 04de 1A42 3A01 		mov &RESLO,  R10
+ 495 04e2 1B42 3C01 		mov &RESHI,  R11
+ 496 04e6 1C42 3E01 		mov &SUMEXT, R12
+ 497 04ea 0343      		nop
+ 498 04ec 1F43      		mov #0x0001, R15
+ 499 04ee 0343      		nop
+ 500 04f0 0343      		nop
+ 501 04f2 0343      		nop
+ 502 04f4 0343      		nop
+ 503               			
+ 504 04f6 8243 3A01 		mov #0x0000, &RESLO
+ 505 04fa B240 00C0 		mov #0xC000, &RESHI
+ 505      3C01 
+ 506               	
+ 507 0500 8243 3601 		mov #0x0000, &MACS 	; 0xC000_0000 + (0x0000 * 0x0000) = 0xC000_0000, ext=0xFFFF
+ 508 0504 8243 3801 		mov #0x0000, &OP2
+ 509               	
+ 510 0508 1A42 3A01 		mov &RESLO,  R10
+ 511 050c 1B42 3C01 		mov &RESHI,  R11
+ 512 0510 1C42 3E01 		mov &SUMEXT, R12
+ 513 0514 0343      		nop
+ 514 0516 2F43      		mov #0x0002, R15
+ 515 0518 0343      		nop
+ 516 051a 0343      		nop
+ 517 051c 0343      		nop
+ 518 051e 0343      		nop
+ 519               	
+ 520 0520 8243 3A01 		mov #0x0000, &RESLO
+ 521 0524 B240 00C0 		mov #0xC000, &RESHI
+ 521      3C01 
+ 522               	
+ 523 052a 9243 3601 		mov #0x0001, &MACS 	; 0xC000_0000 + (0x0001 * 0x0001) = 0xC000_0001, ext=0xFFFF
+ 524 052e 9243 3801 		mov #0x0001, &OP2
+ 525               	
+ 526 0532 1A42 3A01 		mov &RESLO,  R10
+ 527 0536 1B42 3C01 		mov &RESHI,  R11
+ 528 053a 1C42 3E01 		mov &SUMEXT, R12
+ 529 053e 0343      		nop
+ 530 0540 3F40 0300 		mov #0x0003, R15
+ 531 0544 0343      		nop
+ 532 0546 0343      		nop
+ 533 0548 0343      		nop
+ 534 054a 0343      		nop
+ 535               	
+ 536 054c 8243 3A01 		mov #0x0000, &RESLO
+GAS LISTING pmem.s43 			page 16
+
+
+ 537 0550 B240 00C0 		mov #0xC000, &RESHI
+ 537      3C01 
+ 538               	
+ 539 0556 B240 FF7F 		mov #0x7FFF, &MACS 	; 0xC000_0000 + (0x7FFF * 0x7FFF) = 0xFFFF_0001, ext=0xFFFF
+ 539      3601 
+ 540 055c B240 FF7F 		mov #0x7FFF, &OP2
+ 540      3801 
+ 541               	
+ 542 0562 1A42 3A01 		mov &RESLO,  R10
+ 543 0566 1B42 3C01 		mov &RESHI,  R11
+ 544 056a 1C42 3E01 		mov &SUMEXT, R12
+ 545 056e 0343      		nop
+ 546 0570 2F42      		mov #0x0004, R15
+ 547 0572 0343      		nop
+ 548 0574 0343      		nop
+ 549 0576 0343      		nop
+ 550 0578 0343      		nop
+ 551               	
+ 552 057a 8243 3A01 		mov #0x0000, &RESLO
+ 553 057e B240 00C0 		mov #0xC000, &RESHI
+ 553      3C01 
+ 554               	
+ 555 0584 B243 3601 		mov #0xFFFF, &MACS 	; 0xC000_0000 + (0xFFFF * 0xFFFF) = 0xC000_0001, ext=0xFFFF
+ 556 0588 B243 3801 		mov #0xFFFF, &OP2
+ 557               	
+ 558 058c 1A42 3A01 		mov &RESLO,  R10
+ 559 0590 1B42 3C01 		mov &RESHI,  R11
+ 560 0594 1C42 3E01 		mov &SUMEXT, R12
+ 561 0598 0343      		nop
+ 562 059a 3F40 0500 		mov #0x0005, R15
+ 563 059e 0343      		nop
+ 564 05a0 0343      		nop
+ 565 05a2 0343      		nop
+ 566 05a4 0343      		nop
+ 567               	
+ 568 05a6 8243 3A01 		mov #0x0000, &RESLO
+ 569 05aa B240 00C0 		mov #0xC000, &RESHI
+ 569      3C01 
+ 570               	
+ 571 05b0 B240 FF7F 		mov #0x7FFF, &MACS 	; 0xC000_0000 + (0x7FFF * 0xFFFF = 0xBFFF_8001, ext=0xFFFF
+ 571      3601 
+ 572 05b6 B243 3801 		mov #0xFFFF, &OP2
+ 573               	
+ 574 05ba 1A42 3A01 		mov &RESLO,  R10
+ 575 05be 1B42 3C01 		mov &RESHI,  R11
+ 576 05c2 1C42 3E01 		mov &SUMEXT, R12
+ 577 05c6 0343      		nop
+ 578 05c8 3F40 0600 		mov #0x0006, R15
+ 579 05cc 0343      		nop
+ 580 05ce 0343      		nop
+ 581 05d0 0343      		nop
+ 582 05d2 0343      		nop
+ 583               	
+ 584 05d4 8243 3A01 		mov #0x0000, &RESLO
+ 585 05d8 B240 00C0 		mov #0xC000, &RESHI
+ 585      3C01 
+ 586               	
+GAS LISTING pmem.s43 			page 17
+
+
+ 587 05de B240 0080 		mov #0x8000, &MACS 	; 0xC000_0000 + (0x8000 * 0x7FFF) = 0x8000_8000, ext=0xFFFF
+ 587      3601 
+ 588 05e4 B240 FF7F 		mov #0x7FFF, &OP2
+ 588      3801 
+ 589               	
+ 590 05ea 1A42 3A01 		mov &RESLO,  R10
+ 591 05ee 1B42 3C01 		mov &RESHI,  R11
+ 592 05f2 1C42 3E01 		mov &SUMEXT, R12
+ 593 05f6 0343      		nop
+ 594 05f8 3F40 0700 		mov #0x0007, R15
+ 595 05fc 0343      		nop
+ 596 05fe 0343      		nop
+ 597 0600 0343      		nop
+ 598 0602 0343      		nop
+ 599               	
+ 600 0604 8243 3A01 		mov #0x0000, &RESLO
+ 601 0608 B240 00C0 		mov #0xC000, &RESHI
+ 601      3C01 
+ 602               	
+ 603 060e B240 0080 		mov #0x8000, &MACS 	; 0xC000_0000 + (0x8000 * 0xFFFF) = 0xC000_8000, ext=0xFFFF
+ 603      3601 
+ 604 0614 B243 3801 		mov #0xFFFF, &OP2
+ 605               	
+ 606 0618 1A42 3A01 		mov &RESLO,  R10
+ 607 061c 1B42 3C01 		mov &RESHI,  R11
+ 608 0620 1C42 3E01 		mov &SUMEXT, R12
+ 609 0624 0343      		nop
+ 610 0626 3F42      		mov #0x0008, R15
+ 611 0628 0343      		nop
+ 612 062a 0343      		nop
+ 613 062c 0343      		nop
+ 614 062e 0343      		nop
+ 615               	
+ 616 0630 8243 3A01 		mov #0x0000, &RESLO
+ 617 0634 B240 00C0 		mov #0xC000, &RESHI
+ 617      3C01 
+ 618               	
+ 619 063a B240 0080 		mov #0x8000, &MACS 	; 0xC000_0000 + (0x8000 * 0x8000) = 0x0000_0000, ext=0x0000
+ 619      3601 
+ 620 0640 B240 0080 		mov #0x8000, &OP2
+ 620      3801 
+ 621               	
+ 622 0646 1A42 3A01 		mov &RESLO,  R10
+ 623 064a 1B42 3C01 		mov &RESHI,  R11
+ 624 064e 1C42 3E01 		mov &SUMEXT, R12
+ 625 0652 0343      		nop
+ 626 0654 3F40 0900 		mov #0x0009, R15
+ 627 0658 0343      		nop
+ 628 065a 0343      		nop
+ 629 065c 0343      		nop
+ 630 065e 0343      		nop
+ 631               	
+ 632               	        /* --------------    16-BIT RD/WR ACCESS OPERANDS   --------------- */
+ 633               	
+ 634 0660 B240 3412 		mov #0x1234,   &MPY
+ 634      3001 
+ 635 0666 B240 7856 		mov #0x5678,   &OP2
+GAS LISTING pmem.s43 			page 18
+
+
+ 635      3801 
+ 636 066c 0343      		nop
+ 637 066e 1A42 3001 		mov    &MPY,   r10
+ 638 0672 1B42 3201 		mov   &MPYS,   r11
+ 639 0676 1C42 3401 		mov    &MAC,   r12
+ 640 067a 1D42 3601 		mov   &MACS,   r13
+ 641 067e 1E42 3801 		mov    &OP2,   r14
+ 642 0682 0343      		nop
+ 643 0684 1F43      		mov #0x0001,   r15
+ 644 0686 0343      		nop
+ 645 0688 0343      		nop
+ 646 068a 0343      		nop
+ 647 068c 0343      		nop
+ 648               	
+ 649 068e B240 2143 		mov #0x4321,   &MPYS
+ 649      3201 
+ 650 0694 B240 6587 		mov #0x8765,   &OP2
+ 650      3801 
+ 651 069a 0343      		nop
+ 652 069c 1A42 3001 		mov    &MPY,   r10
+ 653 06a0 1B42 3201 		mov   &MPYS,   r11
+ 654 06a4 1C42 3401 		mov    &MAC,   r12
+ 655 06a8 1D42 3601 		mov   &MACS,   r13
+ 656 06ac 1E42 3801 		mov    &OP2,   r14
+ 657 06b0 0343      		nop
+ 658 06b2 2F43      		mov #0x0002,   r15
+ 659 06b4 0343      		nop
+ 660 06b6 0343      		nop
+ 661 06b8 0343      		nop
+ 662 06ba 0343      		nop
+ 663               	
+ 664 06bc B240 BC9A 		mov #0x9ABC,   &MAC
+ 664      3401 
+ 665 06c2 B240 F0DE 		mov #0xDEF0,   &OP2
+ 665      3801 
+ 666 06c8 0343      		nop
+ 667 06ca 1A42 3001 		mov    &MPY,   r10
+ 668 06ce 1B42 3201 		mov   &MPYS,   r11
+ 669 06d2 1C42 3401 		mov    &MAC,   r12
+ 670 06d6 1D42 3601 		mov   &MACS,   r13
+ 671 06da 1E42 3801 		mov    &OP2,   r14
+ 672 06de 0343      		nop
+ 673 06e0 3F40 0300 		mov #0x0003,   r15
+ 674 06e4 0343      		nop
+ 675 06e6 0343      		nop
+ 676 06e8 0343      		nop
+ 677 06ea 0343      		nop
+ 678               	
+ 679 06ec B240 A9CB 		mov #0xCBA9,   &MACS
+ 679      3601 
+ 680 06f2 B240 ED0F 		mov #0x0FED,   &OP2
+ 680      3801 
+ 681 06f8 0343      		nop
+ 682 06fa 1A42 3001 		mov    &MPY,   r10
+ 683 06fe 1B42 3201 		mov   &MPYS,   r11
+ 684 0702 1C42 3401 		mov    &MAC,   r12
+ 685 0706 1D42 3601 		mov   &MACS,   r13
+GAS LISTING pmem.s43 			page 19
+
+
+ 686 070a 1E42 3801 		mov    &OP2,   r14
+ 687 070e 0343      		nop
+ 688 0710 2F42      		mov #0x0004,   r15
+ 689 0712 0343      		nop
+ 690 0714 0343      		nop
+ 691 0716 0343      		nop
+ 692 0718 0343      		nop
+ 693               	
+ 694               	        /* --------------    8-BIT RD/WR ACCESS OPERANDS   --------------- */
+ 695               	
+ 696 071a B240 3412 		mov   #0x1234,  &MPY
+ 696      3001 
+ 697 0720 1A42 3001 		mov   &MPY,     r10
+ 698 0724 F240 AB00 		mov.b #0xab,    &MPY
+ 698      3001 
+ 699 072a 1B42 3001 		mov   &MPY,     r11
+ 700 072e 0343      		nop
+ 701 0730 1F43      		mov   #0x0001,  r15
+ 702 0732 0343      		nop
+ 703               	
+ 704 0734 B240 7856 		mov   #0x5678,  &MPYS
+ 704      3201 
+ 705 073a 1A42 3201 		mov   &MPYS,    r10
+ 706 073e F240 BC00 		mov.b #0xbc,    &MPYS
+ 706      3201 
+ 707 0744 1B42 3201 		mov   &MPYS,    r11
+ 708 0748 0343      		nop
+ 709 074a 2F43      		mov   #0x0002,  r15
+ 710 074c 0343      		nop
+ 711               	
+ 712 074e B240 BC9A 		mov   #0x9abc,  &MAC
+ 712      3401 
+ 713 0754 1A42 3401 		mov   &MAC,     r10
+ 714 0758 F240 DE00 		mov.b #0xde,    &MAC
+ 714      3401 
+ 715 075e 1B42 3401 		mov   &MAC,     r11
+ 716 0762 0343      		nop
+ 717 0764 3F40 0300 		mov   #0x0003,  r15
+ 718 0768 0343      		nop
+ 719               	
+ 720 076a B240 F0DE 		mov   #0xdef0,  &MACS
+ 720      3601 
+ 721 0770 1A42 3601 		mov   &MACS,    r10
+ 722 0774 F240 ED00 		mov.b #0xed,    &MACS
+ 722      3601 
+ 723 077a 1B42 3601 		mov   &MACS,    r11
+ 724 077e 0343      		nop
+ 725 0780 2F42      		mov   #0x0004,  r15
+ 726 0782 0343      		nop
+ 727               	
+ 728 0784 B240 2143 		mov   #0x4321,  &OP2
+ 728      3801 
+ 729 078a 1A42 3801 		mov   &OP2,     r10
+ 730 078e F240 DC00 		mov.b #0xdc,    &OP2
+ 730      3801 
+ 731 0794 1B42 3801 		mov   &OP2,     r11
+ 732 0798 0343      		nop
+GAS LISTING pmem.s43 			page 20
+
+
+ 733 079a 3F40 0500 		mov   #0x0005,  r15
+ 734 079e 0343      		nop
+ 735               	
+ 736 07a0 B240 6587 		mov   #0x8765,  &RESLO
+ 736      3A01 
+ 737 07a6 1A42 3A01 		mov   &RESLO,   r10
+ 738 07aa F240 CB00 		mov.b #0xcb,    &RESLO
+ 738      3A01 
+ 739 07b0 1B42 3A01 		mov   &RESLO,   r11
+ 740 07b4 0343      		nop
+ 741 07b6 3F40 0600 		mov   #0x0006,  r15
+ 742 07ba 0343      		nop
+ 743               	
+ 744 07bc B240 A9CB 		mov   #0xcba9,  &RESHI
+ 744      3C01 
+ 745 07c2 1A42 3C01 		mov   &RESHI,   r10
+ 746 07c6 F240 BA00 		mov.b #0xba,    &RESHI
+ 746      3C01 
+ 747 07cc 1B42 3C01 		mov   &RESHI,   r11
+ 748 07d0 0343      		nop
+ 749 07d2 3F40 0700 		mov   #0x0007,  r15
+ 750 07d6 0343      		nop
+ 751               	
+ 752               	
+ 753               	        /* ----------------------         END OF TEST        --------------- */
+ 754               	end_of_test:
+ 755 07d8 0343      		nop
+ 756 07da 3040 FFFF 		br #0xffff
+ 757               	
+ 758               	
+ 759               	
+ 760               	
+ 761               	        /* ----------------------         INTERRUPT VECTORS  --------------- */
+ 762               	
+ 763               	.section .vectors, "a"
+ 764 0000 0000      	.word end_of_test  ; Interrupt  0 (lowest priority)    <unused>
+ 765 0002 0000      	.word end_of_test  ; Interrupt  1                      <unused>
+ 766 0004 0000      	.word end_of_test  ; Interrupt  2                      <unused>
+ 767 0006 0000      	.word end_of_test  ; Interrupt  3                      <unused>
+ 768 0008 0000      	.word end_of_test  ; Interrupt  4                      <unused>
+ 769 000a 0000      	.word end_of_test  ; Interrupt  5                      <unused>
+ 770 000c 0000      	.word end_of_test  ; Interrupt  6                      <unused>
+ 771 000e 0000      	.word end_of_test  ; Interrupt  7                      <unused>
+ 772 0010 0000      	.word end_of_test  ; Interrupt  8                      <unused>
+ 773 0012 0000      	.word end_of_test  ; Interrupt  9                      <unused>
+ 774 0014 0000      	.word end_of_test  ; Interrupt 10                      Watchdog timer
+ 775 0016 0000      	.word end_of_test  ; Interrupt 11                      <unused>
+ 776 0018 0000      	.word end_of_test  ; Interrupt 12                      <unused>
+ 777 001a 0000      	.word end_of_test  ; Interrupt 13                      <unused>
+ 778 001c 0000      	.word end_of_test  ; Interrupt 14                      NMI
+ 779 001e 0000      	.word main         ; Interrupt 15 (highest priority)   RESET
+GAS LISTING pmem.s43 			page 21
+
+
+DEFINED SYMBOLS
+       pmem_defs.asm:36     *ABS*:00000200 PER_LENGTH
+       pmem_defs.asm:41     *ABS*:00000000 IE1
+       pmem_defs.asm:42     *ABS*:00000001 IE1_HI
+       pmem_defs.asm:43     *ABS*:00000002 IFG1
+       pmem_defs.asm:44     *ABS*:00000003 IFG1_HI
+       pmem_defs.asm:45     *ABS*:00000004 CPU_ID_LO
+       pmem_defs.asm:46     *ABS*:00000006 CPU_ID_HI
+       pmem_defs.asm:47     *ABS*:00000008 CPU_NR
+       pmem_defs.asm:52     *ABS*:00000020 P1IN
+       pmem_defs.asm:53     *ABS*:00000021 P1OUT
+       pmem_defs.asm:54     *ABS*:00000022 P1DIR
+       pmem_defs.asm:55     *ABS*:00000023 P1IFG
+       pmem_defs.asm:56     *ABS*:00000024 P1IES
+       pmem_defs.asm:57     *ABS*:00000025 P1IE
+       pmem_defs.asm:58     *ABS*:00000026 P1SEL
+       pmem_defs.asm:60     *ABS*:00000028 P2IN
+       pmem_defs.asm:61     *ABS*:00000029 P2OUT
+       pmem_defs.asm:62     *ABS*:0000002a P2DIR
+       pmem_defs.asm:63     *ABS*:0000002b P2IFG
+       pmem_defs.asm:64     *ABS*:0000002c P2IES
+       pmem_defs.asm:65     *ABS*:0000002d P2IE
+       pmem_defs.asm:66     *ABS*:0000002e P2SEL
+       pmem_defs.asm:68     *ABS*:00000018 P3IN
+       pmem_defs.asm:69     *ABS*:00000019 P3OUT
+       pmem_defs.asm:70     *ABS*:0000001a P3DIR
+       pmem_defs.asm:71     *ABS*:0000001b P3SEL
+       pmem_defs.asm:73     *ABS*:0000001c P4IN
+       pmem_defs.asm:74     *ABS*:0000001d P4OUT
+       pmem_defs.asm:75     *ABS*:0000001e P4DIR
+       pmem_defs.asm:76     *ABS*:0000001f P4SEL
+       pmem_defs.asm:78     *ABS*:00000030 P5IN
+       pmem_defs.asm:79     *ABS*:00000031 P5OUT
+       pmem_defs.asm:80     *ABS*:00000032 P5DIR
+       pmem_defs.asm:81     *ABS*:00000033 P5SEL
+       pmem_defs.asm:83     *ABS*:00000034 P6IN
+       pmem_defs.asm:84     *ABS*:00000035 P6OUT
+       pmem_defs.asm:85     *ABS*:00000036 P6DIR
+       pmem_defs.asm:86     *ABS*:00000037 P6SEL
+       pmem_defs.asm:91     *ABS*:00000057 BCSCTL1
+       pmem_defs.asm:92     *ABS*:00000058 BCSCTL2
+       pmem_defs.asm:97     *ABS*:00000120 WDTCTL
+       pmem_defs.asm:102    *ABS*:00000130 MPY
+       pmem_defs.asm:103    *ABS*:00000132 MPYS
+       pmem_defs.asm:104    *ABS*:00000134 MAC
+       pmem_defs.asm:105    *ABS*:00000136 MACS
+       pmem_defs.asm:106    *ABS*:00000138 OP2
+       pmem_defs.asm:107    *ABS*:0000013a RESLO
+       pmem_defs.asm:108    *ABS*:0000013c RESHI
+       pmem_defs.asm:109    *ABS*:0000013e SUMEXT
+       pmem_defs.asm:114    *ABS*:00000160 TACTL
+       pmem_defs.asm:115    *ABS*:00000170 TAR
+       pmem_defs.asm:116    *ABS*:00000162 TACCTL0
+       pmem_defs.asm:117    *ABS*:00000172 TACCR0
+       pmem_defs.asm:118    *ABS*:00000164 TACCTL1
+       pmem_defs.asm:119    *ABS*:00000174 TACCR1
+       pmem_defs.asm:120    *ABS*:00000166 TACCTL2
+GAS LISTING pmem.s43 			page 22
+
+
+       pmem_defs.asm:121    *ABS*:00000176 TACCR2
+       pmem_defs.asm:122    *ABS*:0000012e TAIV
+                            .data:00000000 DMEM_BASE
+                            .data:00000000 DMEM_200
+                            .data:00000001 DMEM_201
+                            .data:00000002 DMEM_202
+                            .data:00000003 DMEM_203
+                            .data:00000004 DMEM_204
+                            .data:00000005 DMEM_205
+                            .data:00000006 DMEM_206
+                            .data:00000007 DMEM_207
+                            .data:00000008 DMEM_208
+                            .data:00000009 DMEM_209
+                            .data:0000000a DMEM_20A
+                            .data:0000000b DMEM_20B
+                            .data:0000000c DMEM_20C
+                            .data:0000000d DMEM_20D
+                            .data:0000000e DMEM_20E
+                            .data:0000000f DMEM_20F
+                            .data:00000010 DMEM_210
+                            .data:00000011 DMEM_211
+                            .data:00000012 DMEM_212
+                            .data:00000013 DMEM_213
+                            .data:00000014 DMEM_214
+                            .data:00000015 DMEM_215
+                            .data:00000016 DMEM_216
+                            .data:00000017 DMEM_217
+                            .data:00000018 DMEM_218
+                            .data:00000019 DMEM_219
+                            .data:0000001a DMEM_21A
+                            .data:0000001b DMEM_21B
+                            .data:0000001c DMEM_21C
+                            .data:0000001d DMEM_21D
+                            .data:0000001e DMEM_21E
+                            .data:0000001f DMEM_21F
+                            .data:00000020 DMEM_220
+                            .data:00000021 DMEM_221
+                            .data:00000022 DMEM_222
+                            .data:00000023 DMEM_223
+                            .data:00000024 DMEM_224
+                            .data:00000025 DMEM_225
+                            .data:00000026 DMEM_226
+                            .data:00000027 DMEM_227
+                            .data:00000028 DMEM_228
+                            .data:00000029 DMEM_229
+                            .data:0000002a DMEM_22A
+                            .data:0000002b DMEM_22B
+                            .data:0000002c DMEM_22C
+                            .data:0000002d DMEM_22D
+                            .data:0000002e DMEM_22E
+                            .data:0000002f DMEM_22F
+                            .data:00000030 DMEM_230
+                            .data:00000031 DMEM_231
+                            .data:00000032 DMEM_232
+                            .data:00000033 DMEM_233
+                            .data:00000034 DMEM_234
+                            .data:00000035 DMEM_235
+GAS LISTING pmem.s43 			page 23
+
+
+                            .data:00000036 DMEM_236
+                            .data:00000037 DMEM_237
+                            .data:00000038 DMEM_238
+                            .data:00000039 DMEM_239
+                            .data:0000003a DMEM_23A
+                            .data:0000003b DMEM_23B
+                            .data:0000003c DMEM_23C
+                            .data:0000003d DMEM_23D
+                            .data:0000003e DMEM_23E
+                            .data:0000003f DMEM_23F
+                            .data:00000040 DMEM_240
+                            .data:00000041 DMEM_241
+                            .data:00000042 DMEM_242
+                            .data:00000043 DMEM_243
+                            .data:00000044 DMEM_244
+                            .data:00000045 DMEM_245
+                            .data:00000046 DMEM_246
+                            .data:00000047 DMEM_247
+                            .data:00000048 DMEM_248
+                            .data:00000049 DMEM_249
+                            .data:0000004a DMEM_24A
+                            .data:0000004b DMEM_24B
+                            .data:0000004c DMEM_24C
+                            .data:0000004d DMEM_24D
+                            .data:0000004e DMEM_24E
+                            .data:0000004f DMEM_24F
+                            .data:00000050 DMEM_250
+                            .data:00000051 DMEM_251
+                            .data:00000052 DMEM_252
+                            .data:00000053 DMEM_253
+                            .data:00000054 DMEM_254
+                            .data:00000055 DMEM_255
+                            .data:00000056 DMEM_256
+                            .data:00000057 DMEM_257
+                            .data:00000058 DMEM_258
+                            .data:00000059 DMEM_259
+                            .data:0000005a DMEM_25A
+                            .data:0000005b DMEM_25B
+                            .data:0000005c DMEM_25C
+                            .data:0000005d DMEM_25D
+                            .data:0000005e DMEM_25E
+                            .data:0000005f DMEM_25F
+                            .data:00000060 DMEM_260
+                            .data:00000061 DMEM_261
+                            .data:00000062 DMEM_262
+                            .data:00000063 DMEM_263
+                            .data:00000064 DMEM_264
+                            .data:00000065 DMEM_265
+                            .data:00000066 DMEM_266
+                            .data:00000067 DMEM_267
+                            .data:00000068 DMEM_268
+                            .data:00000069 DMEM_269
+                            .data:0000006a DMEM_26A
+                            .data:0000006b DMEM_26B
+                            .data:0000006c DMEM_26C
+                            .data:0000006d DMEM_26D
+                            .data:0000006e DMEM_26E
+GAS LISTING pmem.s43 			page 24
+
+
+                            .data:0000006f DMEM_26F
+                            .data:00000100 DMEM_300
+                            .text:00000000 PMEM_BASE
+       pmem_defs.asm:256    *ABS*:00001000 PMEM_LENGTH
+       pmem_defs.asm:257    *ABS*:00000000 PMEM_EDE_LENGTH
+            pmem.s43:45     .text:00000000 main
+            pmem.s43:754    .text:000007d8 end_of_test
+
+NO UNDEFINED SYMBOLS
+
+pmem.o:     file format elf32-msp430
+pmem.o
+architecture: MSP430X, flags 0x00000011:
+HAS_RELOC, HAS_SYMS
+start address 0x00000000
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007de  00000000  00000000  00000034  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00000000  00000000  00000812  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00000000  00000000  00000812  2**0
+                  ALLOC
+  3 .vectors      00000020  00000000  00000000  00000812  2**0
+                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA
+  4 .MSP430.attributes 00000017  00000000  00000000  00000832  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+00000000 l    d  .text	00000000 .text
+00000000 l    d  .data	00000000 .data
+00000000 l    d  .bss	00000000 .bss
+00000200 l       *ABS*	00000000 PER_LENGTH
+00000000 l       *ABS*	00000000 IE1
+00000001 l       *ABS*	00000000 IE1_HI
+00000002 l       *ABS*	00000000 IFG1
+00000003 l       *ABS*	00000000 IFG1_HI
+00000004 l       *ABS*	00000000 CPU_ID_LO
+00000006 l       *ABS*	00000000 CPU_ID_HI
+00000008 l       *ABS*	00000000 CPU_NR
+00000020 l       *ABS*	00000000 P1IN
+00000021 l       *ABS*	00000000 P1OUT
+00000022 l       *ABS*	00000000 P1DIR
+00000023 l       *ABS*	00000000 P1IFG
+00000024 l       *ABS*	00000000 P1IES
+00000025 l       *ABS*	00000000 P1IE
+00000026 l       *ABS*	00000000 P1SEL
+00000028 l       *ABS*	00000000 P2IN
+00000029 l       *ABS*	00000000 P2OUT
+0000002a l       *ABS*	00000000 P2DIR
+0000002b l       *ABS*	00000000 P2IFG
+0000002c l       *ABS*	00000000 P2IES
+0000002d l       *ABS*	00000000 P2IE
+0000002e l       *ABS*	00000000 P2SEL
+00000018 l       *ABS*	00000000 P3IN
+00000019 l       *ABS*	00000000 P3OUT
+0000001a l       *ABS*	00000000 P3DIR
+0000001b l       *ABS*	00000000 P3SEL
+0000001c l       *ABS*	00000000 P4IN
+0000001d l       *ABS*	00000000 P4OUT
+0000001e l       *ABS*	00000000 P4DIR
+0000001f l       *ABS*	00000000 P4SEL
+00000030 l       *ABS*	00000000 P5IN
+00000031 l       *ABS*	00000000 P5OUT
+00000032 l       *ABS*	00000000 P5DIR
+00000033 l       *ABS*	00000000 P5SEL
+00000034 l       *ABS*	00000000 P6IN
+00000035 l       *ABS*	00000000 P6OUT
+00000036 l       *ABS*	00000000 P6DIR
+00000037 l       *ABS*	00000000 P6SEL
+00000057 l       *ABS*	00000000 BCSCTL1
+00000058 l       *ABS*	00000000 BCSCTL2
+00000120 l       *ABS*	00000000 WDTCTL
+00000130 l       *ABS*	00000000 MPY
+00000132 l       *ABS*	00000000 MPYS
+00000134 l       *ABS*	00000000 MAC
+00000136 l       *ABS*	00000000 MACS
+00000138 l       *ABS*	00000000 OP2
+0000013a l       *ABS*	00000000 RESLO
+0000013c l       *ABS*	00000000 RESHI
+0000013e l       *ABS*	00000000 SUMEXT
+00000160 l       *ABS*	00000000 TACTL
+00000170 l       *ABS*	00000000 TAR
+00000162 l       *ABS*	00000000 TACCTL0
+00000172 l       *ABS*	00000000 TACCR0
+00000164 l       *ABS*	00000000 TACCTL1
+00000174 l       *ABS*	00000000 TACCR1
+00000166 l       *ABS*	00000000 TACCTL2
+00000176 l       *ABS*	00000000 TACCR2
+0000012e l       *ABS*	00000000 TAIV
+00000000 l       .data	00000000 DMEM_BASE
+00000000 l       .data	00000000 DMEM_200
+00000001 l       .data	00000000 DMEM_201
+00000002 l       .data	00000000 DMEM_202
+00000003 l       .data	00000000 DMEM_203
+00000004 l       .data	00000000 DMEM_204
+00000005 l       .data	00000000 DMEM_205
+00000006 l       .data	00000000 DMEM_206
+00000007 l       .data	00000000 DMEM_207
+00000008 l       .data	00000000 DMEM_208
+00000009 l       .data	00000000 DMEM_209
+0000000a l       .data	00000000 DMEM_20A
+0000000b l       .data	00000000 DMEM_20B
+0000000c l       .data	00000000 DMEM_20C
+0000000d l       .data	00000000 DMEM_20D
+0000000e l       .data	00000000 DMEM_20E
+0000000f l       .data	00000000 DMEM_20F
+00000010 l       .data	00000000 DMEM_210
+00000011 l       .data	00000000 DMEM_211
+00000012 l       .data	00000000 DMEM_212
+00000013 l       .data	00000000 DMEM_213
+00000014 l       .data	00000000 DMEM_214
+00000015 l       .data	00000000 DMEM_215
+00000016 l       .data	00000000 DMEM_216
+00000017 l       .data	00000000 DMEM_217
+00000018 l       .data	00000000 DMEM_218
+00000019 l       .data	00000000 DMEM_219
+0000001a l       .data	00000000 DMEM_21A
+0000001b l       .data	00000000 DMEM_21B
+0000001c l       .data	00000000 DMEM_21C
+0000001d l       .data	00000000 DMEM_21D
+0000001e l       .data	00000000 DMEM_21E
+0000001f l       .data	00000000 DMEM_21F
+00000020 l       .data	00000000 DMEM_220
+00000021 l       .data	00000000 DMEM_221
+00000022 l       .data	00000000 DMEM_222
+00000023 l       .data	00000000 DMEM_223
+00000024 l       .data	00000000 DMEM_224
+00000025 l       .data	00000000 DMEM_225
+00000026 l       .data	00000000 DMEM_226
+00000027 l       .data	00000000 DMEM_227
+00000028 l       .data	00000000 DMEM_228
+00000029 l       .data	00000000 DMEM_229
+0000002a l       .data	00000000 DMEM_22A
+0000002b l       .data	00000000 DMEM_22B
+0000002c l       .data	00000000 DMEM_22C
+0000002d l       .data	00000000 DMEM_22D
+0000002e l       .data	00000000 DMEM_22E
+0000002f l       .data	00000000 DMEM_22F
+00000030 l       .data	00000000 DMEM_230
+00000031 l       .data	00000000 DMEM_231
+00000032 l       .data	00000000 DMEM_232
+00000033 l       .data	00000000 DMEM_233
+00000034 l       .data	00000000 DMEM_234
+00000035 l       .data	00000000 DMEM_235
+00000036 l       .data	00000000 DMEM_236
+00000037 l       .data	00000000 DMEM_237
+00000038 l       .data	00000000 DMEM_238
+00000039 l       .data	00000000 DMEM_239
+0000003a l       .data	00000000 DMEM_23A
+0000003b l       .data	00000000 DMEM_23B
+0000003c l       .data	00000000 DMEM_23C
+0000003d l       .data	00000000 DMEM_23D
+0000003e l       .data	00000000 DMEM_23E
+0000003f l       .data	00000000 DMEM_23F
+00000040 l       .data	00000000 DMEM_240
+00000041 l       .data	00000000 DMEM_241
+00000042 l       .data	00000000 DMEM_242
+00000043 l       .data	00000000 DMEM_243
+00000044 l       .data	00000000 DMEM_244
+00000045 l       .data	00000000 DMEM_245
+00000046 l       .data	00000000 DMEM_246
+00000047 l       .data	00000000 DMEM_247
+00000048 l       .data	00000000 DMEM_248
+00000049 l       .data	00000000 DMEM_249
+0000004a l       .data	00000000 DMEM_24A
+0000004b l       .data	00000000 DMEM_24B
+0000004c l       .data	00000000 DMEM_24C
+0000004d l       .data	00000000 DMEM_24D
+0000004e l       .data	00000000 DMEM_24E
+0000004f l       .data	00000000 DMEM_24F
+00000050 l       .data	00000000 DMEM_250
+00000051 l       .data	00000000 DMEM_251
+00000052 l       .data	00000000 DMEM_252
+00000053 l       .data	00000000 DMEM_253
+00000054 l       .data	00000000 DMEM_254
+00000055 l       .data	00000000 DMEM_255
+00000056 l       .data	00000000 DMEM_256
+00000057 l       .data	00000000 DMEM_257
+00000058 l       .data	00000000 DMEM_258
+00000059 l       .data	00000000 DMEM_259
+0000005a l       .data	00000000 DMEM_25A
+0000005b l       .data	00000000 DMEM_25B
+0000005c l       .data	00000000 DMEM_25C
+0000005d l       .data	00000000 DMEM_25D
+0000005e l       .data	00000000 DMEM_25E
+0000005f l       .data	00000000 DMEM_25F
+00000060 l       .data	00000000 DMEM_260
+00000061 l       .data	00000000 DMEM_261
+00000062 l       .data	00000000 DMEM_262
+00000063 l       .data	00000000 DMEM_263
+00000064 l       .data	00000000 DMEM_264
+00000065 l       .data	00000000 DMEM_265
+00000066 l       .data	00000000 DMEM_266
+00000067 l       .data	00000000 DMEM_267
+00000068 l       .data	00000000 DMEM_268
+00000069 l       .data	00000000 DMEM_269
+0000006a l       .data	00000000 DMEM_26A
+0000006b l       .data	00000000 DMEM_26B
+0000006c l       .data	00000000 DMEM_26C
+0000006d l       .data	00000000 DMEM_26D
+0000006e l       .data	00000000 DMEM_26E
+0000006f l       .data	00000000 DMEM_26F
+00000100 l       .data	00000000 DMEM_300
+00000000 l       .text	00000000 PMEM_BASE
+00001000 l       *ABS*	00000000 PMEM_LENGTH
+00000000 l       *ABS*	00000000 PMEM_EDE_LENGTH
+000007d8 l       .text	00000000 end_of_test
+00000000 l    d  .vectors	00000000 .vectors
+00000000 l    d  .MSP430.attributes	00000000 .MSP430.attributes
+00000000 g       .text	00000000 main
+
+
+Contents of section .text:
+ 0000 82433a01 b24000c0 3c01b240 04313001  .C:..@..<..@.10.
+ 0010 b2408502 38011a42 3a011b42 3c011c42  .@..8..B:..B<..B
+ 0020 3e010343 1f430343 03430343 03438243  >..C.C.C.C.C.C.C
+ 0030 3a01b240 00c03c01 82433001 82433801  :..@..<..C0..C8.
+ 0040 1a423a01 1b423c01 1c423e01 03432f43  .B:..B<..B>..C/C
+ 0050 03430343 03430343 82433a01 b24000c0  .C.C.C.C.C:..@..
+ 0060 3c019243 30019243 38011a42 3a011b42  <..C0..C8..B:..B
+ 0070 3c011c42 3e010343 3f400300 03430343  <..B>..C?@...C.C
+ 0080 03430343 82433a01 b24000c0 3c01b240  .C.C.C:..@..<..@
+ 0090 ff7f3001 b240ff7f 38011a42 3a011b42  ..0..@..8..B:..B
+ 00a0 3c011c42 3e010343 2f420343 03430343  <..B>..C/B.C.C.C
+ 00b0 03438243 3a01b240 00c03c01 b2433001  .C.C:..@..<..C0.
+ 00c0 b2433801 1a423a01 1b423c01 1c423e01  .C8..B:..B<..B>.
+ 00d0 03433f40 05000343 03430343 03438243  .C?@...C.C.C.C.C
+ 00e0 3a01b240 00c03c01 b240ff7f 3001b243  :..@..<..@..0..C
+ 00f0 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0100 3f400600 03430343 03430343 82433a01  ?@...C.C.C.C.C:.
+ 0110 b24000c0 3c01b240 00803001 b240ff7f  .@..<..@..0..@..
+ 0120 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0130 3f400700 03430343 03430343 82433a01  ?@...C.C.C.C.C:.
+ 0140 b24000c0 3c01b240 00803001 b2433801  .@..<..@..0..C8.
+ 0150 1a423a01 1b423c01 1c423e01 03433f42  .B:..B<..B>..C?B
+ 0160 03430343 03430343 82433a01 b24000c0  .C.C.C.C.C:..@..
+ 0170 3c01b240 00803001 b2400080 38011a42  <..@..0..@..8..B
+ 0180 3a011b42 3c011c42 3e010343 3f400900  :..B<..B>..C?@..
+ 0190 03430343 03430343 82433a01 b24000c0  .C.C.C.C.C:..@..
+ 01a0 3c01b240 04313201 b2408582 38011a42  <..@.12..@..8..B
+ 01b0 3a011b42 3c011c42 3e010343 1f430343  :..B<..B>..C.C.C
+ 01c0 03430343 03438243 3a01b240 00c03c01  .C.C.C.C:..@..<.
+ 01d0 82433201 82433801 1a423a01 1b423c01  .C2..C8..B:..B<.
+ 01e0 1c423e01 03432f43 03430343 03430343  .B>..C/C.C.C.C.C
+ 01f0 82433a01 b24000c0 3c019243 32019243  .C:..@..<..C2..C
+ 0200 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0210 3f400300 03430343 03430343 82433a01  ?@...C.C.C.C.C:.
+ 0220 b24000c0 3c01b240 ff7f3201 b240ff7f  .@..<..@..2..@..
+ 0230 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0240 2f420343 03430343 03438243 3a01b240  /B.C.C.C.C.C:..@
+ 0250 00c03c01 b2433201 b2433801 1a423a01  ..<..C2..C8..B:.
+ 0260 1b423c01 1c423e01 03433f40 05000343  .B<..B>..C?@...C
+ 0270 03430343 03438243 3a01b240 00c03c01  .C.C.C.C:..@..<.
+ 0280 b240ff7f 3201b243 38011a42 3a011b42  .@..2..C8..B:..B
+ 0290 3c011c42 3e010343 3f400600 03430343  <..B>..C?@...C.C
+ 02a0 03430343 82433a01 b24000c0 3c01b240  .C.C.C:..@..<..@
+ 02b0 00803201 b240ff7f 38011a42 3a011b42  ..2..@..8..B:..B
+ 02c0 3c011c42 3e010343 3f400700 03430343  <..B>..C?@...C.C
+ 02d0 03430343 82433a01 b24000c0 3c01b240  .C.C.C:..@..<..@
+ 02e0 00803201 b2433801 1a423a01 1b423c01  ..2..C8..B:..B<.
+ 02f0 1c423e01 03433f42 03430343 03430343  .B>..C?B.C.C.C.C
+ 0300 82433a01 b24000c0 3c01b240 00803201  .C:..@..<..@..2.
+ 0310 b2400080 38011a42 3a011b42 3c011c42  .@..8..B:..B<..B
+ 0320 3e010343 3f400900 03430343 03430343  >..C?@...C.C.C.C
+ 0330 82433a01 b24000c0 3c01b240 04313401  .C:..@..<..@.14.
+ 0340 b2408502 38011a42 3a011b42 3c011c42  .@..8..B:..B<..B
+ 0350 3e010343 1f430343 03430343 03438243  >..C.C.C.C.C.C.C
+ 0360 3a01b240 00c03c01 82433401 82433801  :..@..<..C4..C8.
+ 0370 1a423a01 1b423c01 1c423e01 03432f43  .B:..B<..B>..C/C
+ 0380 03430343 03430343 82433a01 b24000c0  .C.C.C.C.C:..@..
+ 0390 3c019243 34019243 38011a42 3a011b42  <..C4..C8..B:..B
+ 03a0 3c011c42 3e010343 3f400300 03430343  <..B>..C?@...C.C
+ 03b0 03430343 82433a01 b24000c0 3c01b240  .C.C.C:..@..<..@
+ 03c0 ff7f3401 b240ff7f 38011a42 3a011b42  ..4..@..8..B:..B
+ 03d0 3c011c42 3e010343 2f420343 03430343  <..B>..C/B.C.C.C
+ 03e0 03438243 3a01b240 00c03c01 b2433401  .C.C:..@..<..C4.
+ 03f0 b2433801 1a423a01 1b423c01 1c423e01  .C8..B:..B<..B>.
+ 0400 03433f40 05000343 03430343 03438243  .C?@...C.C.C.C.C
+ 0410 3a01b240 00c03c01 b240ff7f 3401b243  :..@..<..@..4..C
+ 0420 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0430 3f400600 03430343 03430343 82433a01  ?@...C.C.C.C.C:.
+ 0440 b24000c0 3c01b240 00803401 b240ff7f  .@..<..@..4..@..
+ 0450 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0460 3f400700 03430343 03430343 82433a01  ?@...C.C.C.C.C:.
+ 0470 b24000c0 3c01b240 00803401 b2433801  .@..<..@..4..C8.
+ 0480 1a423a01 1b423c01 1c423e01 03433f42  .B:..B<..B>..C?B
+ 0490 03430343 03430343 82433a01 b24000c0  .C.C.C.C.C:..@..
+ 04a0 3c01b240 00803401 b2400080 38011a42  <..@..4..@..8..B
+ 04b0 3a011b42 3c011c42 3e010343 3f400900  :..B<..B>..C?@..
+ 04c0 03430343 03430343 82433a01 b24000c0  .C.C.C.C.C:..@..
+ 04d0 3c01b240 04313601 b2408582 38011a42  <..@.16..@..8..B
+ 04e0 3a011b42 3c011c42 3e010343 1f430343  :..B<..B>..C.C.C
+ 04f0 03430343 03438243 3a01b240 00c03c01  .C.C.C.C:..@..<.
+ 0500 82433601 82433801 1a423a01 1b423c01  .C6..C8..B:..B<.
+ 0510 1c423e01 03432f43 03430343 03430343  .B>..C/C.C.C.C.C
+ 0520 82433a01 b24000c0 3c019243 36019243  .C:..@..<..C6..C
+ 0530 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0540 3f400300 03430343 03430343 82433a01  ?@...C.C.C.C.C:.
+ 0550 b24000c0 3c01b240 ff7f3601 b240ff7f  .@..<..@..6..@..
+ 0560 38011a42 3a011b42 3c011c42 3e010343  8..B:..B<..B>..C
+ 0570 2f420343 03430343 03438243 3a01b240  /B.C.C.C.C.C:..@
+ 0580 00c03c01 b2433601 b2433801 1a423a01  ..<..C6..C8..B:.
+ 0590 1b423c01 1c423e01 03433f40 05000343  .B<..B>..C?@...C
+ 05a0 03430343 03438243 3a01b240 00c03c01  .C.C.C.C:..@..<.
+ 05b0 b240ff7f 3601b243 38011a42 3a011b42  .@..6..C8..B:..B
+ 05c0 3c011c42 3e010343 3f400600 03430343  <..B>..C?@...C.C
+ 05d0 03430343 82433a01 b24000c0 3c01b240  .C.C.C:..@..<..@
+ 05e0 00803601 b240ff7f 38011a42 3a011b42  ..6..@..8..B:..B
+ 05f0 3c011c42 3e010343 3f400700 03430343  <..B>..C?@...C.C
+ 0600 03430343 82433a01 b24000c0 3c01b240  .C.C.C:..@..<..@
+ 0610 00803601 b2433801 1a423a01 1b423c01  ..6..C8..B:..B<.
+ 0620 1c423e01 03433f42 03430343 03430343  .B>..C?B.C.C.C.C
+ 0630 82433a01 b24000c0 3c01b240 00803601  .C:..@..<..@..6.
+ 0640 b2400080 38011a42 3a011b42 3c011c42  .@..8..B:..B<..B
+ 0650 3e010343 3f400900 03430343 03430343  >..C?@...C.C.C.C
+ 0660 b2403412 3001b240 78563801 03431a42  .@4.0..@xV8..C.B
+ 0670 30011b42 32011c42 34011d42 36011e42  0..B2..B4..B6..B
+ 0680 38010343 1f430343 03430343 0343b240  8..C.C.C.C.C.C.@
+ 0690 21433201 b2406587 38010343 1a423001  !C2..@e.8..C.B0.
+ 06a0 1b423201 1c423401 1d423601 1e423801  .B2..B4..B6..B8.
+ 06b0 03432f43 03430343 03430343 b240bc9a  .C/C.C.C.C.C.@..
+ 06c0 3401b240 f0de3801 03431a42 30011b42  4..@..8..C.B0..B
+ 06d0 32011c42 34011d42 36011e42 38010343  2..B4..B6..B8..C
+ 06e0 3f400300 03430343 03430343 b240a9cb  ?@...C.C.C.C.@..
+ 06f0 3601b240 ed0f3801 03431a42 30011b42  6..@..8..C.B0..B
+ 0700 32011c42 34011d42 36011e42 38010343  2..B4..B6..B8..C
+ 0710 2f420343 03430343 0343b240 34123001  /B.C.C.C.C.@4.0.
+ 0720 1a423001 f240ab00 30011b42 30010343  .B0..@..0..B0..C
+ 0730 1f430343 b2407856 32011a42 3201f240  .C.C.@xV2..B2..@
+ 0740 bc003201 1b423201 03432f43 0343b240  ..2..B2..C/C.C.@
+ 0750 bc9a3401 1a423401 f240de00 34011b42  ..4..B4..@..4..B
+ 0760 34010343 3f400300 0343b240 f0de3601  4..C?@...C.@..6.
+ 0770 1a423601 f240ed00 36011b42 36010343  .B6..@..6..B6..C
+ 0780 2f420343 b2402143 38011a42 3801f240  /B.C.@!C8..B8..@
+ 0790 dc003801 1b423801 03433f40 05000343  ..8..B8..C?@...C
+ 07a0 b2406587 3a011a42 3a01f240 cb003a01  .@e.:..B:..@..:.
+ 07b0 1b423a01 03433f40 06000343 b240a9cb  .B:..C?@...C.@..
+ 07c0 3c011a42 3c01f240 ba003c01 1b423c01  <..B<..@..<..B<.
+ 07d0 03433f40 07000343 03433040 ffff      .C?@...C.C0@..  
+Contents of section .vectors:
+ 0000 00000000 00000000 00000000 00000000  ................
+ 0010 00000000 00000000 00000000 00000000  ................
+Contents of section .MSP430.attributes:
+ 0000 41160000 006d7370 61626900 010b0000  A....mspabi.....
+ 0010 00040206 010801                      .......         
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+   4:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+   8:	3c 01 
+   a:	b2 40 04 31 	mov	#12548,	&0x0130	;#0x3104
+   e:	30 01 
+  10:	b2 40 85 02 	mov	#645,	&0x0138	;#0x0285
+  14:	38 01 
+  16:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+  1a:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+  1e:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+  22:	03 43       	nop			
+  24:	1f 43       	mov	#1,	r15	;r3 As==01
+  26:	03 43       	nop			
+  28:	03 43       	nop			
+  2a:	03 43       	nop			
+  2c:	03 43       	nop			
+  2e:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+  32:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+  36:	3c 01 
+  38:	82 43 30 01 	mov	#0,	&0x0130	;r3 As==00
+  3c:	82 43 38 01 	mov	#0,	&0x0138	;r3 As==00
+  40:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+  44:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+  48:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+  4c:	03 43       	nop			
+  4e:	2f 43       	mov	#2,	r15	;r3 As==10
+  50:	03 43       	nop			
+  52:	03 43       	nop			
+  54:	03 43       	nop			
+  56:	03 43       	nop			
+  58:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+  5c:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+  60:	3c 01 
+  62:	92 43 30 01 	mov	#1,	&0x0130	;r3 As==01
+  66:	92 43 38 01 	mov	#1,	&0x0138	;r3 As==01
+  6a:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+  6e:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+  72:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+  76:	03 43       	nop			
+  78:	3f 40 03 00 	mov	#3,	r15	;
+  7c:	03 43       	nop			
+  7e:	03 43       	nop			
+  80:	03 43       	nop			
+  82:	03 43       	nop			
+  84:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+  88:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+  8c:	3c 01 
+  8e:	b2 40 ff 7f 	mov	#32767,	&0x0130	;#0x7fff
+  92:	30 01 
+  94:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+  98:	38 01 
+  9a:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+  9e:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+  a2:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+  a6:	03 43       	nop			
+  a8:	2f 42       	mov	#4,	r15	;r2 As==10
+  aa:	03 43       	nop			
+  ac:	03 43       	nop			
+  ae:	03 43       	nop			
+  b0:	03 43       	nop			
+  b2:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+  b6:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+  ba:	3c 01 
+  bc:	b2 43 30 01 	mov	#-1,	&0x0130	;r3 As==11
+  c0:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+  c4:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+  c8:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+  cc:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+  d0:	03 43       	nop			
+  d2:	3f 40 05 00 	mov	#5,	r15	;
+  d6:	03 43       	nop			
+  d8:	03 43       	nop			
+  da:	03 43       	nop			
+  dc:	03 43       	nop			
+  de:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+  e2:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+  e6:	3c 01 
+  e8:	b2 40 ff 7f 	mov	#32767,	&0x0130	;#0x7fff
+  ec:	30 01 
+  ee:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+  f2:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+  f6:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+  fa:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+  fe:	03 43       	nop			
+ 100:	3f 40 06 00 	mov	#6,	r15	;
+ 104:	03 43       	nop			
+ 106:	03 43       	nop			
+ 108:	03 43       	nop			
+ 10a:	03 43       	nop			
+ 10c:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 110:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 114:	3c 01 
+ 116:	b2 40 00 80 	mov	#32768,	&0x0130	;#0x8000
+ 11a:	30 01 
+ 11c:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+ 120:	38 01 
+ 122:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 126:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 12a:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 12e:	03 43       	nop			
+ 130:	3f 40 07 00 	mov	#7,	r15	;
+ 134:	03 43       	nop			
+ 136:	03 43       	nop			
+ 138:	03 43       	nop			
+ 13a:	03 43       	nop			
+ 13c:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 140:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 144:	3c 01 
+ 146:	b2 40 00 80 	mov	#32768,	&0x0130	;#0x8000
+ 14a:	30 01 
+ 14c:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 150:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 154:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 158:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 15c:	03 43       	nop			
+ 15e:	3f 42       	mov	#8,	r15	;r2 As==11
+ 160:	03 43       	nop			
+ 162:	03 43       	nop			
+ 164:	03 43       	nop			
+ 166:	03 43       	nop			
+ 168:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 16c:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 170:	3c 01 
+ 172:	b2 40 00 80 	mov	#32768,	&0x0130	;#0x8000
+ 176:	30 01 
+ 178:	b2 40 00 80 	mov	#32768,	&0x0138	;#0x8000
+ 17c:	38 01 
+ 17e:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 182:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 186:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 18a:	03 43       	nop			
+ 18c:	3f 40 09 00 	mov	#9,	r15	;
+ 190:	03 43       	nop			
+ 192:	03 43       	nop			
+ 194:	03 43       	nop			
+ 196:	03 43       	nop			
+ 198:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 19c:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 1a0:	3c 01 
+ 1a2:	b2 40 04 31 	mov	#12548,	&0x0132	;#0x3104
+ 1a6:	32 01 
+ 1a8:	b2 40 85 82 	mov	#33413,	&0x0138	;#0x8285
+ 1ac:	38 01 
+ 1ae:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 1b2:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 1b6:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 1ba:	03 43       	nop			
+ 1bc:	1f 43       	mov	#1,	r15	;r3 As==01
+ 1be:	03 43       	nop			
+ 1c0:	03 43       	nop			
+ 1c2:	03 43       	nop			
+ 1c4:	03 43       	nop			
+ 1c6:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 1ca:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 1ce:	3c 01 
+ 1d0:	82 43 32 01 	mov	#0,	&0x0132	;r3 As==00
+ 1d4:	82 43 38 01 	mov	#0,	&0x0138	;r3 As==00
+ 1d8:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 1dc:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 1e0:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 1e4:	03 43       	nop			
+ 1e6:	2f 43       	mov	#2,	r15	;r3 As==10
+ 1e8:	03 43       	nop			
+ 1ea:	03 43       	nop			
+ 1ec:	03 43       	nop			
+ 1ee:	03 43       	nop			
+ 1f0:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 1f4:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 1f8:	3c 01 
+ 1fa:	92 43 32 01 	mov	#1,	&0x0132	;r3 As==01
+ 1fe:	92 43 38 01 	mov	#1,	&0x0138	;r3 As==01
+ 202:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 206:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 20a:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 20e:	03 43       	nop			
+ 210:	3f 40 03 00 	mov	#3,	r15	;
+ 214:	03 43       	nop			
+ 216:	03 43       	nop			
+ 218:	03 43       	nop			
+ 21a:	03 43       	nop			
+ 21c:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 220:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 224:	3c 01 
+ 226:	b2 40 ff 7f 	mov	#32767,	&0x0132	;#0x7fff
+ 22a:	32 01 
+ 22c:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+ 230:	38 01 
+ 232:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 236:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 23a:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 23e:	03 43       	nop			
+ 240:	2f 42       	mov	#4,	r15	;r2 As==10
+ 242:	03 43       	nop			
+ 244:	03 43       	nop			
+ 246:	03 43       	nop			
+ 248:	03 43       	nop			
+ 24a:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 24e:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 252:	3c 01 
+ 254:	b2 43 32 01 	mov	#-1,	&0x0132	;r3 As==11
+ 258:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 25c:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 260:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 264:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 268:	03 43       	nop			
+ 26a:	3f 40 05 00 	mov	#5,	r15	;
+ 26e:	03 43       	nop			
+ 270:	03 43       	nop			
+ 272:	03 43       	nop			
+ 274:	03 43       	nop			
+ 276:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 27a:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 27e:	3c 01 
+ 280:	b2 40 ff 7f 	mov	#32767,	&0x0132	;#0x7fff
+ 284:	32 01 
+ 286:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 28a:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 28e:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 292:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 296:	03 43       	nop			
+ 298:	3f 40 06 00 	mov	#6,	r15	;
+ 29c:	03 43       	nop			
+ 29e:	03 43       	nop			
+ 2a0:	03 43       	nop			
+ 2a2:	03 43       	nop			
+ 2a4:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 2a8:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 2ac:	3c 01 
+ 2ae:	b2 40 00 80 	mov	#32768,	&0x0132	;#0x8000
+ 2b2:	32 01 
+ 2b4:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+ 2b8:	38 01 
+ 2ba:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 2be:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 2c2:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 2c6:	03 43       	nop			
+ 2c8:	3f 40 07 00 	mov	#7,	r15	;
+ 2cc:	03 43       	nop			
+ 2ce:	03 43       	nop			
+ 2d0:	03 43       	nop			
+ 2d2:	03 43       	nop			
+ 2d4:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 2d8:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 2dc:	3c 01 
+ 2de:	b2 40 00 80 	mov	#32768,	&0x0132	;#0x8000
+ 2e2:	32 01 
+ 2e4:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 2e8:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 2ec:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 2f0:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 2f4:	03 43       	nop			
+ 2f6:	3f 42       	mov	#8,	r15	;r2 As==11
+ 2f8:	03 43       	nop			
+ 2fa:	03 43       	nop			
+ 2fc:	03 43       	nop			
+ 2fe:	03 43       	nop			
+ 300:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 304:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 308:	3c 01 
+ 30a:	b2 40 00 80 	mov	#32768,	&0x0132	;#0x8000
+ 30e:	32 01 
+ 310:	b2 40 00 80 	mov	#32768,	&0x0138	;#0x8000
+ 314:	38 01 
+ 316:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 31a:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 31e:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 322:	03 43       	nop			
+ 324:	3f 40 09 00 	mov	#9,	r15	;
+ 328:	03 43       	nop			
+ 32a:	03 43       	nop			
+ 32c:	03 43       	nop			
+ 32e:	03 43       	nop			
+ 330:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 334:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 338:	3c 01 
+ 33a:	b2 40 04 31 	mov	#12548,	&0x0134	;#0x3104
+ 33e:	34 01 
+ 340:	b2 40 85 02 	mov	#645,	&0x0138	;#0x0285
+ 344:	38 01 
+ 346:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 34a:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 34e:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 352:	03 43       	nop			
+ 354:	1f 43       	mov	#1,	r15	;r3 As==01
+ 356:	03 43       	nop			
+ 358:	03 43       	nop			
+ 35a:	03 43       	nop			
+ 35c:	03 43       	nop			
+ 35e:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 362:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 366:	3c 01 
+ 368:	82 43 34 01 	mov	#0,	&0x0134	;r3 As==00
+ 36c:	82 43 38 01 	mov	#0,	&0x0138	;r3 As==00
+ 370:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 374:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 378:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 37c:	03 43       	nop			
+ 37e:	2f 43       	mov	#2,	r15	;r3 As==10
+ 380:	03 43       	nop			
+ 382:	03 43       	nop			
+ 384:	03 43       	nop			
+ 386:	03 43       	nop			
+ 388:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 38c:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 390:	3c 01 
+ 392:	92 43 34 01 	mov	#1,	&0x0134	;r3 As==01
+ 396:	92 43 38 01 	mov	#1,	&0x0138	;r3 As==01
+ 39a:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 39e:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 3a2:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 3a6:	03 43       	nop			
+ 3a8:	3f 40 03 00 	mov	#3,	r15	;
+ 3ac:	03 43       	nop			
+ 3ae:	03 43       	nop			
+ 3b0:	03 43       	nop			
+ 3b2:	03 43       	nop			
+ 3b4:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 3b8:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 3bc:	3c 01 
+ 3be:	b2 40 ff 7f 	mov	#32767,	&0x0134	;#0x7fff
+ 3c2:	34 01 
+ 3c4:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+ 3c8:	38 01 
+ 3ca:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 3ce:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 3d2:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 3d6:	03 43       	nop			
+ 3d8:	2f 42       	mov	#4,	r15	;r2 As==10
+ 3da:	03 43       	nop			
+ 3dc:	03 43       	nop			
+ 3de:	03 43       	nop			
+ 3e0:	03 43       	nop			
+ 3e2:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 3e6:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 3ea:	3c 01 
+ 3ec:	b2 43 34 01 	mov	#-1,	&0x0134	;r3 As==11
+ 3f0:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 3f4:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 3f8:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 3fc:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 400:	03 43       	nop			
+ 402:	3f 40 05 00 	mov	#5,	r15	;
+ 406:	03 43       	nop			
+ 408:	03 43       	nop			
+ 40a:	03 43       	nop			
+ 40c:	03 43       	nop			
+ 40e:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 412:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 416:	3c 01 
+ 418:	b2 40 ff 7f 	mov	#32767,	&0x0134	;#0x7fff
+ 41c:	34 01 
+ 41e:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 422:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 426:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 42a:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 42e:	03 43       	nop			
+ 430:	3f 40 06 00 	mov	#6,	r15	;
+ 434:	03 43       	nop			
+ 436:	03 43       	nop			
+ 438:	03 43       	nop			
+ 43a:	03 43       	nop			
+ 43c:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 440:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 444:	3c 01 
+ 446:	b2 40 00 80 	mov	#32768,	&0x0134	;#0x8000
+ 44a:	34 01 
+ 44c:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+ 450:	38 01 
+ 452:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 456:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 45a:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 45e:	03 43       	nop			
+ 460:	3f 40 07 00 	mov	#7,	r15	;
+ 464:	03 43       	nop			
+ 466:	03 43       	nop			
+ 468:	03 43       	nop			
+ 46a:	03 43       	nop			
+ 46c:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 470:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 474:	3c 01 
+ 476:	b2 40 00 80 	mov	#32768,	&0x0134	;#0x8000
+ 47a:	34 01 
+ 47c:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 480:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 484:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 488:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 48c:	03 43       	nop			
+ 48e:	3f 42       	mov	#8,	r15	;r2 As==11
+ 490:	03 43       	nop			
+ 492:	03 43       	nop			
+ 494:	03 43       	nop			
+ 496:	03 43       	nop			
+ 498:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 49c:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 4a0:	3c 01 
+ 4a2:	b2 40 00 80 	mov	#32768,	&0x0134	;#0x8000
+ 4a6:	34 01 
+ 4a8:	b2 40 00 80 	mov	#32768,	&0x0138	;#0x8000
+ 4ac:	38 01 
+ 4ae:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 4b2:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 4b6:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 4ba:	03 43       	nop			
+ 4bc:	3f 40 09 00 	mov	#9,	r15	;
+ 4c0:	03 43       	nop			
+ 4c2:	03 43       	nop			
+ 4c4:	03 43       	nop			
+ 4c6:	03 43       	nop			
+ 4c8:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 4cc:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 4d0:	3c 01 
+ 4d2:	b2 40 04 31 	mov	#12548,	&0x0136	;#0x3104
+ 4d6:	36 01 
+ 4d8:	b2 40 85 82 	mov	#33413,	&0x0138	;#0x8285
+ 4dc:	38 01 
+ 4de:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 4e2:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 4e6:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 4ea:	03 43       	nop			
+ 4ec:	1f 43       	mov	#1,	r15	;r3 As==01
+ 4ee:	03 43       	nop			
+ 4f0:	03 43       	nop			
+ 4f2:	03 43       	nop			
+ 4f4:	03 43       	nop			
+ 4f6:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 4fa:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 4fe:	3c 01 
+ 500:	82 43 36 01 	mov	#0,	&0x0136	;r3 As==00
+ 504:	82 43 38 01 	mov	#0,	&0x0138	;r3 As==00
+ 508:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 50c:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 510:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 514:	03 43       	nop			
+ 516:	2f 43       	mov	#2,	r15	;r3 As==10
+ 518:	03 43       	nop			
+ 51a:	03 43       	nop			
+ 51c:	03 43       	nop			
+ 51e:	03 43       	nop			
+ 520:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 524:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 528:	3c 01 
+ 52a:	92 43 36 01 	mov	#1,	&0x0136	;r3 As==01
+ 52e:	92 43 38 01 	mov	#1,	&0x0138	;r3 As==01
+ 532:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 536:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 53a:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 53e:	03 43       	nop			
+ 540:	3f 40 03 00 	mov	#3,	r15	;
+ 544:	03 43       	nop			
+ 546:	03 43       	nop			
+ 548:	03 43       	nop			
+ 54a:	03 43       	nop			
+ 54c:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 550:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 554:	3c 01 
+ 556:	b2 40 ff 7f 	mov	#32767,	&0x0136	;#0x7fff
+ 55a:	36 01 
+ 55c:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+ 560:	38 01 
+ 562:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 566:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 56a:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 56e:	03 43       	nop			
+ 570:	2f 42       	mov	#4,	r15	;r2 As==10
+ 572:	03 43       	nop			
+ 574:	03 43       	nop			
+ 576:	03 43       	nop			
+ 578:	03 43       	nop			
+ 57a:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 57e:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 582:	3c 01 
+ 584:	b2 43 36 01 	mov	#-1,	&0x0136	;r3 As==11
+ 588:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 58c:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 590:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 594:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 598:	03 43       	nop			
+ 59a:	3f 40 05 00 	mov	#5,	r15	;
+ 59e:	03 43       	nop			
+ 5a0:	03 43       	nop			
+ 5a2:	03 43       	nop			
+ 5a4:	03 43       	nop			
+ 5a6:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 5aa:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 5ae:	3c 01 
+ 5b0:	b2 40 ff 7f 	mov	#32767,	&0x0136	;#0x7fff
+ 5b4:	36 01 
+ 5b6:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 5ba:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 5be:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 5c2:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 5c6:	03 43       	nop			
+ 5c8:	3f 40 06 00 	mov	#6,	r15	;
+ 5cc:	03 43       	nop			
+ 5ce:	03 43       	nop			
+ 5d0:	03 43       	nop			
+ 5d2:	03 43       	nop			
+ 5d4:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 5d8:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 5dc:	3c 01 
+ 5de:	b2 40 00 80 	mov	#32768,	&0x0136	;#0x8000
+ 5e2:	36 01 
+ 5e4:	b2 40 ff 7f 	mov	#32767,	&0x0138	;#0x7fff
+ 5e8:	38 01 
+ 5ea:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 5ee:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 5f2:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 5f6:	03 43       	nop			
+ 5f8:	3f 40 07 00 	mov	#7,	r15	;
+ 5fc:	03 43       	nop			
+ 5fe:	03 43       	nop			
+ 600:	03 43       	nop			
+ 602:	03 43       	nop			
+ 604:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 608:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 60c:	3c 01 
+ 60e:	b2 40 00 80 	mov	#32768,	&0x0136	;#0x8000
+ 612:	36 01 
+ 614:	b2 43 38 01 	mov	#-1,	&0x0138	;r3 As==11
+ 618:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 61c:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 620:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 624:	03 43       	nop			
+ 626:	3f 42       	mov	#8,	r15	;r2 As==11
+ 628:	03 43       	nop			
+ 62a:	03 43       	nop			
+ 62c:	03 43       	nop			
+ 62e:	03 43       	nop			
+ 630:	82 43 3a 01 	mov	#0,	&0x013a	;r3 As==00
+ 634:	b2 40 00 c0 	mov	#49152,	&0x013c	;#0xc000
+ 638:	3c 01 
+ 63a:	b2 40 00 80 	mov	#32768,	&0x0136	;#0x8000
+ 63e:	36 01 
+ 640:	b2 40 00 80 	mov	#32768,	&0x0138	;#0x8000
+ 644:	38 01 
+ 646:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 64a:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 64e:	1c 42 3e 01 	mov	&0x013e,r12	;0x013e
+ 652:	03 43       	nop			
+ 654:	3f 40 09 00 	mov	#9,	r15	;
+ 658:	03 43       	nop			
+ 65a:	03 43       	nop			
+ 65c:	03 43       	nop			
+ 65e:	03 43       	nop			
+ 660:	b2 40 34 12 	mov	#4660,	&0x0130	;#0x1234
+ 664:	30 01 
+ 666:	b2 40 78 56 	mov	#22136,	&0x0138	;#0x5678
+ 66a:	38 01 
+ 66c:	03 43       	nop			
+ 66e:	1a 42 30 01 	mov	&0x0130,r10	;0x0130
+ 672:	1b 42 32 01 	mov	&0x0132,r11	;0x0132
+ 676:	1c 42 34 01 	mov	&0x0134,r12	;0x0134
+ 67a:	1d 42 36 01 	mov	&0x0136,r13	;0x0136
+ 67e:	1e 42 38 01 	mov	&0x0138,r14	;0x0138
+ 682:	03 43       	nop			
+ 684:	1f 43       	mov	#1,	r15	;r3 As==01
+ 686:	03 43       	nop			
+ 688:	03 43       	nop			
+ 68a:	03 43       	nop			
+ 68c:	03 43       	nop			
+ 68e:	b2 40 21 43 	mov	#17185,	&0x0132	;#0x4321
+ 692:	32 01 
+ 694:	b2 40 65 87 	mov	#34661,	&0x0138	;#0x8765
+ 698:	38 01 
+ 69a:	03 43       	nop			
+ 69c:	1a 42 30 01 	mov	&0x0130,r10	;0x0130
+ 6a0:	1b 42 32 01 	mov	&0x0132,r11	;0x0132
+ 6a4:	1c 42 34 01 	mov	&0x0134,r12	;0x0134
+ 6a8:	1d 42 36 01 	mov	&0x0136,r13	;0x0136
+ 6ac:	1e 42 38 01 	mov	&0x0138,r14	;0x0138
+ 6b0:	03 43       	nop			
+ 6b2:	2f 43       	mov	#2,	r15	;r3 As==10
+ 6b4:	03 43       	nop			
+ 6b6:	03 43       	nop			
+ 6b8:	03 43       	nop			
+ 6ba:	03 43       	nop			
+ 6bc:	b2 40 bc 9a 	mov	#39612,	&0x0134	;#0x9abc
+ 6c0:	34 01 
+ 6c2:	b2 40 f0 de 	mov	#57072,	&0x0138	;#0xdef0
+ 6c6:	38 01 
+ 6c8:	03 43       	nop			
+ 6ca:	1a 42 30 01 	mov	&0x0130,r10	;0x0130
+ 6ce:	1b 42 32 01 	mov	&0x0132,r11	;0x0132
+ 6d2:	1c 42 34 01 	mov	&0x0134,r12	;0x0134
+ 6d6:	1d 42 36 01 	mov	&0x0136,r13	;0x0136
+ 6da:	1e 42 38 01 	mov	&0x0138,r14	;0x0138
+ 6de:	03 43       	nop			
+ 6e0:	3f 40 03 00 	mov	#3,	r15	;
+ 6e4:	03 43       	nop			
+ 6e6:	03 43       	nop			
+ 6e8:	03 43       	nop			
+ 6ea:	03 43       	nop			
+ 6ec:	b2 40 a9 cb 	mov	#52137,	&0x0136	;#0xcba9
+ 6f0:	36 01 
+ 6f2:	b2 40 ed 0f 	mov	#4077,	&0x0138	;#0x0fed
+ 6f6:	38 01 
+ 6f8:	03 43       	nop			
+ 6fa:	1a 42 30 01 	mov	&0x0130,r10	;0x0130
+ 6fe:	1b 42 32 01 	mov	&0x0132,r11	;0x0132
+ 702:	1c 42 34 01 	mov	&0x0134,r12	;0x0134
+ 706:	1d 42 36 01 	mov	&0x0136,r13	;0x0136
+ 70a:	1e 42 38 01 	mov	&0x0138,r14	;0x0138
+ 70e:	03 43       	nop			
+ 710:	2f 42       	mov	#4,	r15	;r2 As==10
+ 712:	03 43       	nop			
+ 714:	03 43       	nop			
+ 716:	03 43       	nop			
+ 718:	03 43       	nop			
+ 71a:	b2 40 34 12 	mov	#4660,	&0x0130	;#0x1234
+ 71e:	30 01 
+ 720:	1a 42 30 01 	mov	&0x0130,r10	;0x0130
+ 724:	f2 40 ab 00 	mov.b	#171,	&0x0130	;#0x00ab
+ 728:	30 01 
+ 72a:	1b 42 30 01 	mov	&0x0130,r11	;0x0130
+ 72e:	03 43       	nop			
+ 730:	1f 43       	mov	#1,	r15	;r3 As==01
+ 732:	03 43       	nop			
+ 734:	b2 40 78 56 	mov	#22136,	&0x0132	;#0x5678
+ 738:	32 01 
+ 73a:	1a 42 32 01 	mov	&0x0132,r10	;0x0132
+ 73e:	f2 40 bc 00 	mov.b	#188,	&0x0132	;#0x00bc
+ 742:	32 01 
+ 744:	1b 42 32 01 	mov	&0x0132,r11	;0x0132
+ 748:	03 43       	nop			
+ 74a:	2f 43       	mov	#2,	r15	;r3 As==10
+ 74c:	03 43       	nop			
+ 74e:	b2 40 bc 9a 	mov	#39612,	&0x0134	;#0x9abc
+ 752:	34 01 
+ 754:	1a 42 34 01 	mov	&0x0134,r10	;0x0134
+ 758:	f2 40 de 00 	mov.b	#222,	&0x0134	;#0x00de
+ 75c:	34 01 
+ 75e:	1b 42 34 01 	mov	&0x0134,r11	;0x0134
+ 762:	03 43       	nop			
+ 764:	3f 40 03 00 	mov	#3,	r15	;
+ 768:	03 43       	nop			
+ 76a:	b2 40 f0 de 	mov	#57072,	&0x0136	;#0xdef0
+ 76e:	36 01 
+ 770:	1a 42 36 01 	mov	&0x0136,r10	;0x0136
+ 774:	f2 40 ed 00 	mov.b	#237,	&0x0136	;#0x00ed
+ 778:	36 01 
+ 77a:	1b 42 36 01 	mov	&0x0136,r11	;0x0136
+ 77e:	03 43       	nop			
+ 780:	2f 42       	mov	#4,	r15	;r2 As==10
+ 782:	03 43       	nop			
+ 784:	b2 40 21 43 	mov	#17185,	&0x0138	;#0x4321
+ 788:	38 01 
+ 78a:	1a 42 38 01 	mov	&0x0138,r10	;0x0138
+ 78e:	f2 40 dc 00 	mov.b	#220,	&0x0138	;#0x00dc
+ 792:	38 01 
+ 794:	1b 42 38 01 	mov	&0x0138,r11	;0x0138
+ 798:	03 43       	nop			
+ 79a:	3f 40 05 00 	mov	#5,	r15	;
+ 79e:	03 43       	nop			
+ 7a0:	b2 40 65 87 	mov	#34661,	&0x013a	;#0x8765
+ 7a4:	3a 01 
+ 7a6:	1a 42 3a 01 	mov	&0x013a,r10	;0x013a
+ 7aa:	f2 40 cb 00 	mov.b	#203,	&0x013a	;#0x00cb
+ 7ae:	3a 01 
+ 7b0:	1b 42 3a 01 	mov	&0x013a,r11	;0x013a
+ 7b4:	03 43       	nop			
+ 7b6:	3f 40 06 00 	mov	#6,	r15	;
+ 7ba:	03 43       	nop			
+ 7bc:	b2 40 a9 cb 	mov	#52137,	&0x013c	;#0xcba9
+ 7c0:	3c 01 
+ 7c2:	1a 42 3c 01 	mov	&0x013c,r10	;0x013c
+ 7c6:	f2 40 ba 00 	mov.b	#186,	&0x013c	;#0x00ba
+ 7ca:	3c 01 
+ 7cc:	1b 42 3c 01 	mov	&0x013c,r11	;0x013c
+ 7d0:	03 43       	nop			
+ 7d2:	3f 40 07 00 	mov	#7,	r15	;
+ 7d6:	03 43       	nop			
+
+000007d8 <end_of_test>:
+ 7d8:	03 43       	nop			
+ 7da:	30 40 ff ff 	br	#0xffff		;

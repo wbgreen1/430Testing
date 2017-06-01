@@ -1,0 +1,178 @@
+21       
+0 timescale.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/timescale.v
+0 openMSP430_defines.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/openMSP430_defines.v
+0 ../../../bench/verilog/openMSP430_defines.v
+0 registers.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/registers.v
+0 dbg_uart_tasks.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/dbg_uart_tasks.v
+0 dbg_i2c_tasks.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/dbg_i2c_tasks.v
+0 dma_tasks.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/dma_tasks.v
+0 omsp_timerA_defines.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/omsp_timerA_defines.v
+0 ../../../bench/verilog/omsp_timerA_defines.v
+0 ../../../rtl/verilog/omsp_timerA_defines.v
+0 omsp_timerA_undefines.v
+0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/omsp_timerA_undefines.v
+0 ../../../bench/verilog/omsp_timerA_undefines.v
+0 ../../../rtl/verilog/omsp_timerA_undefines.v
+35
++cli+1
++define+DMA_VERIF
++define+SEED=-1377218347
++define+VPD_FILE
++itf+/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcsdp.tab
++memcbk
++v2k
++vcs+lic+wait
++vcsd
++vpi
+-Mamsrun=
+-Masflags=--32
+-Mcc=gcc
+-Mcfl= -pipe -m32 -O -I/opt/synopsys/3.4/vcs/L-2016.06-SP1/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -m32 -m32 -rdynamic
+-Mobjects= /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvirsim.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/liberrorinf.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsnpsmalloc.so
+-Mout=simv
+-Msaverestoreobj=/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcs_save_restore_new.o
+-Msyslibs=/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/ctype-stubs_32.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -m32 -I/opt/synopsys/3.4/vcs/L-2016.06-SP1/include
+-Xcbug=0x1
+-Xpiyushb1=0x80
+-Xvcs_run_simv=1
+-debug=1
+-f ../src/submit.f
+-gen_obj
+-picarchive
+-sverilog
+/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/bin/vcs1
+70
+sysc_uni_pwd=/home/eceftl6/Documents/Research/430Testing/core/sim/rtl_sim/run
+XMODIFIERS=@im=none
+XDG_VTNR=1
+XDG_SESSION_ID=20184
+XDG_SESSION_DESKTOP=1-kde-plasma-standard
+XDG_SEAT=seat0
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_MENU_PREFIX=kde4-
+XDG_DATA_DIRS=/usr/share/kde-settings/kde-profile/default/share:/usr/local/share:/usr/share
+XDG_CURRENT_DESKTOP=KDE
+XCURSOR_THEME=Adwaita
+XAUTHORITY=/tmp/kde-eceftl6/xauth-1000-_0
+WINDOWPATH=1:1:1:1:1:1:1:1:1
+VMR_MODE_FLAG=32
+VCS_HOME=/opt/synopsys/3.4/vcs/L-2016.06-SP1
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux
+VCS_AMD_PURE32=1
+USERNAME=eceftl6
+UNAME=/bin/uname
+TOOL_HOME=/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux
+SYNOPSYS_SYN_ROOT=/opt/synopsys/3.4/syn/L-2016.03-SP5
+SYNOPSYS_ROOT=/opt/synopsys/3.4
+SYNOPSYS=/opt/synopsys/3.4
+SSH_AUTH_SOCK=/tmp/ssh-6pocSmITYX9Z/agent.20691
+SSH_ASKPASS=/usr/bin/ksshaskpass
+SSH_AGENT_PID=20805
+SHELL_SESSION_ID=f115dfd066aa4000b1a2212b648dbf38
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/20908,unix/unix:/tmp/.ICE-unix/20908
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QUARTUS_ROOTDIR=/opt/altera_pro/15.1/quartus
+QT_PLUGIN_PATH=/usr/lib64/kde4/plugins:/usr/lib/kde4/plugins:/home/eceftl6/.kde/lib64/kde4/plugins/:/usr/lib64/kde4/plugins/
+QT_IM_MODULE=xim
+QT_GRAPHICSSYSTEM_CHECKED=1
+QTLIB=/usr/lib64/qt-3.3/lib
+QTINC=/usr/lib64/qt-3.3/include
+QTDIR=/usr/lib64/qt-3.3
+PROFILEHOME=
+OVA_UUM=0
+OMSP_SIMULATOR=vcs -sverilog
+OMSP_NODUMP=0
+MSPGCC_PFX=msp430-elf
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+KONSOLE_PROFILE_NAME=Shell
+KONSOLE_DBUS_WINDOW=/Windows/5
+KONSOLE_DBUS_SESSION=/Sessions/5
+KONSOLE_DBUS_SERVICE=:1.68
+KDE_SESSION_VERSION=4
+KDE_SESSION_UID=1000
+KDE_MULTIHEAD=false
+KDE_FULL_SESSION=true
+KDEDIRS=/usr
+IMSETTINGS_MODULE=none
+IMSETTINGS_INTEGRATE_DESKTOP=yes
+HISTCONTROL=ignoredups
+GTK_RC_FILES=/etc/gtk/gtkrc:/home/eceftl6/.gtkrc:/home/eceftl6/.kde/share/config/gtkrc
+GTK_IM_MODULE=gtk-im-context-simple
+GTK2_RC_FILES=/etc/gtk-2.0/gtkrc:/home/eceftl6/.gtkrc-2.0:/home/eceftl6/.gtkrc-2.0-kde4:/home/eceftl6/.kde/share/config/gtkrc-2.0
+GS_LIB=
+GDM_LANG=en_US.UTF-8
+GDMSESSION=1-kde-plasma-standard
+DESKTOP_SESSION=1-kde-plasma-standard
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-YmSGGu5gs7,guid=adde592697df3ae20711089258ed0c06
+COLORFGBG=15;0
+AOCL_BOARD_PACKAGE_ROOT=/opt/altera_pro/15.1/hld/board/attila_board_15.1.2
+ALTERAOCLSDKROOT=/opt/altera_pro/15.1/hld
+ACL_QSH_COMPILE_CMD=quartus_sh -t import_compile.tcl
+0
+41
+1491928223 ../../../rtl/verilog/periph/omsp_timerA_undefines.v
+1491928223 ../../../rtl/verilog/periph/omsp_timerA_defines.v
+1491928223 stimulus.v
+1491928223 ../../../bench/verilog/dma_tasks.v
+1491928223 ../../../bench/verilog/dbg_i2c_tasks.v
+1491928223 ../../../bench/verilog/dbg_uart_tasks.v
+1491928223 ../../../bench/verilog/registers.v
+1491928223 ../../../bench/verilog/timescale.v
+1491928223 ../../../rtl/verilog/periph/template_periph_16b.v
+1491928223 ../../../rtl/verilog/periph/template_periph_8b.v
+1491928223 ../../../rtl/verilog/periph/omsp_timerA.v
+1491928223 ../../../rtl/verilog/periph/omsp_gpio.v
+1491928223 ../../../rtl/verilog/omsp_clock_mux.v
+1491928223 ../../../rtl/verilog/omsp_clock_gate.v
+1491928223 ../../../rtl/verilog/omsp_wakeup_cell.v
+1491928223 ../../../rtl/verilog/omsp_and_gate.v
+1491928223 ../../../rtl/verilog/omsp_scan_mux.v
+1491928223 ../../../rtl/verilog/omsp_sync_cell.v
+1491928223 ../../../rtl/verilog/omsp_sync_reset.v
+1491928223 ../../../rtl/verilog/omsp_multiplier.v
+1491928223 ../../../rtl/verilog/omsp_dbg_hwbrk.v
+1491928223 ../../../rtl/verilog/omsp_dbg_i2c.v
+1491928223 ../../../rtl/verilog/omsp_dbg_uart.v
+1491928223 ../../../rtl/verilog/omsp_dbg.v
+1491928223 ../../../rtl/verilog/omsp_watchdog.v
+1491928223 ../../../rtl/verilog/omsp_mem_backbone.v
+1491928223 ../../../rtl/verilog/omsp_clock_module.v
+1491928223 ../../../rtl/verilog/omsp_sfr.v
+1491928223 ../../../rtl/verilog/omsp_alu.v
+1491928223 ../../../rtl/verilog/omsp_register_file.v
+1491928223 ../../../rtl/verilog/omsp_execution_unit.v
+1491928223 ../../../rtl/verilog/omsp_frontend.v
+1491928223 ../../../rtl/verilog/openMSP430.v
+1491928223 ../../../rtl/verilog/openMSP430_defines.v
+1491928223 ../../../bench/verilog/msp_debug.v
+1491928223 ../../../bench/verilog/io_cell.v
+1491928223 ../../../bench/verilog/ram.v
+1491928223 ../../../bench/verilog/tb_openMSP430.v
+1491928223 ../../../rtl/verilog/filelist.f
+1491928223 ../src/submit.f
+1472184472 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcsdp.tab
+4
+0 
+1472185133 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvirsim.so
+1472184623 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/liberrorinf.so
+1472184592 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsnpsmalloc.so
+1492122430 simv.daidir

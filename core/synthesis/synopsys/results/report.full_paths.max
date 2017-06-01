@@ -1,0 +1,1782 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 2
+        -max_paths 5
+Design : openMSP430
+Version: L-2016.03-SP5
+Date   : Thu Apr 13 17:50:25 2017
+****************************************
+
+Operating Conditions: ss0p7v25c   Library: saed32rvt_ss0p7v25c
+Wire Load Model Mode: top
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: pmem_addr[4]
+            (output port clocked by dco_clk)
+  Path Group: FEEDTHROUGH
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U161/Y (NAND2X0_RVT)                         0.20      38.29 r
+  frontend_0/U30/Y (INVX0_RVT)                            0.12      38.41 f
+  frontend_0/U168/Y (NAND2X0_RVT)                         0.18      38.59 r
+  frontend_0/U31/Y (INVX0_RVT)                            0.12      38.71 f
+  frontend_0/U175/Y (NAND2X0_RVT)                         0.18      38.89 r
+  frontend_0/U32/Y (INVX0_RVT)                            0.12      39.01 f
+  frontend_0/U182/Y (NAND2X0_RVT)                         0.18      39.19 r
+  frontend_0/U33/Y (INVX0_RVT)                            0.12      39.31 f
+  frontend_0/U187/Y (NAND2X0_RVT)                         0.18      39.49 r
+  frontend_0/U34/Y (INVX0_RVT)                            0.11      39.60 f
+  frontend_0/U191/Y (NAND2X0_RVT)                         0.17      39.77 r
+  frontend_0/U35/Y (INVX0_RVT)                            0.11      39.88 f
+  frontend_0/U196/Y (NAND2X0_RVT)                         0.17      40.05 r
+  frontend_0/U36/Y (INVX0_RVT)                            0.11      40.16 f
+  frontend_0/U201/Y (NAND2X0_RVT)                         0.17      40.34 r
+  frontend_0/U37/Y (INVX0_RVT)                            0.11      40.45 f
+  frontend_0/U206/Y (NAND2X0_RVT)                         0.17      40.62 r
+  frontend_0/U38/Y (INVX0_RVT)                            0.11      40.73 f
+  frontend_0/U211/Y (NAND2X0_RVT)                         0.17      40.90 r
+  frontend_0/U39/Y (INVX0_RVT)                            0.11      41.01 f
+  frontend_0/U216/Y (NAND2X0_RVT)                         0.17      41.18 r
+  frontend_0/U40/Y (INVX0_RVT)                            0.11      41.30 f
+  frontend_0/U220/Y (NAND2X0_RVT)                         0.17      41.47 r
+  frontend_0/U41/Y (INVX0_RVT)                            0.11      41.58 f
+  frontend_0/U225/Y (NAND2X0_RVT)                         0.17      41.75 r
+  frontend_0/U26/Y (INVX0_RVT)                            0.11      41.86 f
+  frontend_0/U231/Y (OA21X1_RVT)                          0.32      42.19 f
+  frontend_0/U232/Y (AO22X1_RVT)                          0.22      42.41 f
+  frontend_0/U233/Y (AO221X1_RVT)                         0.27      42.68 f
+  frontend_0/mab[14] (omsp_frontend)                      0.00      42.68 f
+  mem_backbone_0/fe_mab[13] (omsp_mem_backbone)           0.00      42.68 f
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.41      43.09 f
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.31      43.40 r
+  mem_backbone_0/U48/Y (NAND4X0_RVT)                      0.28      43.68 f
+  mem_backbone_0/U49/Y (INVX0_RVT)                        0.43      44.11 r
+  mem_backbone_0/U209/Y (AO222X1_RVT)                     0.52      44.63 r
+  mem_backbone_0/pmem_addr[4] (omsp_mem_backbone)         0.00      44.63 r
+  pmem_addr[4] (out)                                      0.00      44.63 r
+  data arrival time                                                 44.63
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                  -0.64      59.36
+  data required time                                                59.36
+  --------------------------------------------------------------------------
+  data required time                                                59.36
+  data arrival time                                                -44.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.73
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: pmem_addr[3]
+            (output port clocked by dco_clk)
+  Path Group: FEEDTHROUGH
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U161/Y (NAND2X0_RVT)                         0.20      38.29 r
+  frontend_0/U30/Y (INVX0_RVT)                            0.12      38.41 f
+  frontend_0/U168/Y (NAND2X0_RVT)                         0.18      38.59 r
+  frontend_0/U31/Y (INVX0_RVT)                            0.12      38.71 f
+  frontend_0/U175/Y (NAND2X0_RVT)                         0.18      38.89 r
+  frontend_0/U32/Y (INVX0_RVT)                            0.12      39.01 f
+  frontend_0/U182/Y (NAND2X0_RVT)                         0.18      39.19 r
+  frontend_0/U33/Y (INVX0_RVT)                            0.12      39.31 f
+  frontend_0/U187/Y (NAND2X0_RVT)                         0.18      39.49 r
+  frontend_0/U34/Y (INVX0_RVT)                            0.11      39.60 f
+  frontend_0/U191/Y (NAND2X0_RVT)                         0.17      39.77 r
+  frontend_0/U35/Y (INVX0_RVT)                            0.11      39.88 f
+  frontend_0/U196/Y (NAND2X0_RVT)                         0.17      40.05 r
+  frontend_0/U36/Y (INVX0_RVT)                            0.11      40.16 f
+  frontend_0/U201/Y (NAND2X0_RVT)                         0.17      40.34 r
+  frontend_0/U37/Y (INVX0_RVT)                            0.11      40.45 f
+  frontend_0/U206/Y (NAND2X0_RVT)                         0.17      40.62 r
+  frontend_0/U38/Y (INVX0_RVT)                            0.11      40.73 f
+  frontend_0/U211/Y (NAND2X0_RVT)                         0.17      40.90 r
+  frontend_0/U39/Y (INVX0_RVT)                            0.11      41.01 f
+  frontend_0/U216/Y (NAND2X0_RVT)                         0.17      41.18 r
+  frontend_0/U40/Y (INVX0_RVT)                            0.11      41.30 f
+  frontend_0/U220/Y (NAND2X0_RVT)                         0.17      41.47 r
+  frontend_0/U41/Y (INVX0_RVT)                            0.11      41.58 f
+  frontend_0/U225/Y (NAND2X0_RVT)                         0.17      41.75 r
+  frontend_0/U26/Y (INVX0_RVT)                            0.11      41.86 f
+  frontend_0/U231/Y (OA21X1_RVT)                          0.32      42.19 f
+  frontend_0/U232/Y (AO22X1_RVT)                          0.22      42.41 f
+  frontend_0/U233/Y (AO221X1_RVT)                         0.27      42.68 f
+  frontend_0/mab[14] (omsp_frontend)                      0.00      42.68 f
+  mem_backbone_0/fe_mab[13] (omsp_mem_backbone)           0.00      42.68 f
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.41      43.09 f
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.31      43.40 r
+  mem_backbone_0/U48/Y (NAND4X0_RVT)                      0.28      43.68 f
+  mem_backbone_0/U49/Y (INVX0_RVT)                        0.43      44.11 r
+  mem_backbone_0/U208/Y (AO222X1_RVT)                     0.52      44.63 r
+  mem_backbone_0/pmem_addr[3] (omsp_mem_backbone)         0.00      44.63 r
+  pmem_addr[3] (out)                                      0.00      44.63 r
+  data arrival time                                                 44.63
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                  -0.64      59.36
+  data required time                                                59.36
+  --------------------------------------------------------------------------
+  data required time                                                59.36
+  data arrival time                                                -44.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.73
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: pmem_addr[2]
+            (output port clocked by dco_clk)
+  Path Group: FEEDTHROUGH
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U161/Y (NAND2X0_RVT)                         0.20      38.29 r
+  frontend_0/U30/Y (INVX0_RVT)                            0.12      38.41 f
+  frontend_0/U168/Y (NAND2X0_RVT)                         0.18      38.59 r
+  frontend_0/U31/Y (INVX0_RVT)                            0.12      38.71 f
+  frontend_0/U175/Y (NAND2X0_RVT)                         0.18      38.89 r
+  frontend_0/U32/Y (INVX0_RVT)                            0.12      39.01 f
+  frontend_0/U182/Y (NAND2X0_RVT)                         0.18      39.19 r
+  frontend_0/U33/Y (INVX0_RVT)                            0.12      39.31 f
+  frontend_0/U187/Y (NAND2X0_RVT)                         0.18      39.49 r
+  frontend_0/U34/Y (INVX0_RVT)                            0.11      39.60 f
+  frontend_0/U191/Y (NAND2X0_RVT)                         0.17      39.77 r
+  frontend_0/U35/Y (INVX0_RVT)                            0.11      39.88 f
+  frontend_0/U196/Y (NAND2X0_RVT)                         0.17      40.05 r
+  frontend_0/U36/Y (INVX0_RVT)                            0.11      40.16 f
+  frontend_0/U201/Y (NAND2X0_RVT)                         0.17      40.34 r
+  frontend_0/U37/Y (INVX0_RVT)                            0.11      40.45 f
+  frontend_0/U206/Y (NAND2X0_RVT)                         0.17      40.62 r
+  frontend_0/U38/Y (INVX0_RVT)                            0.11      40.73 f
+  frontend_0/U211/Y (NAND2X0_RVT)                         0.17      40.90 r
+  frontend_0/U39/Y (INVX0_RVT)                            0.11      41.01 f
+  frontend_0/U216/Y (NAND2X0_RVT)                         0.17      41.18 r
+  frontend_0/U40/Y (INVX0_RVT)                            0.11      41.30 f
+  frontend_0/U220/Y (NAND2X0_RVT)                         0.17      41.47 r
+  frontend_0/U41/Y (INVX0_RVT)                            0.11      41.58 f
+  frontend_0/U225/Y (NAND2X0_RVT)                         0.17      41.75 r
+  frontend_0/U26/Y (INVX0_RVT)                            0.11      41.86 f
+  frontend_0/U231/Y (OA21X1_RVT)                          0.32      42.19 f
+  frontend_0/U232/Y (AO22X1_RVT)                          0.22      42.41 f
+  frontend_0/U233/Y (AO221X1_RVT)                         0.27      42.68 f
+  frontend_0/mab[14] (omsp_frontend)                      0.00      42.68 f
+  mem_backbone_0/fe_mab[13] (omsp_mem_backbone)           0.00      42.68 f
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.41      43.09 f
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.31      43.40 r
+  mem_backbone_0/U48/Y (NAND4X0_RVT)                      0.28      43.68 f
+  mem_backbone_0/U49/Y (INVX0_RVT)                        0.43      44.11 r
+  mem_backbone_0/U207/Y (AO222X1_RVT)                     0.52      44.63 r
+  mem_backbone_0/pmem_addr[2] (omsp_mem_backbone)         0.00      44.63 r
+  pmem_addr[2] (out)                                      0.00      44.63 r
+  data arrival time                                                 44.63
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                  -0.64      59.36
+  data required time                                                59.36
+  --------------------------------------------------------------------------
+  data required time                                                59.36
+  data arrival time                                                -44.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.73
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: pmem_addr[1]
+            (output port clocked by dco_clk)
+  Path Group: FEEDTHROUGH
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U161/Y (NAND2X0_RVT)                         0.20      38.29 r
+  frontend_0/U30/Y (INVX0_RVT)                            0.12      38.41 f
+  frontend_0/U168/Y (NAND2X0_RVT)                         0.18      38.59 r
+  frontend_0/U31/Y (INVX0_RVT)                            0.12      38.71 f
+  frontend_0/U175/Y (NAND2X0_RVT)                         0.18      38.89 r
+  frontend_0/U32/Y (INVX0_RVT)                            0.12      39.01 f
+  frontend_0/U182/Y (NAND2X0_RVT)                         0.18      39.19 r
+  frontend_0/U33/Y (INVX0_RVT)                            0.12      39.31 f
+  frontend_0/U187/Y (NAND2X0_RVT)                         0.18      39.49 r
+  frontend_0/U34/Y (INVX0_RVT)                            0.11      39.60 f
+  frontend_0/U191/Y (NAND2X0_RVT)                         0.17      39.77 r
+  frontend_0/U35/Y (INVX0_RVT)                            0.11      39.88 f
+  frontend_0/U196/Y (NAND2X0_RVT)                         0.17      40.05 r
+  frontend_0/U36/Y (INVX0_RVT)                            0.11      40.16 f
+  frontend_0/U201/Y (NAND2X0_RVT)                         0.17      40.34 r
+  frontend_0/U37/Y (INVX0_RVT)                            0.11      40.45 f
+  frontend_0/U206/Y (NAND2X0_RVT)                         0.17      40.62 r
+  frontend_0/U38/Y (INVX0_RVT)                            0.11      40.73 f
+  frontend_0/U211/Y (NAND2X0_RVT)                         0.17      40.90 r
+  frontend_0/U39/Y (INVX0_RVT)                            0.11      41.01 f
+  frontend_0/U216/Y (NAND2X0_RVT)                         0.17      41.18 r
+  frontend_0/U40/Y (INVX0_RVT)                            0.11      41.30 f
+  frontend_0/U220/Y (NAND2X0_RVT)                         0.17      41.47 r
+  frontend_0/U41/Y (INVX0_RVT)                            0.11      41.58 f
+  frontend_0/U225/Y (NAND2X0_RVT)                         0.17      41.75 r
+  frontend_0/U26/Y (INVX0_RVT)                            0.11      41.86 f
+  frontend_0/U231/Y (OA21X1_RVT)                          0.32      42.19 f
+  frontend_0/U232/Y (AO22X1_RVT)                          0.22      42.41 f
+  frontend_0/U233/Y (AO221X1_RVT)                         0.27      42.68 f
+  frontend_0/mab[14] (omsp_frontend)                      0.00      42.68 f
+  mem_backbone_0/fe_mab[13] (omsp_mem_backbone)           0.00      42.68 f
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.41      43.09 f
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.31      43.40 r
+  mem_backbone_0/U48/Y (NAND4X0_RVT)                      0.28      43.68 f
+  mem_backbone_0/U49/Y (INVX0_RVT)                        0.43      44.11 r
+  mem_backbone_0/U206/Y (AO222X1_RVT)                     0.52      44.63 r
+  mem_backbone_0/pmem_addr[1] (omsp_mem_backbone)         0.00      44.63 r
+  pmem_addr[1] (out)                                      0.00      44.63 r
+  data arrival time                                                 44.63
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                  -0.64      59.36
+  data required time                                                59.36
+  --------------------------------------------------------------------------
+  data required time                                                59.36
+  data arrival time                                                -44.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.73
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: pmem_addr[0]
+            (output port clocked by dco_clk)
+  Path Group: FEEDTHROUGH
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U161/Y (NAND2X0_RVT)                         0.20      38.29 r
+  frontend_0/U30/Y (INVX0_RVT)                            0.12      38.41 f
+  frontend_0/U168/Y (NAND2X0_RVT)                         0.18      38.59 r
+  frontend_0/U31/Y (INVX0_RVT)                            0.12      38.71 f
+  frontend_0/U175/Y (NAND2X0_RVT)                         0.18      38.89 r
+  frontend_0/U32/Y (INVX0_RVT)                            0.12      39.01 f
+  frontend_0/U182/Y (NAND2X0_RVT)                         0.18      39.19 r
+  frontend_0/U33/Y (INVX0_RVT)                            0.12      39.31 f
+  frontend_0/U187/Y (NAND2X0_RVT)                         0.18      39.49 r
+  frontend_0/U34/Y (INVX0_RVT)                            0.11      39.60 f
+  frontend_0/U191/Y (NAND2X0_RVT)                         0.17      39.77 r
+  frontend_0/U35/Y (INVX0_RVT)                            0.11      39.88 f
+  frontend_0/U196/Y (NAND2X0_RVT)                         0.17      40.05 r
+  frontend_0/U36/Y (INVX0_RVT)                            0.11      40.16 f
+  frontend_0/U201/Y (NAND2X0_RVT)                         0.17      40.34 r
+  frontend_0/U37/Y (INVX0_RVT)                            0.11      40.45 f
+  frontend_0/U206/Y (NAND2X0_RVT)                         0.17      40.62 r
+  frontend_0/U38/Y (INVX0_RVT)                            0.11      40.73 f
+  frontend_0/U211/Y (NAND2X0_RVT)                         0.17      40.90 r
+  frontend_0/U39/Y (INVX0_RVT)                            0.11      41.01 f
+  frontend_0/U216/Y (NAND2X0_RVT)                         0.17      41.18 r
+  frontend_0/U40/Y (INVX0_RVT)                            0.11      41.30 f
+  frontend_0/U220/Y (NAND2X0_RVT)                         0.17      41.47 r
+  frontend_0/U41/Y (INVX0_RVT)                            0.11      41.58 f
+  frontend_0/U225/Y (NAND2X0_RVT)                         0.17      41.75 r
+  frontend_0/U26/Y (INVX0_RVT)                            0.11      41.86 f
+  frontend_0/U231/Y (OA21X1_RVT)                          0.32      42.19 f
+  frontend_0/U232/Y (AO22X1_RVT)                          0.22      42.41 f
+  frontend_0/U233/Y (AO221X1_RVT)                         0.27      42.68 f
+  frontend_0/mab[14] (omsp_frontend)                      0.00      42.68 f
+  mem_backbone_0/fe_mab[13] (omsp_mem_backbone)           0.00      42.68 f
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.41      43.09 f
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.31      43.40 r
+  mem_backbone_0/U48/Y (NAND4X0_RVT)                      0.28      43.68 f
+  mem_backbone_0/U49/Y (INVX0_RVT)                        0.43      44.11 r
+  mem_backbone_0/U205/Y (AO222X1_RVT)                     0.52      44.63 r
+  mem_backbone_0/pmem_addr[0] (omsp_mem_backbone)         0.00      44.63 r
+  pmem_addr[0] (out)                                      0.00      44.63 r
+  data arrival time                                                 44.63
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                  -0.64      59.36
+  data required time                                                59.36
+  --------------------------------------------------------------------------
+  data required time                                                59.36
+  data arrival time                                                -44.63
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.73
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: mem_backbone_0/clock_gate_bckup/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: REGIN
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U161/Y (NAND2X0_RVT)                         0.20      38.29 r
+  frontend_0/U30/Y (INVX0_RVT)                            0.12      38.41 f
+  frontend_0/U168/Y (NAND2X0_RVT)                         0.18      38.59 r
+  frontend_0/U31/Y (INVX0_RVT)                            0.12      38.71 f
+  frontend_0/U175/Y (NAND2X0_RVT)                         0.18      38.89 r
+  frontend_0/U32/Y (INVX0_RVT)                            0.12      39.01 f
+  frontend_0/U182/Y (NAND2X0_RVT)                         0.18      39.19 r
+  frontend_0/U33/Y (INVX0_RVT)                            0.12      39.31 f
+  frontend_0/U187/Y (NAND2X0_RVT)                         0.18      39.49 r
+  frontend_0/U34/Y (INVX0_RVT)                            0.11      39.60 f
+  frontend_0/U191/Y (NAND2X0_RVT)                         0.17      39.77 r
+  frontend_0/U35/Y (INVX0_RVT)                            0.11      39.88 f
+  frontend_0/U196/Y (NAND2X0_RVT)                         0.17      40.05 r
+  frontend_0/U36/Y (INVX0_RVT)                            0.11      40.16 f
+  frontend_0/U201/Y (NAND2X0_RVT)                         0.17      40.34 r
+  frontend_0/U37/Y (INVX0_RVT)                            0.11      40.45 f
+  frontend_0/U206/Y (NAND2X0_RVT)                         0.17      40.62 r
+  frontend_0/U38/Y (INVX0_RVT)                            0.11      40.73 f
+  frontend_0/U211/Y (NAND2X0_RVT)                         0.17      40.90 r
+  frontend_0/U39/Y (INVX0_RVT)                            0.11      41.01 f
+  frontend_0/U216/Y (NAND2X0_RVT)                         0.17      41.18 r
+  frontend_0/U40/Y (INVX0_RVT)                            0.11      41.30 f
+  frontend_0/U220/Y (NAND2X0_RVT)                         0.17      41.47 r
+  frontend_0/U41/Y (INVX0_RVT)                            0.11      41.58 f
+  frontend_0/U225/Y (NAND2X0_RVT)                         0.17      41.75 r
+  frontend_0/U26/Y (INVX0_RVT)                            0.11      41.86 f
+  frontend_0/U230/Y (NAND2X0_RVT)                         0.19      42.06 r
+  frontend_0/U236/SO (HADDX1_RVT)                         0.39      42.45 f
+  frontend_0/U237/Y (OA22X1_RVT)                          0.29      42.74 f
+  frontend_0/U238/Y (NAND3X0_RVT)                         0.18      42.92 r
+  frontend_0/mab[15] (omsp_frontend)                      0.00      42.92 r
+  mem_backbone_0/fe_mab[14] (omsp_mem_backbone)           0.00      42.92 r
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.34      43.27 r
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.19      43.46 f
+  mem_backbone_0/U107/Y (AND3X1_RVT)                      0.34      43.80 f
+  mem_backbone_0/clock_gate_bckup/enable (omsp_clock_gate_21)
+                                                          0.00      43.80 f
+  mem_backbone_0/clock_gate_bckup/U3/Y (OR2X1_RVT)        0.26      44.06 f
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                                          0.00      44.06 f
+  data arrival time                                                 44.06
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/CLK (LATCHX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             4.06      44.06
+  data required time                                                44.06
+  --------------------------------------------------------------------------
+  data required time                                                44.06
+  data arrival time                                                -44.06
+  --------------------------------------------------------------------------
+  slack (VIOLATED: increase significant digits)                      0.00
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.30   
+  --------------------------------------------------------------
+  max time borrow                                        19.70   
+  actual time borrow                                      4.06   
+  --------------------------------------------------------------
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: mem_backbone_0/clock_gate_bckup/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: REGIN
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U161/Y (NAND2X0_RVT)                         0.20      38.29 r
+  frontend_0/U30/Y (INVX0_RVT)                            0.12      38.41 f
+  frontend_0/U168/Y (NAND2X0_RVT)                         0.18      38.59 r
+  frontend_0/U31/Y (INVX0_RVT)                            0.12      38.71 f
+  frontend_0/U175/Y (NAND2X0_RVT)                         0.18      38.89 r
+  frontend_0/U32/Y (INVX0_RVT)                            0.12      39.01 f
+  frontend_0/U182/Y (NAND2X0_RVT)                         0.18      39.19 r
+  frontend_0/U33/Y (INVX0_RVT)                            0.12      39.31 f
+  frontend_0/U187/Y (NAND2X0_RVT)                         0.18      39.49 r
+  frontend_0/U34/Y (INVX0_RVT)                            0.11      39.60 f
+  frontend_0/U191/Y (NAND2X0_RVT)                         0.17      39.77 r
+  frontend_0/U35/Y (INVX0_RVT)                            0.11      39.88 f
+  frontend_0/U196/Y (NAND2X0_RVT)                         0.17      40.05 r
+  frontend_0/U36/Y (INVX0_RVT)                            0.11      40.16 f
+  frontend_0/U201/Y (NAND2X0_RVT)                         0.17      40.34 r
+  frontend_0/U37/Y (INVX0_RVT)                            0.11      40.45 f
+  frontend_0/U206/Y (NAND2X0_RVT)                         0.17      40.62 r
+  frontend_0/U38/Y (INVX0_RVT)                            0.11      40.73 f
+  frontend_0/U211/Y (NAND2X0_RVT)                         0.17      40.90 r
+  frontend_0/U39/Y (INVX0_RVT)                            0.11      41.01 f
+  frontend_0/U216/Y (NAND2X0_RVT)                         0.17      41.18 r
+  frontend_0/U40/Y (INVX0_RVT)                            0.11      41.30 f
+  frontend_0/U220/Y (NAND2X0_RVT)                         0.17      41.47 r
+  frontend_0/U41/Y (INVX0_RVT)                            0.11      41.58 f
+  frontend_0/U225/Y (NAND2X0_RVT)                         0.17      41.75 r
+  frontend_0/U26/Y (INVX0_RVT)                            0.11      41.86 f
+  frontend_0/U230/Y (NAND2X0_RVT)                         0.19      42.06 r
+  frontend_0/U236/SO (HADDX1_RVT)                         0.39      42.45 f
+  frontend_0/U237/Y (OA22X1_RVT)                          0.29      42.74 f
+  frontend_0/U238/Y (NAND3X0_RVT)                         0.18      42.92 r
+  frontend_0/mab[15] (omsp_frontend)                      0.00      42.92 r
+  mem_backbone_0/fe_mab[14] (omsp_mem_backbone)           0.00      42.92 r
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.34      43.26 r
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.19      43.46 f
+  mem_backbone_0/U107/Y (AND3X1_RVT)                      0.34      43.79 f
+  mem_backbone_0/clock_gate_bckup/enable (omsp_clock_gate_21)
+                                                          0.00      43.79 f
+  mem_backbone_0/clock_gate_bckup/U3/Y (OR2X1_RVT)        0.26      44.06 f
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                                          0.00      44.06 f
+  data arrival time                                                 44.06
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/CLK (LATCHX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             4.06      44.06
+  data required time                                                44.06
+  --------------------------------------------------------------------------
+  data required time                                                44.06
+  data arrival time                                                -44.06
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.30   
+  --------------------------------------------------------------
+  max time borrow                                        19.70   
+  actual time borrow                                      4.06   
+  --------------------------------------------------------------
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: frontend_0/clock_gate_pc/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: REGIN
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.60 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.93 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.39 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.53 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.98 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.41 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.61 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.80 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.10 f
+  frontend_0/U475/Y (OR2X1_RVT)                           0.22      38.32 f
+  frontend_0/clock_gate_pc/enable (omsp_clock_gate_27)
+                                                          0.00      38.32 f
+  frontend_0/clock_gate_pc/U2/Y (OR2X1_RVT)               0.24      38.56 f
+  frontend_0/clock_gate_pc/enable_latch_reg/D (LATCHX1_RVT)
+                                                          0.00      38.56 f
+  data arrival time                                                 38.56
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  frontend_0/clock_gate_pc/enable_latch_reg/CLK (LATCHX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -38.56
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.44
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.30   
+  --------------------------------------------------------------
+  max time borrow                                        19.70   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: irq[13] (input port clocked by dco_clk)
+  Endpoint: frontend_0/clock_gate_pc/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: REGIN
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[13] (in)                                            0.00      32.00 f
+  frontend_0/irq[13] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.26      32.26 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.55 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      32.99 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.17 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.63 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.14 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.60 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.01 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.11 f
+  frontend_0/U106/Y (OA221X1_RVT)                         0.45      35.56 f
+  frontend_0/U107/Y (AND3X1_RVT)                          0.32      35.89 f
+  frontend_0/U118/Y (NOR3X0_RVT)                          0.46      36.35 r
+  frontend_0/U129/Y (NAND3X0_RVT)                         0.14      36.49 f
+  frontend_0/U147/Y (AO221X1_RVT)                         0.45      36.94 f
+  frontend_0/U150/Y (AO221X1_RVT)                         0.43      37.37 f
+  frontend_0/U151/Y (NAND4X0_RVT)                         0.20      37.56 r
+  frontend_0/U159/Y (NAND3X0_RVT)                         0.20      37.76 f
+  frontend_0/U160/Y (OA21X1_RVT)                          0.29      38.06 f
+  frontend_0/U475/Y (OR2X1_RVT)                           0.22      38.28 f
+  frontend_0/clock_gate_pc/enable (omsp_clock_gate_27)
+                                                          0.00      38.28 f
+  frontend_0/clock_gate_pc/U2/Y (OR2X1_RVT)               0.24      38.52 f
+  frontend_0/clock_gate_pc/enable_latch_reg/D (LATCHX1_RVT)
+                                                          0.00      38.52 f
+  data arrival time                                                 38.52
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  frontend_0/clock_gate_pc/enable_latch_reg/CLK (LATCHX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -38.52
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.48
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.30   
+  --------------------------------------------------------------
+  max time borrow                                        19.70   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: irq[12] (input port clocked by dco_clk)
+  Endpoint: frontend_0/clock_gate_inst_sext/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: REGIN
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  input external delay                                   12.00      32.00 f
+  irq[12] (in)                                            0.00      32.00 f
+  frontend_0/irq[12] (omsp_frontend)                      0.00      32.00 f
+  frontend_0/U17/Y (OR3X1_RVT)                            0.30      32.30 f
+  frontend_0/U12/Y (OR3X1_RVT)                            0.28      32.59 f
+  frontend_0/U91/Y (NOR4X0_RVT)                           0.44      33.03 r
+  frontend_0/U92/Y (NAND4X0_RVT)                          0.18      33.22 f
+  frontend_0/U93/Y (NAND4X0_RVT)                          0.45      33.67 r
+  frontend_0/U94/Y (NAND4X0_RVT)                          0.51      34.18 f
+  frontend_0/U11/Y (INVX0_RVT)                            0.45      34.64 r
+  frontend_0/U101/Y (AO22X1_RVT)                          0.41      35.05 r
+  frontend_0/U21/Y (INVX0_RVT)                            0.10      35.15 f
+  frontend_0/U108/Y (NOR3X0_RVT)                          0.44      35.59 r
+  frontend_0/U431/Y (NAND2X0_RVT)                         0.11      35.70 f
+  frontend_0/U432/Y (NAND2X0_RVT)                         0.20      35.90 r
+  frontend_0/U49/Y (OAI21X1_RVT)                          0.43      36.33 f
+  frontend_0/U476/Y (NAND2X0_RVT)                         0.16      36.49 r
+  frontend_0/clock_gate_inst_sext/enable (omsp_clock_gate_26)
+                                                          0.00      36.49 r
+  frontend_0/clock_gate_inst_sext/U3/Y (OR2X1_RVT)        0.20      36.69 r
+  frontend_0/clock_gate_inst_sext/enable_latch_reg/D (LATCHX1_RVT)
+                                                          0.00      36.69 r
+  data arrival time                                                 36.69
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  frontend_0/clock_gate_inst_sext/enable_latch_reg/CLK (LATCHX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -36.69
+  --------------------------------------------------------------------------
+  slack (MET)                                                        3.31
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.22   
+  --------------------------------------------------------------
+  max time borrow                                        19.78   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: frontend_0/cpu_halt_st_reg
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: dbg_freeze (output port clocked by dco_clk)
+  Path Group: REGOUT
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/cpu_halt_st_reg/CLK (SDFFARX1_RVT)           0.00      20.00 r
+  frontend_0/cpu_halt_st_reg/Q (SDFFARX1_RVT)             0.73      20.73 r
+  frontend_0/cpu_halt_st (omsp_frontend)                  0.00      20.73 r
+  dbg_0/dbg_halt_st (omsp_dbg)                            0.00      20.73 r
+  dbg_0/U136/Y (OA21X1_RVT)                               0.29      21.02 r
+  dbg_0/dbg_freeze (omsp_dbg)                             0.00      21.02 r
+  dbg_freeze (out)                                        0.00      21.02 r
+  data arrival time                                                 21.02
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                 -34.00      26.00
+  data required time                                                26.00
+  --------------------------------------------------------------------------
+  data required time                                                26.00
+  data arrival time                                                -21.02
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.98
+
+
+  Startpoint: frontend_0/cpu_halt_st_reg
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: dbg_freeze (output port clocked by dco_clk)
+  Path Group: REGOUT
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/cpu_halt_st_reg/CLK (SDFFARX1_RVT)           0.00      20.00 r
+  frontend_0/cpu_halt_st_reg/Q (SDFFARX1_RVT)             0.58      20.58 f
+  frontend_0/cpu_halt_st (omsp_frontend)                  0.00      20.58 f
+  dbg_0/dbg_halt_st (omsp_dbg)                            0.00      20.58 f
+  dbg_0/U136/Y (OA21X1_RVT)                               0.28      20.86 f
+  dbg_0/dbg_freeze (omsp_dbg)                             0.00      20.86 f
+  dbg_freeze (out)                                        0.00      20.86 f
+  data arrival time                                                 20.86
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                 -34.00      26.00
+  data required time                                                26.00
+  --------------------------------------------------------------------------
+  data required time                                                26.00
+  data arrival time                                                -20.86
+  --------------------------------------------------------------------------
+  slack (MET)                                                        5.14
+
+
+  Startpoint: clock_module_0/sync_cell_puc/data_sync_reg[1]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: puc_rst (output port clocked by dco_clk)
+  Path Group: REGOUT
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock_module_0/sync_cell_puc/data_sync_reg[1]/CLK (DFFARX1_RVT)
+                                                          0.00      20.00 r
+  clock_module_0/sync_cell_puc/data_sync_reg[1]/Q (DFFARX1_RVT)
+                                                          0.50      20.50 f
+  clock_module_0/sync_cell_puc/data_out (omsp_sync_cell_5)
+                                                          0.00      20.50 f
+  clock_module_0/U10/Y (INVX0_RVT)                        0.14      20.64 r
+  clock_module_0/scan_mux_puc_rst/data_in_func (omsp_scan_mux_5)
+                                                          0.00      20.64 r
+  clock_module_0/scan_mux_puc_rst/U2/Y (AO22X1_RVT)       0.35      21.00 r
+  clock_module_0/scan_mux_puc_rst/data_out (omsp_scan_mux_5)
+                                                          0.00      21.00 r
+  clock_module_0/puc_rst (omsp_clock_module)              0.00      21.00 r
+  U53/Y (INVX0_RVT)                                       0.19      21.19 f
+  U75/Y (INVX2_RVT)                                       0.25      21.44 r
+  puc_rst (out)                                           0.00      21.44 r
+  data arrival time                                                 21.44
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                 -30.00      30.00
+  data required time                                                30.00
+  --------------------------------------------------------------------------
+  data required time                                                30.00
+  data arrival time                                                -21.44
+  --------------------------------------------------------------------------
+  slack (MET)                                                        8.56
+
+
+  Startpoint: clock_module_0/sync_cell_puc/data_sync_reg[1]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: puc_rst (output port clocked by dco_clk)
+  Path Group: REGOUT
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock_module_0/sync_cell_puc/data_sync_reg[1]/CLK (DFFARX1_RVT)
+                                                          0.00      20.00 r
+  clock_module_0/sync_cell_puc/data_sync_reg[1]/Q (DFFARX1_RVT)
+                                                          0.61      20.61 r
+  clock_module_0/sync_cell_puc/data_out (omsp_sync_cell_5)
+                                                          0.00      20.61 r
+  clock_module_0/U10/Y (INVX0_RVT)                        0.11      20.71 f
+  clock_module_0/scan_mux_puc_rst/data_in_func (omsp_scan_mux_5)
+                                                          0.00      20.71 f
+  clock_module_0/scan_mux_puc_rst/U2/Y (AO22X1_RVT)       0.30      21.01 f
+  clock_module_0/scan_mux_puc_rst/data_out (omsp_scan_mux_5)
+                                                          0.00      21.01 f
+  clock_module_0/puc_rst (omsp_clock_module)              0.00      21.01 f
+  U53/Y (INVX0_RVT)                                       0.22      21.23 r
+  U75/Y (INVX2_RVT)                                       0.20      21.43 f
+  puc_rst (out)                                           0.00      21.43 f
+  data arrival time                                                 21.43
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                 -30.00      30.00
+  data required time                                                30.00
+  --------------------------------------------------------------------------
+  data required time                                                30.00
+  data arrival time                                                -21.43
+  --------------------------------------------------------------------------
+  slack (MET)                                                        8.57
+
+
+  Startpoint: frontend_0/i_state_reg[1]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: irq_acc[2] (output port clocked by dco_clk)
+  Path Group: REGOUT
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/i_state_reg[1]/CLK (SDFFARX1_RVT)            0.00      20.00 r
+  frontend_0/i_state_reg[1]/QN (SDFFARX1_RVT)             0.44      20.44 r
+  frontend_0/U152/Y (NAND3X0_RVT)                         0.23      20.67 f
+  frontend_0/U42/Y (INVX0_RVT)                            0.40      21.07 r
+  frontend_0/U456/Y (AND3X1_RVT)                          0.47      21.54 r
+  frontend_0/U470/Y (AND3X1_RVT)                          0.21      21.75 r
+  frontend_0/irq_acc[2] (omsp_frontend)                   0.00      21.75 r
+  irq_acc[2] (out)                                        0.00      21.75 r
+  data arrival time                                                 21.75
+
+  clock dco_clk (rise edge)                              60.00      60.00
+  clock network delay (ideal)                             0.00      60.00
+  output external delay                                 -24.00      36.00
+  data required time                                                36.00
+  --------------------------------------------------------------------------
+  data required time                                                36.00
+  data arrival time                                                -21.75
+  --------------------------------------------------------------------------
+  slack (MET)                                                       14.25
+
+
+  Startpoint: frontend_0/inst_so_reg[5]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: mem_backbone_0/clock_gate_bckup/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: dco_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/inst_so_reg[5]/CLK (SDFFARX1_RVT)            0.00      20.00 r
+  frontend_0/inst_so_reg[5]/Q (SDFFARX1_RVT)              0.64      20.64 r
+  frontend_0/U239/Y (NOR2X0_RVT)                          0.27      20.92 f
+  frontend_0/U243/Y (AND4X1_RVT)                          0.33      21.24 f
+  frontend_0/U284/Y (AND3X1_RVT)                          0.36      21.60 f
+  frontend_0/U400/Y (AO22X1_RVT)                          0.45      22.05 f
+  frontend_0/inst_dest[12] (omsp_frontend)                0.00      22.05 f
+  execution_unit_0/inst_dest[12] (omsp_execution_unit)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/inst_dest[12] (omsp_register_file)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/U438/Y (AO22X1_RVT)
+                                                          0.40      22.45 f
+  execution_unit_0/register_file_0/U442/Y (NOR4X0_RVT)
+                                                          0.61      23.06 r
+  execution_unit_0/register_file_0/U443/Y (AND3X1_RVT)
+                                                          0.23      23.29 r
+  execution_unit_0/register_file_0/U446/Y (NAND3X0_RVT)
+                                                          0.17      23.46 f
+  execution_unit_0/register_file_0/reg_dest[0] (omsp_register_file)
+                                                          0.00      23.46 f
+  execution_unit_0/U89/Y (AOI22X1_RVT)                    0.34      23.79 r
+  execution_unit_0/U91/Y (NAND3X0_RVT)                    0.13      23.92 f
+  execution_unit_0/U92/Y (AO21X1_RVT)                     0.21      24.14 f
+  execution_unit_0/alu_0/op_src[0] (omsp_alu)             0.00      24.14 f
+  execution_unit_0/alu_0/U96/Y (AO22X1_RVT)               0.38      24.51 f
+  execution_unit_0/alu_0/U124/Y (AO222X1_RVT)             0.53      25.04 f
+  execution_unit_0/alu_0/U125/Y (AO222X1_RVT)             0.44      25.48 f
+  execution_unit_0/alu_0/U126/Y (AO222X1_RVT)             0.44      25.92 f
+  execution_unit_0/alu_0/U127/SO (HADDX1_RVT)             0.37      26.29 f
+  execution_unit_0/alu_0/U137/Y (NAND2X0_RVT)             0.28      26.57 r
+  execution_unit_0/alu_0/U139/SO (HADDX1_RVT)             0.59      27.16 f
+  execution_unit_0/alu_0/U140/Y (AO222X1_RVT)             0.54      27.70 f
+  execution_unit_0/alu_0/U145/Y (OA222X1_RVT)             0.59      28.29 f
+  execution_unit_0/alu_0/U146/Y (OA222X1_RVT)             0.47      28.76 f
+  execution_unit_0/alu_0/U150/SO (HADDX1_RVT)             0.45      29.21 f
+  execution_unit_0/alu_0/U156/Y (NAND2X0_RVT)             0.23      29.44 r
+  execution_unit_0/alu_0/U157/Y (NAND2X0_RVT)             0.24      29.68 f
+  execution_unit_0/alu_0/U247/Y (OA21X1_RVT)              0.31      29.99 f
+  execution_unit_0/alu_0/U271/Y (OA222X1_RVT)             0.53      30.52 f
+  execution_unit_0/alu_0/U272/Y (OA222X1_RVT)             0.56      31.08 f
+  execution_unit_0/alu_0/U281/Y (OA222X1_RVT)             0.56      31.64 f
+  execution_unit_0/alu_0/U285/Y (OA222X1_RVT)             0.55      32.19 f
+  execution_unit_0/alu_0/U22/Y (INVX0_RVT)                0.21      32.40 r
+  execution_unit_0/alu_0/U304/SO (HADDX1_RVT)             0.46      32.86 f
+  execution_unit_0/alu_0/U306/Y (AO222X1_RVT)             0.54      33.40 f
+  execution_unit_0/alu_0/U316/Y (AO222X1_RVT)             0.44      33.84 f
+  execution_unit_0/alu_0/U317/Y (AO222X1_RVT)             0.44      34.28 f
+  execution_unit_0/alu_0/U318/SO (HADDX1_RVT)             0.42      34.71 r
+  execution_unit_0/alu_0/U8/Y (INVX0_RVT)                 0.09      34.79 f
+  execution_unit_0/alu_0/U325/Y (AO21X1_RVT)              0.30      35.09 f
+  execution_unit_0/alu_0/U326/Y (NAND2X0_RVT)             0.21      35.31 r
+  execution_unit_0/alu_0/U327/Y (AO221X1_RVT)             0.34      35.65 r
+  execution_unit_0/alu_0/U329/Y (AND2X1_RVT)              0.19      35.83 r
+  execution_unit_0/alu_0/U330/Y (OA21X1_RVT)              0.18      36.01 r
+  execution_unit_0/alu_0/U336/Y (NAND4X0_RVT)             0.23      36.24 f
+  execution_unit_0/alu_0/alu_out[13] (omsp_alu)           0.00      36.24 f
+  execution_unit_0/register_file_0/reg_dest_val[13] (omsp_register_file)
+                                                          0.00      36.24 f
+  execution_unit_0/register_file_0/U252/Y (AND2X1_RVT)
+                                                          0.41      36.65 f
+  execution_unit_0/register_file_0/pc_sw[13] (omsp_register_file)
+                                                          0.00      36.65 f
+  execution_unit_0/pc_sw[13] (omsp_execution_unit)        0.00      36.65 f
+  frontend_0/pc_sw[13] (omsp_frontend)                    0.00      36.65 f
+  frontend_0/U228/Y (AO221X1_RVT)                         0.56      37.21 f
+  frontend_0/mab[13] (omsp_frontend)                      0.00      37.21 f
+  mem_backbone_0/fe_mab[12] (omsp_mem_backbone)           0.00      37.21 f
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.33      37.54 f
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.31      37.86 r
+  mem_backbone_0/U107/Y (AND3X1_RVT)                      0.37      38.23 r
+  mem_backbone_0/clock_gate_bckup/enable (omsp_clock_gate_21)
+                                                          0.00      38.23 r
+  mem_backbone_0/clock_gate_bckup/U3/Y (OR2X1_RVT)        0.18      38.41 r
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                                          0.00      38.41 r
+  data arrival time                                                 38.41
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/CLK (LATCHX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -38.41
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.59
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.22   
+  --------------------------------------------------------------
+  max time borrow                                        19.78   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: frontend_0/inst_so_reg[5]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: mem_backbone_0/clock_gate_bckup/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: dco_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/inst_so_reg[5]/CLK (SDFFARX1_RVT)            0.00      20.00 r
+  frontend_0/inst_so_reg[5]/Q (SDFFARX1_RVT)              0.64      20.64 r
+  frontend_0/U239/Y (NOR2X0_RVT)                          0.27      20.92 f
+  frontend_0/U243/Y (AND4X1_RVT)                          0.33      21.24 f
+  frontend_0/U284/Y (AND3X1_RVT)                          0.36      21.60 f
+  frontend_0/U400/Y (AO22X1_RVT)                          0.45      22.05 f
+  frontend_0/inst_dest[12] (omsp_frontend)                0.00      22.05 f
+  execution_unit_0/inst_dest[12] (omsp_execution_unit)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/inst_dest[12] (omsp_register_file)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/U438/Y (AO22X1_RVT)
+                                                          0.40      22.45 f
+  execution_unit_0/register_file_0/U442/Y (NOR4X0_RVT)
+                                                          0.61      23.06 r
+  execution_unit_0/register_file_0/U443/Y (AND3X1_RVT)
+                                                          0.23      23.29 r
+  execution_unit_0/register_file_0/U446/Y (NAND3X0_RVT)
+                                                          0.17      23.46 f
+  execution_unit_0/register_file_0/reg_dest[0] (omsp_register_file)
+                                                          0.00      23.46 f
+  execution_unit_0/U89/Y (AOI22X1_RVT)                    0.34      23.79 r
+  execution_unit_0/U91/Y (NAND3X0_RVT)                    0.13      23.92 f
+  execution_unit_0/U92/Y (AO21X1_RVT)                     0.21      24.14 f
+  execution_unit_0/alu_0/op_src[0] (omsp_alu)             0.00      24.14 f
+  execution_unit_0/alu_0/U96/Y (AO22X1_RVT)               0.38      24.51 f
+  execution_unit_0/alu_0/U124/Y (AO222X1_RVT)             0.53      25.04 f
+  execution_unit_0/alu_0/U125/Y (AO222X1_RVT)             0.44      25.48 f
+  execution_unit_0/alu_0/U126/Y (AO222X1_RVT)             0.44      25.92 f
+  execution_unit_0/alu_0/U127/SO (HADDX1_RVT)             0.37      26.29 f
+  execution_unit_0/alu_0/U137/Y (NAND2X0_RVT)             0.28      26.57 r
+  execution_unit_0/alu_0/U139/SO (HADDX1_RVT)             0.59      27.16 f
+  execution_unit_0/alu_0/U140/Y (AO222X1_RVT)             0.54      27.70 f
+  execution_unit_0/alu_0/U145/Y (OA222X1_RVT)             0.59      28.29 f
+  execution_unit_0/alu_0/U146/Y (OA222X1_RVT)             0.47      28.76 f
+  execution_unit_0/alu_0/U150/SO (HADDX1_RVT)             0.45      29.21 f
+  execution_unit_0/alu_0/U156/Y (NAND2X0_RVT)             0.23      29.44 r
+  execution_unit_0/alu_0/U157/Y (NAND2X0_RVT)             0.24      29.68 f
+  execution_unit_0/alu_0/U247/Y (OA21X1_RVT)              0.31      29.99 f
+  execution_unit_0/alu_0/U271/Y (OA222X1_RVT)             0.53      30.52 f
+  execution_unit_0/alu_0/U272/Y (OA222X1_RVT)             0.56      31.08 f
+  execution_unit_0/alu_0/U281/Y (OA222X1_RVT)             0.56      31.64 f
+  execution_unit_0/alu_0/U285/Y (OA222X1_RVT)             0.55      32.19 f
+  execution_unit_0/alu_0/U22/Y (INVX0_RVT)                0.21      32.40 r
+  execution_unit_0/alu_0/U304/SO (HADDX1_RVT)             0.46      32.86 f
+  execution_unit_0/alu_0/U306/Y (AO222X1_RVT)             0.54      33.40 f
+  execution_unit_0/alu_0/U316/Y (AO222X1_RVT)             0.44      33.84 f
+  execution_unit_0/alu_0/U317/Y (AO222X1_RVT)             0.44      34.28 f
+  execution_unit_0/alu_0/U318/SO (HADDX1_RVT)             0.42      34.71 r
+  execution_unit_0/alu_0/U8/Y (INVX0_RVT)                 0.09      34.79 f
+  execution_unit_0/alu_0/U325/Y (AO21X1_RVT)              0.30      35.09 f
+  execution_unit_0/alu_0/U326/Y (NAND2X0_RVT)             0.21      35.31 r
+  execution_unit_0/alu_0/U327/Y (AO221X1_RVT)             0.31      35.62 r
+  execution_unit_0/alu_0/U329/Y (AND2X1_RVT)              0.19      35.81 r
+  execution_unit_0/alu_0/U330/Y (OA21X1_RVT)              0.18      35.99 r
+  execution_unit_0/alu_0/U336/Y (NAND4X0_RVT)             0.23      36.22 f
+  execution_unit_0/alu_0/alu_out[13] (omsp_alu)           0.00      36.22 f
+  execution_unit_0/register_file_0/reg_dest_val[13] (omsp_register_file)
+                                                          0.00      36.22 f
+  execution_unit_0/register_file_0/U252/Y (AND2X1_RVT)
+                                                          0.41      36.63 f
+  execution_unit_0/register_file_0/pc_sw[13] (omsp_register_file)
+                                                          0.00      36.63 f
+  execution_unit_0/pc_sw[13] (omsp_execution_unit)        0.00      36.63 f
+  frontend_0/pc_sw[13] (omsp_frontend)                    0.00      36.63 f
+  frontend_0/U228/Y (AO221X1_RVT)                         0.56      37.19 f
+  frontend_0/mab[13] (omsp_frontend)                      0.00      37.19 f
+  mem_backbone_0/fe_mab[12] (omsp_mem_backbone)           0.00      37.19 f
+  mem_backbone_0/U40/Y (AND4X1_RVT)                       0.33      37.52 f
+  mem_backbone_0/U41/Y (NAND2X0_RVT)                      0.31      37.83 r
+  mem_backbone_0/U107/Y (AND3X1_RVT)                      0.37      38.21 r
+  mem_backbone_0/clock_gate_bckup/enable (omsp_clock_gate_21)
+                                                          0.00      38.21 r
+  mem_backbone_0/clock_gate_bckup/U3/Y (OR2X1_RVT)        0.18      38.38 r
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/D (LATCHX1_RVT)
+                                                          0.00      38.38 r
+  data arrival time                                                 38.38
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  mem_backbone_0/clock_gate_bckup/enable_latch_reg/CLK (LATCHX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -38.38
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.62
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.22   
+  --------------------------------------------------------------
+  max time borrow                                        19.78   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: frontend_0/inst_so_reg[5]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: multiplier_0/clock_gate_reslo/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: dco_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/inst_so_reg[5]/CLK (SDFFARX1_RVT)            0.00      20.00 r
+  frontend_0/inst_so_reg[5]/Q (SDFFARX1_RVT)              0.64      20.64 r
+  frontend_0/U239/Y (NOR2X0_RVT)                          0.27      20.92 f
+  frontend_0/U243/Y (AND4X1_RVT)                          0.33      21.24 f
+  frontend_0/U284/Y (AND3X1_RVT)                          0.36      21.60 f
+  frontend_0/U400/Y (AO22X1_RVT)                          0.45      22.05 f
+  frontend_0/inst_dest[12] (omsp_frontend)                0.00      22.05 f
+  execution_unit_0/inst_dest[12] (omsp_execution_unit)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/inst_dest[12] (omsp_register_file)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/U438/Y (AO22X1_RVT)
+                                                          0.40      22.45 f
+  execution_unit_0/register_file_0/U442/Y (NOR4X0_RVT)
+                                                          0.61      23.06 r
+  execution_unit_0/register_file_0/U443/Y (AND3X1_RVT)
+                                                          0.23      23.29 r
+  execution_unit_0/register_file_0/U446/Y (NAND3X0_RVT)
+                                                          0.17      23.46 f
+  execution_unit_0/register_file_0/reg_dest[0] (omsp_register_file)
+                                                          0.00      23.46 f
+  execution_unit_0/U89/Y (AOI22X1_RVT)                    0.34      23.79 r
+  execution_unit_0/U91/Y (NAND3X0_RVT)                    0.13      23.92 f
+  execution_unit_0/U92/Y (AO21X1_RVT)                     0.21      24.14 f
+  execution_unit_0/alu_0/op_src[0] (omsp_alu)             0.00      24.14 f
+  execution_unit_0/alu_0/U96/Y (AO22X1_RVT)               0.38      24.51 f
+  execution_unit_0/alu_0/U101/Y (AND2X1_RVT)              0.22      24.74 f
+  execution_unit_0/alu_0/U102/Y (NAND2X0_RVT)             0.16      24.90 r
+  execution_unit_0/alu_0/U79/Y (INVX0_RVT)                0.14      25.03 f
+  execution_unit_0/alu_0/intadd_18/U16/CO (FADDX1_RVT)
+                                                          0.36      25.40 f
+  execution_unit_0/alu_0/intadd_18/U15/CO (FADDX1_RVT)
+                                                          0.38      25.78 f
+  execution_unit_0/alu_0/intadd_18/U14/CO (FADDX1_RVT)
+                                                          0.38      26.16 f
+  execution_unit_0/alu_0/intadd_18/U13/CO (FADDX1_RVT)
+                                                          0.38      26.54 f
+  execution_unit_0/alu_0/intadd_18/U12/CO (FADDX1_RVT)
+                                                          0.38      26.92 f
+  execution_unit_0/alu_0/intadd_18/U11/CO (FADDX1_RVT)
+                                                          0.38      27.30 f
+  execution_unit_0/alu_0/intadd_18/U10/CO (FADDX1_RVT)
+                                                          0.38      27.68 f
+  execution_unit_0/alu_0/intadd_18/U9/CO (FADDX1_RVT)     0.38      28.06 f
+  execution_unit_0/alu_0/intadd_18/U8/CO (FADDX1_RVT)     0.38      28.44 f
+  execution_unit_0/alu_0/intadd_18/U7/CO (FADDX1_RVT)     0.38      28.82 f
+  execution_unit_0/alu_0/intadd_18/U6/CO (FADDX1_RVT)     0.38      29.20 f
+  execution_unit_0/alu_0/intadd_18/U5/CO (FADDX1_RVT)     0.38      29.58 f
+  execution_unit_0/alu_0/intadd_18/U4/CO (FADDX1_RVT)     0.38      29.96 f
+  execution_unit_0/alu_0/intadd_18/U3/CO (FADDX1_RVT)     0.38      30.34 f
+  execution_unit_0/alu_0/intadd_18/U2/S (FADDX1_RVT)      0.54      30.88 f
+  execution_unit_0/alu_0/alu_out_add[15] (omsp_alu)       0.00      30.88 f
+  execution_unit_0/mab[15] (omsp_execution_unit)          0.00      30.88 f
+  mem_backbone_0/eu_mab[14] (omsp_mem_backbone)           0.00      30.88 f
+  mem_backbone_0/U50/Y (NOR4X0_RVT)                       0.57      31.45 r
+  mem_backbone_0/U51/Y (NAND3X0_RVT)                      0.17      31.62 f
+  mem_backbone_0/U32/Y (OR3X1_RVT)                        0.33      31.95 f
+  mem_backbone_0/U39/Y (INVX0_RVT)                        0.13      32.08 r
+  mem_backbone_0/U62/Y (NOR2X2_RVT)                       0.35      32.43 f
+  mem_backbone_0/U85/Y (INVX2_RVT)                        0.26      32.69 r
+  mem_backbone_0/U125/Y (AO22X1_RVT)                      0.33      33.01 r
+  mem_backbone_0/per_addr[3] (omsp_mem_backbone)          0.00      33.01 r
+  multiplier_0/per_addr[3] (omsp_multiplier)              0.00      33.01 r
+  multiplier_0/U58/Y (NAND2X0_RVT)                        0.12      33.13 f
+  multiplier_0/U59/Y (NOR3X0_RVT)                         0.37      33.50 r
+  multiplier_0/U60/Y (NAND3X0_RVT)                        0.18      33.67 f
+  multiplier_0/U48/Y (INVX0_RVT)                          0.17      33.84 r
+  multiplier_0/U66/Y (AND3X1_RVT)                         0.24      34.08 r
+  multiplier_0/U67/Y (NAND3X0_RVT)                        0.23      34.31 f
+  multiplier_0/U69/Y (OA21X1_RVT)                         0.48      34.78 f
+  multiplier_0/U536/Y (NAND3X0_RVT)                       0.20      34.98 r
+  multiplier_0/clock_gate_reslo/enable (omsp_clock_gate_16)
+                                                          0.00      34.98 r
+  multiplier_0/clock_gate_reslo/U3/Y (OR2X1_RVT)          0.19      35.18 r
+  multiplier_0/clock_gate_reslo/enable_latch_reg/D (LASRQX1_RVT)
+                                                          0.00      35.18 r
+  data arrival time                                                 35.18
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  multiplier_0/clock_gate_reslo/enable_latch_reg/CLK (LASRQX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -35.18
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.82
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.31   
+  --------------------------------------------------------------
+  max time borrow                                        19.69   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: frontend_0/inst_so_reg[5]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: multiplier_0/clock_gate_reshi/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: dco_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/inst_so_reg[5]/CLK (SDFFARX1_RVT)            0.00      20.00 r
+  frontend_0/inst_so_reg[5]/Q (SDFFARX1_RVT)              0.64      20.64 r
+  frontend_0/U239/Y (NOR2X0_RVT)                          0.27      20.92 f
+  frontend_0/U243/Y (AND4X1_RVT)                          0.33      21.24 f
+  frontend_0/U284/Y (AND3X1_RVT)                          0.36      21.60 f
+  frontend_0/U400/Y (AO22X1_RVT)                          0.45      22.05 f
+  frontend_0/inst_dest[12] (omsp_frontend)                0.00      22.05 f
+  execution_unit_0/inst_dest[12] (omsp_execution_unit)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/inst_dest[12] (omsp_register_file)
+                                                          0.00      22.05 f
+  execution_unit_0/register_file_0/U438/Y (AO22X1_RVT)
+                                                          0.40      22.45 f
+  execution_unit_0/register_file_0/U442/Y (NOR4X0_RVT)
+                                                          0.61      23.06 r
+  execution_unit_0/register_file_0/U443/Y (AND3X1_RVT)
+                                                          0.23      23.29 r
+  execution_unit_0/register_file_0/U446/Y (NAND3X0_RVT)
+                                                          0.17      23.46 f
+  execution_unit_0/register_file_0/reg_dest[0] (omsp_register_file)
+                                                          0.00      23.46 f
+  execution_unit_0/U89/Y (AOI22X1_RVT)                    0.34      23.79 r
+  execution_unit_0/U91/Y (NAND3X0_RVT)                    0.13      23.92 f
+  execution_unit_0/U92/Y (AO21X1_RVT)                     0.21      24.14 f
+  execution_unit_0/alu_0/op_src[0] (omsp_alu)             0.00      24.14 f
+  execution_unit_0/alu_0/U96/Y (AO22X1_RVT)               0.38      24.51 f
+  execution_unit_0/alu_0/U101/Y (AND2X1_RVT)              0.22      24.74 f
+  execution_unit_0/alu_0/U102/Y (NAND2X0_RVT)             0.16      24.90 r
+  execution_unit_0/alu_0/U79/Y (INVX0_RVT)                0.14      25.03 f
+  execution_unit_0/alu_0/intadd_18/U16/CO (FADDX1_RVT)
+                                                          0.36      25.40 f
+  execution_unit_0/alu_0/intadd_18/U15/CO (FADDX1_RVT)
+                                                          0.38      25.78 f
+  execution_unit_0/alu_0/intadd_18/U14/CO (FADDX1_RVT)
+                                                          0.38      26.16 f
+  execution_unit_0/alu_0/intadd_18/U13/CO (FADDX1_RVT)
+                                                          0.38      26.54 f
+  execution_unit_0/alu_0/intadd_18/U12/CO (FADDX1_RVT)
+                                                          0.38      26.92 f
+  execution_unit_0/alu_0/intadd_18/U11/CO (FADDX1_RVT)
+                                                          0.38      27.30 f
+  execution_unit_0/alu_0/intadd_18/U10/CO (FADDX1_RVT)
+                                                          0.38      27.68 f
+  execution_unit_0/alu_0/intadd_18/U9/CO (FADDX1_RVT)     0.38      28.06 f
+  execution_unit_0/alu_0/intadd_18/U8/CO (FADDX1_RVT)     0.38      28.44 f
+  execution_unit_0/alu_0/intadd_18/U7/CO (FADDX1_RVT)     0.38      28.82 f
+  execution_unit_0/alu_0/intadd_18/U6/CO (FADDX1_RVT)     0.38      29.20 f
+  execution_unit_0/alu_0/intadd_18/U5/CO (FADDX1_RVT)     0.38      29.58 f
+  execution_unit_0/alu_0/intadd_18/U4/CO (FADDX1_RVT)     0.38      29.96 f
+  execution_unit_0/alu_0/intadd_18/U3/CO (FADDX1_RVT)     0.38      30.34 f
+  execution_unit_0/alu_0/intadd_18/U2/S (FADDX1_RVT)      0.54      30.88 f
+  execution_unit_0/alu_0/alu_out_add[15] (omsp_alu)       0.00      30.88 f
+  execution_unit_0/mab[15] (omsp_execution_unit)          0.00      30.88 f
+  mem_backbone_0/eu_mab[14] (omsp_mem_backbone)           0.00      30.88 f
+  mem_backbone_0/U50/Y (NOR4X0_RVT)                       0.57      31.45 r
+  mem_backbone_0/U51/Y (NAND3X0_RVT)                      0.17      31.62 f
+  mem_backbone_0/U32/Y (OR3X1_RVT)                        0.33      31.95 f
+  mem_backbone_0/U39/Y (INVX0_RVT)                        0.13      32.08 r
+  mem_backbone_0/U62/Y (NOR2X2_RVT)                       0.35      32.43 f
+  mem_backbone_0/U85/Y (INVX2_RVT)                        0.26      32.69 r
+  mem_backbone_0/U125/Y (AO22X1_RVT)                      0.33      33.01 r
+  mem_backbone_0/per_addr[3] (omsp_mem_backbone)          0.00      33.01 r
+  multiplier_0/per_addr[3] (omsp_multiplier)              0.00      33.01 r
+  multiplier_0/U58/Y (NAND2X0_RVT)                        0.12      33.13 f
+  multiplier_0/U59/Y (NOR3X0_RVT)                         0.37      33.50 r
+  multiplier_0/U60/Y (NAND3X0_RVT)                        0.18      33.67 f
+  multiplier_0/U48/Y (INVX0_RVT)                          0.17      33.84 r
+  multiplier_0/U66/Y (AND3X1_RVT)                         0.24      34.08 r
+  multiplier_0/U67/Y (NAND3X0_RVT)                        0.23      34.31 f
+  multiplier_0/U90/Y (OA21X1_RVT)                         0.48      34.78 f
+  multiplier_0/U537/Y (NAND3X0_RVT)                       0.20      34.98 r
+  multiplier_0/clock_gate_reshi/enable (omsp_clock_gate_15)
+                                                          0.00      34.98 r
+  multiplier_0/clock_gate_reshi/U3/Y (OR2X1_RVT)          0.19      35.18 r
+  multiplier_0/clock_gate_reshi/enable_latch_reg/D (LASRQX1_RVT)
+                                                          0.00      35.18 r
+  data arrival time                                                 35.18
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  multiplier_0/clock_gate_reshi/enable_latch_reg/CLK (LASRQX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -35.18
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.82
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.31   
+  --------------------------------------------------------------
+  max time borrow                                        19.69   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: frontend_0/inst_so_reg[4]
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: multiplier_0/clock_gate_reshi/enable_latch_reg
+            (positive level-sensitive latch clocked by dco_clk')
+  Path Group: dco_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  frontend_0/inst_so_reg[4]/CLK (SDFFARX1_RVT)            0.00      20.00 r
+  frontend_0/inst_so_reg[4]/Q (SDFFARX1_RVT)              0.62      20.62 r
+  frontend_0/U239/Y (NOR2X0_RVT)                          0.25      20.87 f
+  frontend_0/U243/Y (AND4X1_RVT)                          0.33      21.19 f
+  frontend_0/U284/Y (AND3X1_RVT)                          0.36      21.55 f
+  frontend_0/U400/Y (AO22X1_RVT)                          0.45      22.00 f
+  frontend_0/inst_dest[12] (omsp_frontend)                0.00      22.00 f
+  execution_unit_0/inst_dest[12] (omsp_execution_unit)
+                                                          0.00      22.00 f
+  execution_unit_0/register_file_0/inst_dest[12] (omsp_register_file)
+                                                          0.00      22.00 f
+  execution_unit_0/register_file_0/U438/Y (AO22X1_RVT)
+                                                          0.40      22.40 f
+  execution_unit_0/register_file_0/U442/Y (NOR4X0_RVT)
+                                                          0.61      23.01 r
+  execution_unit_0/register_file_0/U443/Y (AND3X1_RVT)
+                                                          0.23      23.24 r
+  execution_unit_0/register_file_0/U446/Y (NAND3X0_RVT)
+                                                          0.17      23.41 f
+  execution_unit_0/register_file_0/reg_dest[0] (omsp_register_file)
+                                                          0.00      23.41 f
+  execution_unit_0/U89/Y (AOI22X1_RVT)                    0.34      23.74 r
+  execution_unit_0/U91/Y (NAND3X0_RVT)                    0.13      23.87 f
+  execution_unit_0/U92/Y (AO21X1_RVT)                     0.21      24.09 f
+  execution_unit_0/alu_0/op_src[0] (omsp_alu)             0.00      24.09 f
+  execution_unit_0/alu_0/U96/Y (AO22X1_RVT)               0.38      24.46 f
+  execution_unit_0/alu_0/U101/Y (AND2X1_RVT)              0.22      24.69 f
+  execution_unit_0/alu_0/U102/Y (NAND2X0_RVT)             0.16      24.85 r
+  execution_unit_0/alu_0/U79/Y (INVX0_RVT)                0.14      24.98 f
+  execution_unit_0/alu_0/intadd_18/U16/CO (FADDX1_RVT)
+                                                          0.36      25.35 f
+  execution_unit_0/alu_0/intadd_18/U15/CO (FADDX1_RVT)
+                                                          0.38      25.73 f
+  execution_unit_0/alu_0/intadd_18/U14/CO (FADDX1_RVT)
+                                                          0.38      26.11 f
+  execution_unit_0/alu_0/intadd_18/U13/CO (FADDX1_RVT)
+                                                          0.38      26.49 f
+  execution_unit_0/alu_0/intadd_18/U12/CO (FADDX1_RVT)
+                                                          0.38      26.87 f
+  execution_unit_0/alu_0/intadd_18/U11/CO (FADDX1_RVT)
+                                                          0.38      27.25 f
+  execution_unit_0/alu_0/intadd_18/U10/CO (FADDX1_RVT)
+                                                          0.38      27.63 f
+  execution_unit_0/alu_0/intadd_18/U9/CO (FADDX1_RVT)     0.38      28.01 f
+  execution_unit_0/alu_0/intadd_18/U8/CO (FADDX1_RVT)     0.38      28.39 f
+  execution_unit_0/alu_0/intadd_18/U7/CO (FADDX1_RVT)     0.38      28.77 f
+  execution_unit_0/alu_0/intadd_18/U6/CO (FADDX1_RVT)     0.38      29.15 f
+  execution_unit_0/alu_0/intadd_18/U5/CO (FADDX1_RVT)     0.38      29.53 f
+  execution_unit_0/alu_0/intadd_18/U4/CO (FADDX1_RVT)     0.38      29.91 f
+  execution_unit_0/alu_0/intadd_18/U3/CO (FADDX1_RVT)     0.38      30.29 f
+  execution_unit_0/alu_0/intadd_18/U2/S (FADDX1_RVT)      0.54      30.83 f
+  execution_unit_0/alu_0/alu_out_add[15] (omsp_alu)       0.00      30.83 f
+  execution_unit_0/mab[15] (omsp_execution_unit)          0.00      30.83 f
+  mem_backbone_0/eu_mab[14] (omsp_mem_backbone)           0.00      30.83 f
+  mem_backbone_0/U50/Y (NOR4X0_RVT)                       0.57      31.40 r
+  mem_backbone_0/U51/Y (NAND3X0_RVT)                      0.17      31.57 f
+  mem_backbone_0/U32/Y (OR3X1_RVT)                        0.33      31.90 f
+  mem_backbone_0/U39/Y (INVX0_RVT)                        0.13      32.03 r
+  mem_backbone_0/U62/Y (NOR2X2_RVT)                       0.35      32.38 f
+  mem_backbone_0/U85/Y (INVX2_RVT)                        0.26      32.64 r
+  mem_backbone_0/U125/Y (AO22X1_RVT)                      0.33      32.96 r
+  mem_backbone_0/per_addr[3] (omsp_mem_backbone)          0.00      32.96 r
+  multiplier_0/per_addr[3] (omsp_multiplier)              0.00      32.96 r
+  multiplier_0/U58/Y (NAND2X0_RVT)                        0.12      33.08 f
+  multiplier_0/U59/Y (NOR3X0_RVT)                         0.37      33.45 r
+  multiplier_0/U60/Y (NAND3X0_RVT)                        0.18      33.63 f
+  multiplier_0/U48/Y (INVX0_RVT)                          0.17      33.79 r
+  multiplier_0/U66/Y (AND3X1_RVT)                         0.24      34.03 r
+  multiplier_0/U67/Y (NAND3X0_RVT)                        0.23      34.26 f
+  multiplier_0/U90/Y (OA21X1_RVT)                         0.48      34.74 f
+  multiplier_0/U537/Y (NAND3X0_RVT)                       0.20      34.94 r
+  multiplier_0/clock_gate_reshi/enable (omsp_clock_gate_15)
+                                                          0.00      34.94 r
+  multiplier_0/clock_gate_reshi/U3/Y (OR2X1_RVT)          0.19      35.13 r
+  multiplier_0/clock_gate_reshi/enable_latch_reg/D (LASRQX1_RVT)
+                                                          0.00      35.13 r
+  data arrival time                                                 35.13
+
+  clock dco_clk' (rise edge)                             40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  multiplier_0/clock_gate_reshi/enable_latch_reg/CLK (LASRQX1_RVT)
+                                                          0.00      40.00 r
+  time borrowed from endpoint                             0.00      40.00
+  data required time                                                40.00
+  --------------------------------------------------------------------------
+  data required time                                                40.00
+  data arrival time                                                -35.13
+  --------------------------------------------------------------------------
+  slack (MET)                                                        4.87
+
+  Time Borrowing Information
+  --------------------------------------------------------------
+  dco_clk' nominal pulse width                           20.00   
+  library setup time                                     -0.31   
+  --------------------------------------------------------------
+  max time borrow                                        19.69   
+  actual time borrow                                      0.00   
+  --------------------------------------------------------------
+
+
+  Startpoint: clock_module_0/sync_cell_dco_wkup/LOCKUP
+              (positive level-sensitive latch clocked by dco_clk)
+  Endpoint: clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]
+            (rising edge-triggered flip-flop clocked by lfxt_clk')
+  Path Group: lfxt_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock_module_0/sync_cell_dco_wkup/LOCKUP/CLK (LASRQX1_RVT)
+                                                          0.00      20.00 r
+  clock_module_0/sync_cell_dco_wkup/LOCKUP/Q (LASRQX1_RVT)
+                                                          0.56      20.56 f
+  clock_module_0/sync_cell_dco_wkup/test_so (omsp_sync_cell_15)
+                                                          0.00      20.56 f
+  clock_module_0/sync_cell_lfxt_disable/test_si (omsp_sync_cell_14)
+                                                          0.00      20.56 f
+  clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]/SI (SDFFARX1_RVT)
+                                                          0.00      20.56 f
+  data arrival time                                                 20.56
+
+  clock lfxt_clk' (rise edge)                            40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]/CLK (SDFFARX1_RVT)
+                                                          0.00      40.00 r
+  library setup time                                     -0.72      39.28
+  data required time                                                39.28
+  --------------------------------------------------------------------------
+  data required time                                                39.28
+  data arrival time                                                -20.56
+  --------------------------------------------------------------------------
+  slack (MET)                                                       18.72
+
+
+  Startpoint: watchdog_0/LOCKUP
+              (positive level-sensitive latch clocked by dco_clk')
+  Endpoint: clock_module_0/aclk_div_reg[0]
+            (rising edge-triggered flip-flop clocked by lfxt_clk)
+  Path Group: lfxt_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk' (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  watchdog_0/LOCKUP/CLK (LASRQX1_RVT)                     0.00       0.00 r
+  watchdog_0/LOCKUP/Q (LASRQX1_RVT)                       0.56       0.56 f
+  watchdog_0/test_so1 (omsp_watchdog)                     0.00       0.56 f
+  clock_module_0/test_si2 (omsp_clock_module)             0.00       0.56 f
+  clock_module_0/aclk_div_reg[0]/SI (SDFFARX1_RVT)        0.00       0.56 f
+  data arrival time                                                  0.56
+
+  clock lfxt_clk (rise edge)                             20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock_module_0/aclk_div_reg[0]/CLK (SDFFARX1_RVT)       0.00      20.00 r
+  library setup time                                     -0.72      19.28
+  data required time                                                19.28
+  --------------------------------------------------------------------------
+  data required time                                                19.28
+  data arrival time                                                 -0.56
+  --------------------------------------------------------------------------
+  slack (MET)                                                       18.72
+
+
+  Startpoint: watchdog_0/LOCKUP1
+              (positive level-sensitive latch clocked by dco_clk')
+  Endpoint: clock_module_0/divax_s_reg[0]
+            (rising edge-triggered flip-flop clocked by lfxt_clk)
+  Path Group: lfxt_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk' (rise edge)                              0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  watchdog_0/LOCKUP1/CLK (LASRQX1_RVT)                    0.00       0.00 r
+  watchdog_0/LOCKUP1/Q (LASRQX1_RVT)                      0.56       0.56 f
+  watchdog_0/test_so2 (omsp_watchdog)                     0.00       0.56 f
+  clock_module_0/test_si5 (omsp_clock_module)             0.00       0.56 f
+  clock_module_0/divax_s_reg[0]/SI (SDFFARX1_RVT)         0.00       0.56 f
+  data arrival time                                                  0.56
+
+  clock lfxt_clk (rise edge)                             20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock_module_0/divax_s_reg[0]/CLK (SDFFARX1_RVT)        0.00      20.00 r
+  library setup time                                     -0.72      19.28
+  data required time                                                19.28
+  --------------------------------------------------------------------------
+  data required time                                                19.28
+  data arrival time                                                 -0.56
+  --------------------------------------------------------------------------
+  slack (MET)                                                       18.72
+
+
+  Startpoint: clock_module_0/lfxt_disable_reg
+              (rising edge-triggered flip-flop clocked by dco_clk)
+  Endpoint: clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]
+            (rising edge-triggered flip-flop clocked by lfxt_clk')
+  Path Group: lfxt_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock_module_0/lfxt_disable_reg/CLK (SDFFASX1_RVT)      0.00      20.00 r
+  clock_module_0/lfxt_disable_reg/QN (SDFFASX1_RVT)       0.38      20.38 f
+  clock_module_0/sync_cell_lfxt_disable/data_in (omsp_sync_cell_14)
+                                                          0.00      20.38 f
+  clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]/D (SDFFARX1_RVT)
+                                                          0.00      20.38 f
+  data arrival time                                                 20.38
+
+  clock lfxt_clk' (rise edge)                            40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]/CLK (SDFFARX1_RVT)
+                                                          0.00      40.00 r
+  library setup time                                     -0.77      39.23
+  data required time                                                39.23
+  --------------------------------------------------------------------------
+  data required time                                                39.23
+  data arrival time                                                -20.38
+  --------------------------------------------------------------------------
+  slack (MET)                                                       18.85
+
+
+  Startpoint: clock_module_0/sync_cell_dco_wkup/LOCKUP
+              (positive level-sensitive latch clocked by dco_clk)
+  Endpoint: clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]
+            (rising edge-triggered flip-flop clocked by lfxt_clk')
+  Path Group: lfxt_clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  openMSP430         8000                  saed32rvt_ss0p7v25c
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock dco_clk (rise edge)                              20.00      20.00
+  clock network delay (ideal)                             0.00      20.00
+  clock_module_0/sync_cell_dco_wkup/LOCKUP/CLK (LASRQX1_RVT)
+                                                          0.00      20.00 r
+  clock_module_0/sync_cell_dco_wkup/LOCKUP/Q (LASRQX1_RVT)
+                                                          0.51      20.51 r
+  clock_module_0/sync_cell_dco_wkup/test_so (omsp_sync_cell_15)
+                                                          0.00      20.51 r
+  clock_module_0/sync_cell_lfxt_disable/test_si (omsp_sync_cell_14)
+                                                          0.00      20.51 r
+  clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]/SI (SDFFARX1_RVT)
+                                                          0.00      20.51 r
+  data arrival time                                                 20.51
+
+  clock lfxt_clk' (rise edge)                            40.00      40.00
+  clock network delay (ideal)                             0.00      40.00
+  clock_module_0/sync_cell_lfxt_disable/data_sync_reg[0]/CLK (SDFFARX1_RVT)
+                                                          0.00      40.00 r
+  library setup time                                     -0.46      39.54
+  data required time                                                39.54
+  --------------------------------------------------------------------------
+  data required time                                                39.54
+  data arrival time                                                -20.51
+  --------------------------------------------------------------------------
+  slack (MET)                                                       19.03
+
+
+1

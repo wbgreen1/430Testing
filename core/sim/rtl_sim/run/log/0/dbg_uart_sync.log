@@ -1,0 +1,637 @@
+Cleanup...
+ =======================================================
+| Start simulation:             dbg_uart_sync
+ =======================================================
+
+ Seed:   -709635067
+
+Compile, link & generate IHEX file (Program Memory: 4096 B, Data Memory: 1024 B, Peripheral Space: 512 B)...
+
+$ msp430-elf-as      -alsm pmem.s43 -o pmem.o > pmem.l43
+$ msp430-elf-objdump -xdsStr pmem.o >> pmem.l43
+$ msp430-elf-ld      -T ./pmem.x pmem.o -o pmem.elf
+$ msp430-elf-objcopy -O ihex pmem.elf pmem.ihex
+
+Convert IHEX file to Verilog MEMH format...
+Start Verilog simulation...
+Running: vcs -sverilog -f ../src/submit.f +define+SEED=-709635067 +define+DMA_VERIF +define+NODUMP -R -debug_pp +vcs+lic+wait +v2k +define+VPD_FILE
+
+Warning-[LNX_OS_VERUN] Unsupported Linux version
+  Linux version 'CentOS Linux release 7.2.1511 (Core) ' is not supported on 
+  'x86_64' officially, assuming linux compatibility by default. Set 
+  VCS_ARCH_OVERRIDE to linux or suse32 to override.
+  Please refer to release notes for information on supported platforms.
+
+                         Chronologic VCS (TM)
+          Version L-2016.06-SP1 -- Wed Apr 12 16:56:27 2017
+               Copyright (c) 1991-2016 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+Parsing design file '../../../bench/verilog/tb_openMSP430.v'
+Parsing included file '../../../bench/verilog/timescale.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../rtl/verilog/openMSP430_defines.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/registers.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dbg_uart_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dbg_i2c_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file '../../../bench/verilog/dma_tasks.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing included file 'stimulus.v'.
+Back to file '../../../bench/verilog/tb_openMSP430.v'.
+Parsing design file '../../../bench/verilog/ram.v'
+Parsing design file '../../../bench/verilog/io_cell.v'
+Parsing design file '../../../bench/verilog/msp_debug.v'
+Parsing design file '../../../rtl/verilog/openMSP430_defines.v'
+Parsing design file '../../../rtl/verilog/openMSP430.v'
+Parsing design file '../../../rtl/verilog/omsp_frontend.v'
+Parsing design file '../../../rtl/verilog/omsp_execution_unit.v'
+Parsing design file '../../../rtl/verilog/omsp_register_file.v'
+Parsing design file '../../../rtl/verilog/omsp_alu.v'
+Parsing design file '../../../rtl/verilog/omsp_sfr.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_module.v'
+Parsing design file '../../../rtl/verilog/omsp_mem_backbone.v'
+Parsing design file '../../../rtl/verilog/omsp_watchdog.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_uart.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_i2c.v'
+Parsing design file '../../../rtl/verilog/omsp_dbg_hwbrk.v'
+Parsing design file '../../../rtl/verilog/omsp_multiplier.v'
+Parsing design file '../../../rtl/verilog/omsp_sync_reset.v'
+Parsing design file '../../../rtl/verilog/omsp_sync_cell.v'
+Parsing design file '../../../rtl/verilog/omsp_scan_mux.v'
+Parsing design file '../../../rtl/verilog/omsp_and_gate.v'
+Parsing design file '../../../rtl/verilog/omsp_wakeup_cell.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_gate.v'
+Parsing design file '../../../rtl/verilog/omsp_clock_mux.v'
+Parsing design file '../../../rtl/verilog/periph/omsp_gpio.v'
+Parsing design file '../../../rtl/verilog/periph/omsp_timerA.v'
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_defines.v'.
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_undefines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA_defines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA.v'.
+Parsing included file '../../../rtl/verilog/periph/omsp_timerA_undefines.v'.
+Back to file '../../../rtl/verilog/periph/omsp_timerA.v'.
+Parsing design file '../../../rtl/verilog/periph/template_periph_8b.v'
+Parsing design file '../../../rtl/verilog/periph/template_periph_16b.v'
+Top Level Modules:
+       tb_openMSP430
+       omsp_dbg_i2c
+       omsp_dbg_hwbrk
+       omsp_clock_mux
+TimeScale is 1 ns / 100 ps
+Starting vcs inline pass...
+18 unique modules to generate
+recompiling module tb_openMSP430
+recompiling module ram
+recompiling module io_cell
+recompiling module msp_debug
+recompiling module openMSP430
+recompiling module omsp_sfr
+recompiling module omsp_mem_backbone
+recompiling module omsp_watchdog
+recompiling module omsp_dbg
+recompiling module omsp_dbg_i2c
+recompiling module omsp_dbg_hwbrk
+recompiling module omsp_multiplier
+recompiling module omsp_sync_cell
+recompiling module omsp_clock_mux
+recompiling module omsp_gpio
+recompiling module omsp_timerA
+recompiling module template_periph_8b
+recompiling module template_periph_16b
+All of 18 modules done
+rm -f _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++  -o ../simv   -Wl,-rpath-link=./ -Wl,-rpath='$ORIGIN'/simv.daidir/ -Wl,-rpath=./simv.daidir/ -Wl,-rpath='$ORIGIN'/simv.daidir//scsim.db.dir  -m32 -m32 -rdynamic   objs/amcQw_d.o   _26945_archive_1.so  SIM_l.o       rmapats_mop.o rmapats.o rmar.o  rmar_llvm_0_1.o rmar_llvm_0_0.o          /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libzerosoft_rt_stubs.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvirsim.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/liberrorinf.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsnpsmalloc.so    /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvcsnew.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsimprofile.so /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libuclinative.so   -Wl,-whole-archive /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvcsucli.so -Wl,-no-whole-archive          /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcs_save_restore_new.o /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/ctype-stubs_32.a -ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+Chronologic VCS simulator copyright 1991-2016
+Contains Synopsys proprietary information.
+Compiler version L-2016.06-SP1; Runtime version L-2016.06-SP1;  Apr 12 16:56 2017
+ ===============================================
+|                 START SIMULATION              |
+ ===============================================
+Synchronisation test for DBG_UART_PERIOD =   650 ns  /  ii = 0
+Synchronisation test for DBG_UART_PERIOD =   651 ns  /  ii = 1
+Synchronisation test for DBG_UART_PERIOD =   652 ns  /  ii = 2
+Synchronisation test for DBG_UART_PERIOD =   653 ns  /  ii = 3
+Synchronisation test for DBG_UART_PERIOD =   654 ns  /  ii = 4
+Synchronisation test for DBG_UART_PERIOD =   655 ns  /  ii = 5
+Synchronisation test for DBG_UART_PERIOD =   656 ns  /  ii = 6
+Synchronisation test for DBG_UART_PERIOD =   657 ns  /  ii = 7
+Synchronisation test for DBG_UART_PERIOD =   658 ns  /  ii = 8
+Synchronisation test for DBG_UART_PERIOD =   659 ns  /  ii = 9
+Synchronisation test for DBG_UART_PERIOD =   660 ns  /  ii = 10
+Synchronisation test for DBG_UART_PERIOD =   661 ns  /  ii = 11
+Synchronisation test for DBG_UART_PERIOD =   662 ns  /  ii = 12
+Synchronisation test for DBG_UART_PERIOD =   663 ns  /  ii = 13
+Synchronisation test for DBG_UART_PERIOD =   664 ns  /  ii = 14
+Synchronisation test for DBG_UART_PERIOD =   665 ns  /  ii = 15
+Synchronisation test for DBG_UART_PERIOD =   666 ns  /  ii = 16
+Synchronisation test for DBG_UART_PERIOD =   667 ns  /  ii = 17
+Synchronisation test for DBG_UART_PERIOD =   668 ns  /  ii = 18
+Synchronisation test for DBG_UART_PERIOD =   669 ns  /  ii = 19
+Synchronisation test for DBG_UART_PERIOD =   670 ns  /  ii = 20
+Synchronisation test for DBG_UART_PERIOD =   671 ns  /  ii = 21
+Synchronisation test for DBG_UART_PERIOD =   672 ns  /  ii = 22
+Synchronisation test for DBG_UART_PERIOD =   673 ns  /  ii = 23
+Synchronisation test for DBG_UART_PERIOD =   674 ns  /  ii = 24
+Synchronisation test for DBG_UART_PERIOD =   675 ns  /  ii = 25
+Synchronisation test for DBG_UART_PERIOD =   676 ns  /  ii = 26
+Synchronisation test for DBG_UART_PERIOD =   677 ns  /  ii = 27
+Synchronisation test for DBG_UART_PERIOD =   678 ns  /  ii = 28
+Synchronisation test for DBG_UART_PERIOD =   679 ns  /  ii = 29
+Synchronisation test for DBG_UART_PERIOD =   680 ns  /  ii = 30
+Synchronisation test for DBG_UART_PERIOD =   681 ns  /  ii = 31
+Synchronisation test for DBG_UART_PERIOD =   682 ns  /  ii = 32
+Synchronisation test for DBG_UART_PERIOD =   683 ns  /  ii = 33
+Synchronisation test for DBG_UART_PERIOD =   684 ns  /  ii = 34
+Synchronisation test for DBG_UART_PERIOD =   685 ns  /  ii = 35
+Synchronisation test for DBG_UART_PERIOD =   686 ns  /  ii = 36
+Synchronisation test for DBG_UART_PERIOD =   687 ns  /  ii = 37
+Synchronisation test for DBG_UART_PERIOD =   688 ns  /  ii = 38
+Synchronisation test for DBG_UART_PERIOD =   689 ns  /  ii = 39
+Synchronisation test for DBG_UART_PERIOD =   690 ns  /  ii = 40
+Synchronisation test for DBG_UART_PERIOD =   691 ns  /  ii = 41
+Synchronisation test for DBG_UART_PERIOD =   692 ns  /  ii = 42
+Synchronisation test for DBG_UART_PERIOD =   693 ns  /  ii = 43
+Synchronisation test for DBG_UART_PERIOD =   694 ns  /  ii = 44
+Synchronisation test for DBG_UART_PERIOD =   695 ns  /  ii = 45
+Synchronisation test for DBG_UART_PERIOD =   696 ns  /  ii = 46
+Synchronisation test for DBG_UART_PERIOD =   697 ns  /  ii = 47
+Synchronisation test for DBG_UART_PERIOD =   698 ns  /  ii = 48
+Synchronisation test for DBG_UART_PERIOD =   699 ns  /  ii = 49
+Synchronisation test for DBG_UART_PERIOD =   700 ns  /  ii = 50
+Synchronisation test for DBG_UART_PERIOD =   701 ns  /  ii = 51
+Synchronisation test for DBG_UART_PERIOD =   702 ns  /  ii = 52
+Synchronisation test for DBG_UART_PERIOD =   703 ns  /  ii = 53
+Synchronisation test for DBG_UART_PERIOD =   704 ns  /  ii = 54
+Synchronisation test for DBG_UART_PERIOD =   705 ns  /  ii = 55
+Synchronisation test for DBG_UART_PERIOD =   706 ns  /  ii = 56
+Synchronisation test for DBG_UART_PERIOD =   707 ns  /  ii = 57
+Synchronisation test for DBG_UART_PERIOD =   708 ns  /  ii = 58
+Synchronisation test for DBG_UART_PERIOD =   709 ns  /  ii = 59
+Synchronisation test for DBG_UART_PERIOD =   710 ns  /  ii = 60
+Synchronisation test for DBG_UART_PERIOD =   711 ns  /  ii = 61
+Synchronisation test for DBG_UART_PERIOD =   712 ns  /  ii = 62
+Synchronisation test for DBG_UART_PERIOD =   713 ns  /  ii = 63
+Synchronisation test for DBG_UART_PERIOD =   714 ns  /  ii = 64
+Synchronisation test for DBG_UART_PERIOD =   715 ns  /  ii = 65
+Synchronisation test for DBG_UART_PERIOD =   716 ns  /  ii = 66
+Synchronisation test for DBG_UART_PERIOD =   717 ns  /  ii = 67
+Synchronisation test for DBG_UART_PERIOD =   718 ns  /  ii = 68
+Synchronisation test for DBG_UART_PERIOD =   719 ns  /  ii = 69
+Synchronisation test for DBG_UART_PERIOD =   720 ns  /  ii = 70
+Synchronisation test for DBG_UART_PERIOD =   721 ns  /  ii = 71
+Synchronisation test for DBG_UART_PERIOD =   722 ns  /  ii = 72
+Synchronisation test for DBG_UART_PERIOD =   723 ns  /  ii = 73
+Synchronisation test for DBG_UART_PERIOD =   724 ns  /  ii = 74
+Synchronisation test for DBG_UART_PERIOD =   725 ns  /  ii = 75
+Synchronisation test for DBG_UART_PERIOD =   726 ns  /  ii = 76
+Synchronisation test for DBG_UART_PERIOD =   727 ns  /  ii = 77
+Synchronisation test for DBG_UART_PERIOD =   728 ns  /  ii = 78
+Synchronisation test for DBG_UART_PERIOD =   729 ns  /  ii = 79
+Synchronisation test for DBG_UART_PERIOD =   730 ns  /  ii = 80
+Synchronisation test for DBG_UART_PERIOD =   731 ns  /  ii = 81
+Synchronisation test for DBG_UART_PERIOD =   732 ns  /  ii = 82
+Synchronisation test for DBG_UART_PERIOD =   733 ns  /  ii = 83
+Synchronisation test for DBG_UART_PERIOD =   734 ns  /  ii = 84
+Synchronisation test for DBG_UART_PERIOD =   735 ns  /  ii = 85
+Synchronisation test for DBG_UART_PERIOD =   736 ns  /  ii = 86
+Synchronisation test for DBG_UART_PERIOD =   737 ns  /  ii = 87
+Synchronisation test for DBG_UART_PERIOD =   738 ns  /  ii = 88
+Synchronisation test for DBG_UART_PERIOD =   739 ns  /  ii = 89
+Synchronisation test for DBG_UART_PERIOD =   740 ns  /  ii = 90
+Synchronisation test for DBG_UART_PERIOD =   741 ns  /  ii = 91
+Synchronisation test for DBG_UART_PERIOD =   742 ns  /  ii = 92
+Synchronisation test for DBG_UART_PERIOD =   743 ns  /  ii = 93
+Synchronisation test for DBG_UART_PERIOD =   744 ns  /  ii = 94
+Synchronisation test for DBG_UART_PERIOD =   745 ns  /  ii = 95
+Synchronisation test for DBG_UART_PERIOD =   746 ns  /  ii = 96
+Synchronisation test for DBG_UART_PERIOD =   747 ns  /  ii = 97
+Synchronisation test for DBG_UART_PERIOD =   748 ns  /  ii = 98
+Synchronisation test for DBG_UART_PERIOD =   749 ns  /  ii = 99
+Synchronisation test for DBG_UART_PERIOD =   750 ns  /  ii = 100
+Synchronisation test for DBG_UART_PERIOD =   751 ns  /  ii = 101
+Synchronisation test for DBG_UART_PERIOD =   752 ns  /  ii = 102
+Synchronisation test for DBG_UART_PERIOD =   753 ns  /  ii = 103
+Synchronisation test for DBG_UART_PERIOD =   754 ns  /  ii = 104
+Synchronisation test for DBG_UART_PERIOD =   755 ns  /  ii = 105
+Synchronisation test for DBG_UART_PERIOD =   756 ns  /  ii = 106
+Synchronisation test for DBG_UART_PERIOD =   757 ns  /  ii = 107
+Synchronisation test for DBG_UART_PERIOD =   758 ns  /  ii = 108
+Synchronisation test for DBG_UART_PERIOD =   759 ns  /  ii = 109
+Synchronisation test for DBG_UART_PERIOD =   760 ns  /  ii = 110
+Synchronisation test for DBG_UART_PERIOD =   761 ns  /  ii = 111
+Synchronisation test for DBG_UART_PERIOD =   762 ns  /  ii = 112
+Synchronisation test for DBG_UART_PERIOD =   763 ns  /  ii = 113
+Synchronisation test for DBG_UART_PERIOD =   764 ns  /  ii = 114
+Synchronisation test for DBG_UART_PERIOD =   765 ns  /  ii = 115
+Synchronisation test for DBG_UART_PERIOD =   766 ns  /  ii = 116
+Synchronisation test for DBG_UART_PERIOD =   767 ns  /  ii = 117
+Synchronisation test for DBG_UART_PERIOD =   768 ns  /  ii = 118
+Synchronisation test for DBG_UART_PERIOD =   769 ns  /  ii = 119
+Synchronisation test for DBG_UART_PERIOD =   770 ns  /  ii = 120
+Synchronisation test for DBG_UART_PERIOD =   771 ns  /  ii = 121
+Synchronisation test for DBG_UART_PERIOD =   772 ns  /  ii = 122
+Synchronisation test for DBG_UART_PERIOD =   773 ns  /  ii = 123
+Synchronisation test for DBG_UART_PERIOD =   774 ns  /  ii = 124
+Synchronisation test for DBG_UART_PERIOD =   775 ns  /  ii = 125
+Synchronisation test for DBG_UART_PERIOD =   776 ns  /  ii = 126
+Synchronisation test for DBG_UART_PERIOD =   777 ns  /  ii = 127
+Synchronisation test for DBG_UART_PERIOD =   778 ns  /  ii = 128
+Synchronisation test for DBG_UART_PERIOD =   779 ns  /  ii = 129
+Synchronisation test for DBG_UART_PERIOD =   780 ns  /  ii = 130
+Synchronisation test for DBG_UART_PERIOD =   781 ns  /  ii = 131
+Synchronisation test for DBG_UART_PERIOD =   782 ns  /  ii = 132
+Synchronisation test for DBG_UART_PERIOD =   783 ns  /  ii = 133
+Synchronisation test for DBG_UART_PERIOD =   784 ns  /  ii = 134
+Synchronisation test for DBG_UART_PERIOD =   785 ns  /  ii = 135
+Synchronisation test for DBG_UART_PERIOD =   786 ns  /  ii = 136
+Synchronisation test for DBG_UART_PERIOD =   787 ns  /  ii = 137
+Synchronisation test for DBG_UART_PERIOD =   788 ns  /  ii = 138
+Synchronisation test for DBG_UART_PERIOD =   789 ns  /  ii = 139
+Synchronisation test for DBG_UART_PERIOD =   790 ns  /  ii = 140
+Synchronisation test for DBG_UART_PERIOD =   791 ns  /  ii = 141
+Synchronisation test for DBG_UART_PERIOD =   792 ns  /  ii = 142
+Synchronisation test for DBG_UART_PERIOD =   793 ns  /  ii = 143
+Synchronisation test for DBG_UART_PERIOD =   794 ns  /  ii = 144
+Synchronisation test for DBG_UART_PERIOD =   795 ns  /  ii = 145
+Synchronisation test for DBG_UART_PERIOD =   796 ns  /  ii = 146
+Synchronisation test for DBG_UART_PERIOD =   797 ns  /  ii = 147
+Synchronisation test for DBG_UART_PERIOD =   798 ns  /  ii = 148
+Synchronisation test for DBG_UART_PERIOD =   799 ns  /  ii = 149
+Synchronisation test for DBG_UART_PERIOD =   800 ns  /  ii = 150
+Synchronisation test for DBG_UART_PERIOD =   801 ns  /  ii = 151
+Synchronisation test for DBG_UART_PERIOD =   802 ns  /  ii = 152
+Synchronisation test for DBG_UART_PERIOD =   803 ns  /  ii = 153
+Synchronisation test for DBG_UART_PERIOD =   804 ns  /  ii = 154
+Synchronisation test for DBG_UART_PERIOD =   805 ns  /  ii = 155
+Synchronisation test for DBG_UART_PERIOD =   806 ns  /  ii = 156
+Synchronisation test for DBG_UART_PERIOD =   807 ns  /  ii = 157
+Synchronisation test for DBG_UART_PERIOD =   808 ns  /  ii = 158
+Synchronisation test for DBG_UART_PERIOD =   809 ns  /  ii = 159
+Synchronisation test for DBG_UART_PERIOD =   810 ns  /  ii = 160
+Synchronisation test for DBG_UART_PERIOD =   811 ns  /  ii = 161
+Synchronisation test for DBG_UART_PERIOD =   812 ns  /  ii = 162
+Synchronisation test for DBG_UART_PERIOD =   813 ns  /  ii = 163
+Synchronisation test for DBG_UART_PERIOD =   814 ns  /  ii = 164
+Synchronisation test for DBG_UART_PERIOD =   815 ns  /  ii = 165
+Synchronisation test for DBG_UART_PERIOD =   816 ns  /  ii = 166
+Synchronisation test for DBG_UART_PERIOD =   817 ns  /  ii = 167
+Synchronisation test for DBG_UART_PERIOD =   818 ns  /  ii = 168
+Synchronisation test for DBG_UART_PERIOD =   819 ns  /  ii = 169
+Synchronisation test for DBG_UART_PERIOD =   820 ns  /  ii = 170
+Synchronisation test for DBG_UART_PERIOD =   821 ns  /  ii = 171
+Synchronisation test for DBG_UART_PERIOD =   822 ns  /  ii = 172
+Synchronisation test for DBG_UART_PERIOD =   823 ns  /  ii = 173
+Synchronisation test for DBG_UART_PERIOD =   824 ns  /  ii = 174
+Synchronisation test for DBG_UART_PERIOD =   825 ns  /  ii = 175
+Synchronisation test for DBG_UART_PERIOD =   826 ns  /  ii = 176
+Synchronisation test for DBG_UART_PERIOD =   827 ns  /  ii = 177
+Synchronisation test for DBG_UART_PERIOD =   828 ns  /  ii = 178
+Synchronisation test for DBG_UART_PERIOD =   829 ns  /  ii = 179
+Synchronisation test for DBG_UART_PERIOD =   830 ns  /  ii = 180
+Synchronisation test for DBG_UART_PERIOD =   831 ns  /  ii = 181
+Synchronisation test for DBG_UART_PERIOD =   832 ns  /  ii = 182
+Synchronisation test for DBG_UART_PERIOD =   833 ns  /  ii = 183
+Synchronisation test for DBG_UART_PERIOD =   834 ns  /  ii = 184
+Synchronisation test for DBG_UART_PERIOD =   835 ns  /  ii = 185
+Synchronisation test for DBG_UART_PERIOD =   836 ns  /  ii = 186
+Synchronisation test for DBG_UART_PERIOD =   837 ns  /  ii = 187
+Synchronisation test for DBG_UART_PERIOD =   838 ns  /  ii = 188
+Synchronisation test for DBG_UART_PERIOD =   839 ns  /  ii = 189
+Synchronisation test for DBG_UART_PERIOD =   840 ns  /  ii = 190
+Synchronisation test for DBG_UART_PERIOD =   841 ns  /  ii = 191
+Synchronisation test for DBG_UART_PERIOD =   842 ns  /  ii = 192
+Synchronisation test for DBG_UART_PERIOD =   843 ns  /  ii = 193
+Synchronisation test for DBG_UART_PERIOD =   844 ns  /  ii = 194
+Synchronisation test for DBG_UART_PERIOD =   845 ns  /  ii = 195
+Synchronisation test for DBG_UART_PERIOD =   846 ns  /  ii = 196
+Synchronisation test for DBG_UART_PERIOD =   847 ns  /  ii = 197
+Synchronisation test for DBG_UART_PERIOD =   848 ns  /  ii = 198
+Synchronisation test for DBG_UART_PERIOD =   849 ns  /  ii = 199
+Synchronisation test for DBG_UART_PERIOD =   850 ns  /  ii = 200
+Synchronisation test for DBG_UART_PERIOD =   851 ns  /  ii = 201
+Synchronisation test for DBG_UART_PERIOD =   852 ns  /  ii = 202
+Synchronisation test for DBG_UART_PERIOD =   853 ns  /  ii = 203
+Synchronisation test for DBG_UART_PERIOD =   854 ns  /  ii = 204
+Synchronisation test for DBG_UART_PERIOD =   855 ns  /  ii = 205
+Synchronisation test for DBG_UART_PERIOD =   856 ns  /  ii = 206
+Synchronisation test for DBG_UART_PERIOD =   857 ns  /  ii = 207
+Synchronisation test for DBG_UART_PERIOD =   858 ns  /  ii = 208
+Synchronisation test for DBG_UART_PERIOD =   859 ns  /  ii = 209
+Synchronisation test for DBG_UART_PERIOD =   860 ns  /  ii = 210
+Synchronisation test for DBG_UART_PERIOD =   861 ns  /  ii = 211
+Synchronisation test for DBG_UART_PERIOD =   862 ns  /  ii = 212
+Synchronisation test for DBG_UART_PERIOD =   863 ns  /  ii = 213
+Synchronisation test for DBG_UART_PERIOD =   864 ns  /  ii = 214
+Synchronisation test for DBG_UART_PERIOD =   865 ns  /  ii = 215
+Synchronisation test for DBG_UART_PERIOD =   866 ns  /  ii = 216
+Synchronisation test for DBG_UART_PERIOD =   867 ns  /  ii = 217
+Synchronisation test for DBG_UART_PERIOD =   868 ns  /  ii = 218
+Synchronisation test for DBG_UART_PERIOD =   869 ns  /  ii = 219
+Synchronisation test for DBG_UART_PERIOD =   870 ns  /  ii = 220
+Synchronisation test for DBG_UART_PERIOD =   871 ns  /  ii = 221
+Synchronisation test for DBG_UART_PERIOD =   872 ns  /  ii = 222
+Synchronisation test for DBG_UART_PERIOD =   873 ns  /  ii = 223
+Synchronisation test for DBG_UART_PERIOD =   874 ns  /  ii = 224
+Synchronisation test for DBG_UART_PERIOD =   875 ns  /  ii = 225
+Synchronisation test for DBG_UART_PERIOD =   876 ns  /  ii = 226
+Synchronisation test for DBG_UART_PERIOD =   877 ns  /  ii = 227
+Synchronisation test for DBG_UART_PERIOD =   878 ns  /  ii = 228
+Synchronisation test for DBG_UART_PERIOD =   879 ns  /  ii = 229
+Synchronisation test for DBG_UART_PERIOD =   880 ns  /  ii = 230
+Synchronisation test for DBG_UART_PERIOD =   881 ns  /  ii = 231
+Synchronisation test for DBG_UART_PERIOD =   882 ns  /  ii = 232
+Synchronisation test for DBG_UART_PERIOD =   883 ns  /  ii = 233
+Synchronisation test for DBG_UART_PERIOD =   884 ns  /  ii = 234
+Synchronisation test for DBG_UART_PERIOD =   885 ns  /  ii = 235
+Synchronisation test for DBG_UART_PERIOD =   886 ns  /  ii = 236
+Synchronisation test for DBG_UART_PERIOD =   887 ns  /  ii = 237
+Synchronisation test for DBG_UART_PERIOD =   888 ns  /  ii = 238
+Synchronisation test for DBG_UART_PERIOD =   889 ns  /  ii = 239
+Synchronisation test for DBG_UART_PERIOD =   890 ns  /  ii = 240
+Synchronisation test for DBG_UART_PERIOD =   891 ns  /  ii = 241
+Synchronisation test for DBG_UART_PERIOD =   892 ns  /  ii = 242
+Synchronisation test for DBG_UART_PERIOD =   893 ns  /  ii = 243
+Synchronisation test for DBG_UART_PERIOD =   894 ns  /  ii = 244
+Synchronisation test for DBG_UART_PERIOD =   895 ns  /  ii = 245
+Synchronisation test for DBG_UART_PERIOD =   896 ns  /  ii = 246
+Synchronisation test for DBG_UART_PERIOD =   897 ns  /  ii = 247
+Synchronisation test for DBG_UART_PERIOD =   898 ns  /  ii = 248
+Synchronisation test for DBG_UART_PERIOD =   899 ns  /  ii = 249
+Synchronisation test for DBG_UART_PERIOD =   900 ns  /  ii = 250
+Synchronisation test for DBG_UART_PERIOD =   901 ns  /  ii = 251
+Synchronisation test for DBG_UART_PERIOD =   902 ns  /  ii = 252
+Synchronisation test for DBG_UART_PERIOD =   903 ns  /  ii = 253
+Synchronisation test for DBG_UART_PERIOD =   904 ns  /  ii = 254
+Synchronisation test for DBG_UART_PERIOD =   905 ns  /  ii = 255
+Synchronisation test for DBG_UART_PERIOD =   906 ns  /  ii = 256
+Synchronisation test for DBG_UART_PERIOD =   907 ns  /  ii = 257
+Synchronisation test for DBG_UART_PERIOD =   908 ns  /  ii = 258
+Synchronisation test for DBG_UART_PERIOD =   909 ns  /  ii = 259
+Synchronisation test for DBG_UART_PERIOD =   910 ns  /  ii = 260
+Synchronisation test for DBG_UART_PERIOD =   911 ns  /  ii = 261
+Synchronisation test for DBG_UART_PERIOD =   912 ns  /  ii = 262
+Synchronisation test for DBG_UART_PERIOD =   913 ns  /  ii = 263
+Synchronisation test for DBG_UART_PERIOD =   914 ns  /  ii = 264
+Synchronisation test for DBG_UART_PERIOD =   915 ns  /  ii = 265
+Synchronisation test for DBG_UART_PERIOD =   916 ns  /  ii = 266
+Synchronisation test for DBG_UART_PERIOD =   917 ns  /  ii = 267
+Synchronisation test for DBG_UART_PERIOD =   918 ns  /  ii = 268
+Synchronisation test for DBG_UART_PERIOD =   919 ns  /  ii = 269
+Synchronisation test for DBG_UART_PERIOD =   920 ns  /  ii = 270
+Synchronisation test for DBG_UART_PERIOD =   921 ns  /  ii = 271
+Synchronisation test for DBG_UART_PERIOD =   922 ns  /  ii = 272
+Synchronisation test for DBG_UART_PERIOD =   923 ns  /  ii = 273
+Synchronisation test for DBG_UART_PERIOD =   924 ns  /  ii = 274
+Synchronisation test for DBG_UART_PERIOD =   925 ns  /  ii = 275
+Synchronisation test for DBG_UART_PERIOD =   926 ns  /  ii = 276
+Synchronisation test for DBG_UART_PERIOD =   927 ns  /  ii = 277
+Synchronisation test for DBG_UART_PERIOD =   928 ns  /  ii = 278
+Synchronisation test for DBG_UART_PERIOD =   929 ns  /  ii = 279
+Synchronisation test for DBG_UART_PERIOD =   930 ns  /  ii = 280
+Synchronisation test for DBG_UART_PERIOD =   931 ns  /  ii = 281
+Synchronisation test for DBG_UART_PERIOD =   932 ns  /  ii = 282
+Synchronisation test for DBG_UART_PERIOD =   933 ns  /  ii = 283
+Synchronisation test for DBG_UART_PERIOD =   934 ns  /  ii = 284
+Synchronisation test for DBG_UART_PERIOD =   935 ns  /  ii = 285
+Synchronisation test for DBG_UART_PERIOD =   936 ns  /  ii = 286
+Synchronisation test for DBG_UART_PERIOD =   937 ns  /  ii = 287
+Synchronisation test for DBG_UART_PERIOD =   938 ns  /  ii = 288
+Synchronisation test for DBG_UART_PERIOD =   939 ns  /  ii = 289
+Synchronisation test for DBG_UART_PERIOD =   940 ns  /  ii = 290
+Synchronisation test for DBG_UART_PERIOD =   941 ns  /  ii = 291
+Synchronisation test for DBG_UART_PERIOD =   942 ns  /  ii = 292
+Synchronisation test for DBG_UART_PERIOD =   943 ns  /  ii = 293
+Synchronisation test for DBG_UART_PERIOD =   944 ns  /  ii = 294
+Synchronisation test for DBG_UART_PERIOD =   945 ns  /  ii = 295
+Synchronisation test for DBG_UART_PERIOD =   946 ns  /  ii = 296
+Synchronisation test for DBG_UART_PERIOD =   947 ns  /  ii = 297
+Synchronisation test for DBG_UART_PERIOD =   948 ns  /  ii = 298
+Synchronisation test for DBG_UART_PERIOD =   949 ns  /  ii = 299
+Synchronisation test for DBG_UART_PERIOD =   950 ns  /  ii = 300
+Synchronisation test for DBG_UART_PERIOD =   951 ns  /  ii = 301
+Synchronisation test for DBG_UART_PERIOD =   952 ns  /  ii = 302
+Synchronisation test for DBG_UART_PERIOD =   953 ns  /  ii = 303
+Synchronisation test for DBG_UART_PERIOD =   954 ns  /  ii = 304
+Synchronisation test for DBG_UART_PERIOD =   955 ns  /  ii = 305
+Synchronisation test for DBG_UART_PERIOD =   956 ns  /  ii = 306
+Synchronisation test for DBG_UART_PERIOD =   957 ns  /  ii = 307
+Synchronisation test for DBG_UART_PERIOD =   958 ns  /  ii = 308
+Synchronisation test for DBG_UART_PERIOD =   959 ns  /  ii = 309
+Synchronisation test for DBG_UART_PERIOD =   960 ns  /  ii = 310
+Synchronisation test for DBG_UART_PERIOD =   961 ns  /  ii = 311
+Synchronisation test for DBG_UART_PERIOD =   962 ns  /  ii = 312
+Synchronisation test for DBG_UART_PERIOD =   963 ns  /  ii = 313
+Synchronisation test for DBG_UART_PERIOD =   964 ns  /  ii = 314
+Synchronisation test for DBG_UART_PERIOD =   965 ns  /  ii = 315
+Synchronisation test for DBG_UART_PERIOD =   966 ns  /  ii = 316
+Synchronisation test for DBG_UART_PERIOD =   967 ns  /  ii = 317
+Synchronisation test for DBG_UART_PERIOD =   968 ns  /  ii = 318
+Synchronisation test for DBG_UART_PERIOD =   969 ns  /  ii = 319
+Synchronisation test for DBG_UART_PERIOD =   970 ns  /  ii = 320
+Synchronisation test for DBG_UART_PERIOD =   971 ns  /  ii = 321
+Synchronisation test for DBG_UART_PERIOD =   972 ns  /  ii = 322
+Synchronisation test for DBG_UART_PERIOD =   973 ns  /  ii = 323
+Synchronisation test for DBG_UART_PERIOD =   974 ns  /  ii = 324
+Synchronisation test for DBG_UART_PERIOD =   975 ns  /  ii = 325
+Synchronisation test for DBG_UART_PERIOD =   976 ns  /  ii = 326
+Synchronisation test for DBG_UART_PERIOD =   977 ns  /  ii = 327
+Synchronisation test for DBG_UART_PERIOD =   978 ns  /  ii = 328
+Synchronisation test for DBG_UART_PERIOD =   979 ns  /  ii = 329
+Synchronisation test for DBG_UART_PERIOD =   980 ns  /  ii = 330
+Synchronisation test for DBG_UART_PERIOD =   981 ns  /  ii = 331
+Synchronisation test for DBG_UART_PERIOD =   982 ns  /  ii = 332
+Synchronisation test for DBG_UART_PERIOD =   983 ns  /  ii = 333
+Synchronisation test for DBG_UART_PERIOD =   984 ns  /  ii = 334
+Synchronisation test for DBG_UART_PERIOD =   985 ns  /  ii = 335
+Synchronisation test for DBG_UART_PERIOD =   986 ns  /  ii = 336
+Synchronisation test for DBG_UART_PERIOD =   987 ns  /  ii = 337
+Synchronisation test for DBG_UART_PERIOD =   988 ns  /  ii = 338
+Synchronisation test for DBG_UART_PERIOD =   989 ns  /  ii = 339
+Synchronisation test for DBG_UART_PERIOD =   990 ns  /  ii = 340
+Synchronisation test for DBG_UART_PERIOD =   991 ns  /  ii = 341
+Synchronisation test for DBG_UART_PERIOD =   992 ns  /  ii = 342
+Synchronisation test for DBG_UART_PERIOD =   993 ns  /  ii = 343
+Synchronisation test for DBG_UART_PERIOD =   994 ns  /  ii = 344
+Synchronisation test for DBG_UART_PERIOD =   995 ns  /  ii = 345
+Synchronisation test for DBG_UART_PERIOD =   996 ns  /  ii = 346
+Synchronisation test for DBG_UART_PERIOD =   997 ns  /  ii = 347
+Synchronisation test for DBG_UART_PERIOD =   998 ns  /  ii = 348
+Synchronisation test for DBG_UART_PERIOD =   999 ns  /  ii = 349
+Synchronisation test for DBG_UART_PERIOD =  1000 ns  /  ii = 350
+Synchronisation test for DBG_UART_PERIOD =  1001 ns  /  ii = 351
+Synchronisation test for DBG_UART_PERIOD =  1002 ns  /  ii = 352
+Synchronisation test for DBG_UART_PERIOD =  1003 ns  /  ii = 353
+Synchronisation test for DBG_UART_PERIOD =  1004 ns  /  ii = 354
+Synchronisation test for DBG_UART_PERIOD =  1005 ns  /  ii = 355
+Synchronisation test for DBG_UART_PERIOD =  1006 ns  /  ii = 356
+Synchronisation test for DBG_UART_PERIOD =  1007 ns  /  ii = 357
+Synchronisation test for DBG_UART_PERIOD =  1008 ns  /  ii = 358
+Synchronisation test for DBG_UART_PERIOD =  1009 ns  /  ii = 359
+Synchronisation test for DBG_UART_PERIOD =  1010 ns  /  ii = 360
+Synchronisation test for DBG_UART_PERIOD =  1011 ns  /  ii = 361
+Synchronisation test for DBG_UART_PERIOD =  1012 ns  /  ii = 362
+Synchronisation test for DBG_UART_PERIOD =  1013 ns  /  ii = 363
+Synchronisation test for DBG_UART_PERIOD =  1014 ns  /  ii = 364
+Synchronisation test for DBG_UART_PERIOD =  1015 ns  /  ii = 365
+Synchronisation test for DBG_UART_PERIOD =  1016 ns  /  ii = 366
+Synchronisation test for DBG_UART_PERIOD =  1017 ns  /  ii = 367
+Synchronisation test for DBG_UART_PERIOD =  1018 ns  /  ii = 368
+Synchronisation test for DBG_UART_PERIOD =  1019 ns  /  ii = 369
+Synchronisation test for DBG_UART_PERIOD =  1020 ns  /  ii = 370
+Synchronisation test for DBG_UART_PERIOD =  1021 ns  /  ii = 371
+Synchronisation test for DBG_UART_PERIOD =  1022 ns  /  ii = 372
+Synchronisation test for DBG_UART_PERIOD =  1023 ns  /  ii = 373
+Synchronisation test for DBG_UART_PERIOD =  1024 ns  /  ii = 374
+Synchronisation test for DBG_UART_PERIOD =  1025 ns  /  ii = 375
+Synchronisation test for DBG_UART_PERIOD =  1026 ns  /  ii = 376
+Synchronisation test for DBG_UART_PERIOD =  1027 ns  /  ii = 377
+Synchronisation test for DBG_UART_PERIOD =  1028 ns  /  ii = 378
+Synchronisation test for DBG_UART_PERIOD =  1029 ns  /  ii = 379
+Synchronisation test for DBG_UART_PERIOD =  1030 ns  /  ii = 380
+Synchronisation test for DBG_UART_PERIOD =  1031 ns  /  ii = 381
+Synchronisation test for DBG_UART_PERIOD =  1032 ns  /  ii = 382
+Synchronisation test for DBG_UART_PERIOD =  1033 ns  /  ii = 383
+Synchronisation test for DBG_UART_PERIOD =  1034 ns  /  ii = 384
+Synchronisation test for DBG_UART_PERIOD =  1035 ns  /  ii = 385
+Synchronisation test for DBG_UART_PERIOD =  1036 ns  /  ii = 386
+Synchronisation test for DBG_UART_PERIOD =  1037 ns  /  ii = 387
+Synchronisation test for DBG_UART_PERIOD =  1038 ns  /  ii = 388
+Synchronisation test for DBG_UART_PERIOD =  1039 ns  /  ii = 389
+Synchronisation test for DBG_UART_PERIOD =  1040 ns  /  ii = 390
+Synchronisation test for DBG_UART_PERIOD =  1041 ns  /  ii = 391
+Synchronisation test for DBG_UART_PERIOD =  1042 ns  /  ii = 392
+Synchronisation test for DBG_UART_PERIOD =  1043 ns  /  ii = 393
+Synchronisation test for DBG_UART_PERIOD =  1044 ns  /  ii = 394
+Synchronisation test for DBG_UART_PERIOD =  1045 ns  /  ii = 395
+Synchronisation test for DBG_UART_PERIOD =  1046 ns  /  ii = 396
+Synchronisation test for DBG_UART_PERIOD =  1047 ns  /  ii = 397
+Synchronisation test for DBG_UART_PERIOD =  1048 ns  /  ii = 398
+Synchronisation test for DBG_UART_PERIOD =  1049 ns  /  ii = 399
+Synchronisation test for DBG_UART_PERIOD =  1050 ns  /  ii = 400
+Synchronisation test for DBG_UART_PERIOD =  1051 ns  /  ii = 401
+Synchronisation test for DBG_UART_PERIOD =  1052 ns  /  ii = 402
+Synchronisation test for DBG_UART_PERIOD =  1053 ns  /  ii = 403
+Synchronisation test for DBG_UART_PERIOD =  1054 ns  /  ii = 404
+Synchronisation test for DBG_UART_PERIOD =  1055 ns  /  ii = 405
+Synchronisation test for DBG_UART_PERIOD =  1056 ns  /  ii = 406
+Synchronisation test for DBG_UART_PERIOD =  1057 ns  /  ii = 407
+Synchronisation test for DBG_UART_PERIOD =  1058 ns  /  ii = 408
+Synchronisation test for DBG_UART_PERIOD =  1059 ns  /  ii = 409
+Synchronisation test for DBG_UART_PERIOD =  1060 ns  /  ii = 410
+Synchronisation test for DBG_UART_PERIOD =  1061 ns  /  ii = 411
+Synchronisation test for DBG_UART_PERIOD =  1062 ns  /  ii = 412
+Synchronisation test for DBG_UART_PERIOD =  1063 ns  /  ii = 413
+Synchronisation test for DBG_UART_PERIOD =  1064 ns  /  ii = 414
+Synchronisation test for DBG_UART_PERIOD =  1065 ns  /  ii = 415
+Synchronisation test for DBG_UART_PERIOD =  1066 ns  /  ii = 416
+Synchronisation test for DBG_UART_PERIOD =  1067 ns  /  ii = 417
+Synchronisation test for DBG_UART_PERIOD =  1068 ns  /  ii = 418
+Synchronisation test for DBG_UART_PERIOD =  1069 ns  /  ii = 419
+Synchronisation test for DBG_UART_PERIOD =  1070 ns  /  ii = 420
+Synchronisation test for DBG_UART_PERIOD =  1071 ns  /  ii = 421
+Synchronisation test for DBG_UART_PERIOD =  1072 ns  /  ii = 422
+Synchronisation test for DBG_UART_PERIOD =  1073 ns  /  ii = 423
+Synchronisation test for DBG_UART_PERIOD =  1074 ns  /  ii = 424
+Synchronisation test for DBG_UART_PERIOD =  1075 ns  /  ii = 425
+Synchronisation test for DBG_UART_PERIOD =  1076 ns  /  ii = 426
+Synchronisation test for DBG_UART_PERIOD =  1077 ns  /  ii = 427
+Synchronisation test for DBG_UART_PERIOD =  1078 ns  /  ii = 428
+Synchronisation test for DBG_UART_PERIOD =  1079 ns  /  ii = 429
+Synchronisation test for DBG_UART_PERIOD =  1080 ns  /  ii = 430
+Synchronisation test for DBG_UART_PERIOD =  1081 ns  /  ii = 431
+Synchronisation test for DBG_UART_PERIOD =  1082 ns  /  ii = 432
+Synchronisation test for DBG_UART_PERIOD =  1083 ns  /  ii = 433
+Synchronisation test for DBG_UART_PERIOD =  1084 ns  /  ii = 434
+Synchronisation test for DBG_UART_PERIOD =  1085 ns  /  ii = 435
+Synchronisation test for DBG_UART_PERIOD =  1086 ns  /  ii = 436
+Synchronisation test for DBG_UART_PERIOD =  1087 ns  /  ii = 437
+Synchronisation test for DBG_UART_PERIOD =  1088 ns  /  ii = 438
+Synchronisation test for DBG_UART_PERIOD =  1089 ns  /  ii = 439
+Synchronisation test for DBG_UART_PERIOD =  1090 ns  /  ii = 440
+Synchronisation test for DBG_UART_PERIOD =  1091 ns  /  ii = 441
+Synchronisation test for DBG_UART_PERIOD =  1092 ns  /  ii = 442
+Synchronisation test for DBG_UART_PERIOD =  1093 ns  /  ii = 443
+Synchronisation test for DBG_UART_PERIOD =  1094 ns  /  ii = 444
+Synchronisation test for DBG_UART_PERIOD =  1095 ns  /  ii = 445
+Synchronisation test for DBG_UART_PERIOD =  1096 ns  /  ii = 446
+Synchronisation test for DBG_UART_PERIOD =  1097 ns  /  ii = 447
+Synchronisation test for DBG_UART_PERIOD =  1098 ns  /  ii = 448
+Synchronisation test for DBG_UART_PERIOD =  1099 ns  /  ii = 449
+Synchronisation test for DBG_UART_PERIOD =  1100 ns  /  ii = 450
+Synchronisation test for DBG_UART_PERIOD =  1101 ns  /  ii = 451
+Synchronisation test for DBG_UART_PERIOD =  1102 ns  /  ii = 452
+Synchronisation test for DBG_UART_PERIOD =  1103 ns  /  ii = 453
+Synchronisation test for DBG_UART_PERIOD =  1104 ns  /  ii = 454
+Synchronisation test for DBG_UART_PERIOD =  1105 ns  /  ii = 455
+Synchronisation test for DBG_UART_PERIOD =  1106 ns  /  ii = 456
+Synchronisation test for DBG_UART_PERIOD =  1107 ns  /  ii = 457
+Synchronisation test for DBG_UART_PERIOD =  1108 ns  /  ii = 458
+Synchronisation test for DBG_UART_PERIOD =  1109 ns  /  ii = 459
+Synchronisation test for DBG_UART_PERIOD =  1110 ns  /  ii = 460
+Synchronisation test for DBG_UART_PERIOD =  1111 ns  /  ii = 461
+Synchronisation test for DBG_UART_PERIOD =  1112 ns  /  ii = 462
+Synchronisation test for DBG_UART_PERIOD =  1113 ns  /  ii = 463
+Synchronisation test for DBG_UART_PERIOD =  1114 ns  /  ii = 464
+Synchronisation test for DBG_UART_PERIOD =  1115 ns  /  ii = 465
+Synchronisation test for DBG_UART_PERIOD =  1116 ns  /  ii = 466
+Synchronisation test for DBG_UART_PERIOD =  1117 ns  /  ii = 467
+Synchronisation test for DBG_UART_PERIOD =  1118 ns  /  ii = 468
+Synchronisation test for DBG_UART_PERIOD =  1119 ns  /  ii = 469
+Synchronisation test for DBG_UART_PERIOD =  1120 ns  /  ii = 470
+Synchronisation test for DBG_UART_PERIOD =  1121 ns  /  ii = 471
+Synchronisation test for DBG_UART_PERIOD =  1122 ns  /  ii = 472
+Synchronisation test for DBG_UART_PERIOD =  1123 ns  /  ii = 473
+Synchronisation test for DBG_UART_PERIOD =  1124 ns  /  ii = 474
+Synchronisation test for DBG_UART_PERIOD =  1125 ns  /  ii = 475
+Synchronisation test for DBG_UART_PERIOD =  1126 ns  /  ii = 476
+Synchronisation test for DBG_UART_PERIOD =  1127 ns  /  ii = 477
+Synchronisation test for DBG_UART_PERIOD =  1128 ns  /  ii = 478
+Synchronisation test for DBG_UART_PERIOD =  1129 ns  /  ii = 479
+Synchronisation test for DBG_UART_PERIOD =  1130 ns  /  ii = 480
+Synchronisation test for DBG_UART_PERIOD =  1131 ns  /  ii = 481
+Synchronisation test for DBG_UART_PERIOD =  1132 ns  /  ii = 482
+Synchronisation test for DBG_UART_PERIOD =  1133 ns  /  ii = 483
+Synchronisation test for DBG_UART_PERIOD =  1134 ns  /  ii = 484
+Synchronisation test for DBG_UART_PERIOD =  1135 ns  /  ii = 485
+Synchronisation test for DBG_UART_PERIOD =  1136 ns  /  ii = 486
+Synchronisation test for DBG_UART_PERIOD =  1137 ns  /  ii = 487
+Synchronisation test for DBG_UART_PERIOD =  1138 ns  /  ii = 488
+Synchronisation test for DBG_UART_PERIOD =  1139 ns  /  ii = 489
+Synchronisation test for DBG_UART_PERIOD =  1140 ns  /  ii = 490
+Synchronisation test for DBG_UART_PERIOD =  1141 ns  /  ii = 491
+Synchronisation test for DBG_UART_PERIOD =  1142 ns  /  ii = 492
+Synchronisation test for DBG_UART_PERIOD =  1143 ns  /  ii = 493
+Synchronisation test for DBG_UART_PERIOD =  1144 ns  /  ii = 494
+Synchronisation test for DBG_UART_PERIOD =  1145 ns  /  ii = 495
+Synchronisation test for DBG_UART_PERIOD =  1146 ns  /  ii = 496
+Synchronisation test for DBG_UART_PERIOD =  1147 ns  /  ii = 497
+Synchronisation test for DBG_UART_PERIOD =  1148 ns  /  ii = 498
+Synchronisation test for DBG_UART_PERIOD =  1149 ns  /  ii = 499
+Synchronisation test for DBG_UART_PERIOD =   550 ns  /  ii = 500
+ ===============================================
+|               SIMULATION PASSED               |
+ ===============================================
+
+DMA REPORT: Total Accesses: 4363911 Total RD: 1455166 Total WR: 2908745
+            Total Errors:   0 Error RD: 0 Error WR: 0
+
+SIMULATION SEED:  -709635067
+
+$finish called from file "../../../bench/verilog/tb_openMSP430.v", line 750.
+$finish at simulation time           2911050000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 291105000000 ps
+CPU Time:     25.460 seconds;       Data structure size:   0.2Mb
+Wed Apr 12 16:56:55 2017
+CPU time: 1.453 seconds to compile + .449 seconds to elab + .165 seconds to link + 25.670 seconds in simulation
