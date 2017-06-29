@@ -1,0 +1,347 @@
+{
+    "Modules": {
+        "ram": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "...MASTER...": {},
+        "omsp_dbg_hwbrk": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_sync_cell": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "template_periph_16b": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "std": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "tb_openMSP430": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_watchdog": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "openMSP430": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "ram_0000": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "io_cell": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_gpio": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_multiplier": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "msp_debug": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_sfr": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_mem_backbone": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "template_periph_8b": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_dbg": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_clock_mux": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_dbg_i2c": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        },
+        "omsp_timerA": {
+            "Compiled": "Yes",
+            "Compiled Times": 1
+        }
+    },
+    "reusePaths": {},
+    "CompUnits": {
+        "kdVbP_d": {
+            "out": "kdVbP_d.o",
+            "mod": "io_cell",
+            "bytes": 5222,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "eIhcf_d": {
+            "out": "eIhcf_d.o",
+            "mod": "omsp_watchdog",
+            "bytes": 31534,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "amcQw_d": {
+            "out": "objs/amcQw_d.o",
+            "mod": "...MASTER...",
+            "bytes": 6232,
+            "mode": 4,
+            "checksum": 0
+        },
+        "qeN1k_d": {
+            "out": "qeN1k_d.o",
+            "mod": "ram",
+            "bytes": 7487,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "wqZCM_d": {
+            "out": "wqZCM_d.o",
+            "mod": "template_periph_16b",
+            "bytes": 20597,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "reYIK_d": {
+            "out": "reYIK_d.o",
+            "mod": "std",
+            "bytes": 21537,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "xPI6e_d": {
+            "out": "xPI6e_d.o",
+            "mod": "tb_openMSP430",
+            "bytes": 126597,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "n4Fp6_d": {
+            "out": "n4Fp6_d.o",
+            "mod": "template_periph_8b",
+            "bytes": 20506,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "exZPK_d": {
+            "out": "exZPK_d.o",
+            "mod": "omsp_dbg",
+            "bytes": 74327,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "dD6nr_d": {
+            "out": "dD6nr_d.o",
+            "mod": "ram_0000",
+            "bytes": 7506,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "auTRH_d": {
+            "out": "auTRH_d.o",
+            "mod": "omsp_sfr",
+            "bytes": 32622,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "VsVDd_d": {
+            "out": "VsVDd_d.o",
+            "mod": "msp_debug",
+            "bytes": 31113,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "Pnk6S_d": {
+            "out": "Pnk6S_d.o",
+            "mod": "openMSP430",
+            "bytes": 249506,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "Iq7e2_d": {
+            "out": "Iq7e2_d.o",
+            "mod": "omsp_mem_backbone",
+            "bytes": 34186,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "iTVdW_d": {
+            "out": "iTVdW_d.o",
+            "mod": "omsp_dbg_i2c",
+            "bytes": 43287,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "tV8Lp_d": {
+            "out": "tV8Lp_d.o",
+            "mod": "omsp_dbg_hwbrk",
+            "bytes": 29114,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "Srkd8_d": {
+            "out": "Srkd8_d.o",
+            "mod": "omsp_multiplier",
+            "bytes": 56033,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "HBI8U_d": {
+            "out": "HBI8U_d.o",
+            "mod": "omsp_sync_cell",
+            "bytes": 5845,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "s8RjV_d": {
+            "out": "s8RjV_d.o",
+            "mod": "omsp_gpio",
+            "bytes": 102199,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "JG5F1_d": {
+            "out": "JG5F1_d.o",
+            "mod": "omsp_clock_mux",
+            "bytes": 9318,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        },
+        "Hq8sW_d": {
+            "out": "Hq8sW_d.o",
+            "mod": "omsp_timerA",
+            "bytes": 120649,
+            "mode": 4,
+            "archive": "archive.0/_17268_archive_1.a",
+            "checksum": 0
+        }
+    },
+    "ObjArchives": [
+        {
+            "archive": "archive.0/_17268_archive_1.a",
+            "objects": [
+                [
+                    "reYIK_d.o",
+                    21537
+                ],
+                [
+                    "xPI6e_d.o",
+                    126597
+                ],
+                [
+                    "qeN1k_d.o",
+                    7487
+                ],
+                [
+                    "dD6nr_d.o",
+                    7506
+                ],
+                [
+                    "kdVbP_d.o",
+                    5222
+                ],
+                [
+                    "VsVDd_d.o",
+                    31113
+                ],
+                [
+                    "Pnk6S_d.o",
+                    249506
+                ],
+                [
+                    "auTRH_d.o",
+                    32622
+                ],
+                [
+                    "Iq7e2_d.o",
+                    34186
+                ],
+                [
+                    "eIhcf_d.o",
+                    31534
+                ],
+                [
+                    "exZPK_d.o",
+                    74327
+                ],
+                [
+                    "iTVdW_d.o",
+                    43287
+                ],
+                [
+                    "tV8Lp_d.o",
+                    29114
+                ],
+                [
+                    "Srkd8_d.o",
+                    56033
+                ],
+                [
+                    "HBI8U_d.o",
+                    5845
+                ],
+                [
+                    "JG5F1_d.o",
+                    9318
+                ],
+                [
+                    "s8RjV_d.o",
+                    102199
+                ],
+                [
+                    "Hq8sW_d.o",
+                    120649
+                ],
+                [
+                    "n4Fp6_d.o",
+                    20506
+                ],
+                [
+                    "wqZCM_d.o",
+                    20597
+                ],
+                [
+                    "amcQwB.o",
+                    95422
+                ]
+            ],
+            "size": 1124607
+        }
+    ]
+}

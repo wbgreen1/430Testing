@@ -20,10 +20,11 @@
 0 /opt/synopsys/3.4/vcs/L-2016.06-SP1/etc/systemverilog/omsp_timerA_undefines.v
 0 ../../../bench/verilog/omsp_timerA_undefines.v
 0 ../../../rtl/verilog/omsp_timerA_undefines.v
-35
+36
 +cli+1
 +define+DMA_VERIF
-+define+SEED=-1377218347
++define+NODUMP
++define+SEED=2061020056
 +define+VPD_FILE
 +itf+/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcsdp.tab
 +memcbk
@@ -60,7 +61,7 @@
 sysc_uni_pwd=/home/eceftl6/Documents/Research/430Testing/core/sim/rtl_sim/run
 XMODIFIERS=@im=none
 XDG_VTNR=1
-XDG_SESSION_ID=20184
+XDG_SESSION_ID=1
 XDG_SESSION_DESKTOP=1-kde-plasma-standard
 XDG_SEAT=seat0
 XDG_RUNTIME_DIR=/run/user/1000
@@ -69,7 +70,7 @@ XDG_DATA_DIRS=/usr/share/kde-settings/kde-profile/default/share:/usr/local/share
 XDG_CURRENT_DESKTOP=KDE
 XCURSOR_THEME=Adwaita
 XAUTHORITY=/tmp/kde-eceftl6/xauth-1000-_0
-WINDOWPATH=1:1:1:1:1:1:1:1:1
+WINDOWPATH=1
 VMR_MODE_FLAG=32
 VCS_HOME=/opt/synopsys/3.4/vcs/L-2016.06-SP1
 VCS_DEPTH=0
@@ -82,11 +83,11 @@ TOOL_HOME=/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux
 SYNOPSYS_SYN_ROOT=/opt/synopsys/3.4/syn/L-2016.03-SP5
 SYNOPSYS_ROOT=/opt/synopsys/3.4
 SYNOPSYS=/opt/synopsys/3.4
-SSH_AUTH_SOCK=/tmp/ssh-6pocSmITYX9Z/agent.20691
+SSH_AUTH_SOCK=/tmp/ssh-REXtoqaX9NCB/agent.2611
 SSH_ASKPASS=/usr/bin/ksshaskpass
-SSH_AGENT_PID=20805
-SHELL_SESSION_ID=f115dfd066aa4000b1a2212b648dbf38
-SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/20908,unix/unix:/tmp/.ICE-unix/20908
+SSH_AGENT_PID=2725
+SHELL_SESSION_ID=a3024c5cb9f94000be4dbfe8602e4206
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/2841,unix/unix:/tmp/.ICE-unix/2841
 SCRNAME=vcs
 SCRIPT_NAME=vcs
 QUARTUS_ROOTDIR=/opt/altera_pro/15.1/quartus
@@ -99,13 +100,13 @@ QTDIR=/usr/lib64/qt-3.3
 PROFILEHOME=
 OVA_UUM=0
 OMSP_SIMULATOR=vcs -sverilog
-OMSP_NODUMP=0
+OMSP_NODUMP=1
 MSPGCC_PFX=msp430-elf
 LESSOPEN=||/usr/bin/lesspipe.sh %s
 LC_ALL=C
 KONSOLE_PROFILE_NAME=Shell
-KONSOLE_DBUS_WINDOW=/Windows/5
-KONSOLE_DBUS_SESSION=/Sessions/5
+KONSOLE_DBUS_WINDOW=/Windows/3
+KONSOLE_DBUS_SESSION=/Sessions/3
 KONSOLE_DBUS_SERVICE=:1.68
 KDE_SESSION_VERSION=4
 KDE_SESSION_UID=1000
@@ -122,7 +123,7 @@ GS_LIB=
 GDM_LANG=en_US.UTF-8
 GDMSESSION=1-kde-plasma-standard
 DESKTOP_SESSION=1-kde-plasma-standard
-DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-YmSGGu5gs7,guid=adde592697df3ae20711089258ed0c06
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-8CypzymznD,guid=9d58997a823edb4bd2286d22592d9168
 COLORFGBG=15;0
 AOCL_BOARD_PACKAGE_ROOT=/opt/altera_pro/15.1/hld/board/attila_board_15.1.2
 ALTERAOCLSDKROOT=/opt/altera_pro/15.1/hld
@@ -175,4 +176,4 @@ ACL_QSH_COMPILE_CMD=quartus_sh -t import_compile.tcl
 1472185133 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvirsim.so
 1472184623 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/liberrorinf.so
 1472184592 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsnpsmalloc.so
-1492122430 simv.daidir
+1498770880 simv.daidir
