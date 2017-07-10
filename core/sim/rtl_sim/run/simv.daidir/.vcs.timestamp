@@ -24,7 +24,7 @@
 +cli+1
 +define+DMA_VERIF
 +define+NODUMP
-+define+SEED=2061020056
++define+SEED=407798389
 +define+VPD_FILE
 +itf+/opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/vcsdp.tab
 +memcbk
@@ -176,4 +176,4 @@ ACL_QSH_COMPILE_CMD=quartus_sh -t import_compile.tcl
 1472185133 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libvirsim.so
 1472184623 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/liberrorinf.so
 1472184592 /opt/synopsys/3.4/vcs/L-2016.06-SP1/linux/lib/libsnpsmalloc.so
-1498770880 simv.daidir
+1499720271 simv.daidir

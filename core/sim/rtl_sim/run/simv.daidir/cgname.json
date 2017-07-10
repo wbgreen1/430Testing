@@ -1,87 +1,12 @@
 {
-    "template_periph_16b": [
-        "template_periph_16b",
-        "wqZCM",
+    "omsp_timerA": [
+        "omsp_timerA",
+        "Hq8sW",
         "module"
     ],
     "std": [
         "std",
         "reYIK",
-        "module"
-    ],
-    "tb_openMSP430": [
-        "tb_openMSP430",
-        "xPI6e",
-        "module"
-    ],
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
-        "module"
-    ],
-    "ram": [
-        "ram",
-        "qeN1k",
-        "module"
-    ],
-    "omsp_dbg_hwbrk": [
-        "omsp_dbg_hwbrk",
-        "tV8Lp",
-        "module"
-    ],
-    "omsp_sync_cell": [
-        "omsp_sync_cell",
-        "HBI8U",
-        "module"
-    ],
-    "omsp_watchdog": [
-        "omsp_watchdog",
-        "eIhcf",
-        "module"
-    ],
-    "openMSP430": [
-        "openMSP430",
-        "Pnk6S",
-        "module"
-    ],
-    "ram_0000": [
-        "ram_0000",
-        "dD6nr",
-        "module"
-    ],
-    "io_cell": [
-        "io_cell",
-        "kdVbP",
-        "module"
-    ],
-    "omsp_gpio": [
-        "omsp_gpio",
-        "s8RjV",
-        "module"
-    ],
-    "omsp_multiplier": [
-        "omsp_multiplier",
-        "Srkd8",
-        "module"
-    ],
-    "msp_debug": [
-        "msp_debug",
-        "VsVDd",
-        "module"
-    ],
-    "omsp_sfr": [
-        "omsp_sfr",
-        "auTRH",
-        "module"
-    ],
-    "omsp_mem_backbone": [
-        "omsp_mem_backbone",
-        "Iq7e2",
-        "module"
-    ],
-    "template_periph_8b": [
-        "template_periph_8b",
-        "n4Fp6",
         "module"
     ],
     "omsp_dbg": [
@@ -94,14 +19,89 @@
         "iTVdW",
         "module"
     ],
+    "template_periph_16b": [
+        "template_periph_16b",
+        "wqZCM",
+        "module"
+    ],
+    "omsp_gpio": [
+        "omsp_gpio",
+        "s8RjV",
+        "module"
+    ],
+    "io_cell": [
+        "io_cell",
+        "kdVbP",
+        "module"
+    ],
+    "tb_openMSP430": [
+        "tb_openMSP430",
+        "xPI6e",
+        "module"
+    ],
+    "ram_0000": [
+        "ram_0000",
+        "dD6nr",
+        "module"
+    ],
+    "omsp_sfr": [
+        "omsp_sfr",
+        "auTRH",
+        "module"
+    ],
+    "ram": [
+        "ram",
+        "qeN1k",
+        "module"
+    ],
+    "msp_debug": [
+        "msp_debug",
+        "VsVDd",
+        "module"
+    ],
+    "openMSP430": [
+        "openMSP430",
+        "Pnk6S",
+        "module"
+    ],
+    "omsp_mem_backbone": [
+        "omsp_mem_backbone",
+        "Iq7e2",
+        "module"
+    ],
     "omsp_clock_mux": [
         "omsp_clock_mux",
         "JG5F1",
         "module"
     ],
-    "omsp_timerA": [
-        "omsp_timerA",
-        "Hq8sW",
+    "omsp_watchdog": [
+        "omsp_watchdog",
+        "eIhcf",
+        "module"
+    ],
+    "omsp_dbg_hwbrk": [
+        "omsp_dbg_hwbrk",
+        "tV8Lp",
+        "module"
+    ],
+    "omsp_multiplier": [
+        "omsp_multiplier",
+        "Srkd8",
+        "module"
+    ],
+    "omsp_sync_cell": [
+        "omsp_sync_cell",
+        "HBI8U",
+        "module"
+    ],
+    "template_periph_8b": [
+        "template_periph_8b",
+        "n4Fp6",
+        "module"
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
         "module"
     ]
 }

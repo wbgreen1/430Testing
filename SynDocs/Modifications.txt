@@ -1,0 +1,7 @@
+=======================================================
+************Modification to MSP430 Pipeline************
+=======================================================
+*7-10-17: Removed everything not related to Synopsys or 
+	this system. Updated the vcs.txt file slightly.
+
+

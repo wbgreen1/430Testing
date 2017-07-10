@@ -30,9 +30,9 @@
 #             - Mihai M.,	   mmihai@delajii.net
 #
 #------------------------------------------------------------------------------
-# $Rev: 207 $
-# $LastChangedBy: olivier.girard $
-# $LastChangedDate: 2015-10-20 16:58:27 -0400 (Tue, 20 Oct 2015) $
+# $Rev: XX $
+# $LastChangedBy: Brad Green $
+# $LastChangedDate: 2017-7-10 16:52  (Monday, 10 July 2017) $
 #------------------------------------------------------------------------------
 
 ###############################################################################
@@ -70,60 +70,16 @@ fi
 #                         Start verilog simulation                            #
 ###############################################################################
 
-if [ "${OMSP_SIMULATOR:-iverilog}" = iverilog ]; then
 
-    rm -rf simv
-
-    NODUMP=${OMSP_NODUMP-0}
-    if [ $NODUMP -eq 1 ]
-      then
-        iverilog -o simv -c $3 -D SEED=$4 -D $5 -D NODUMP
-      else
-        iverilog -o simv -c $3 -D SEED=$4 -D $5
-    fi
-
-    if [[ $(uname -s) == CYGWIN* ]];
-    then
-     	vvp.exe ./simv
-    else
-        ./simv
-    fi
-
+NODUMP=${OMSP_NODUMP-0}
+if [ $NODUMP -eq 1 ] ; then
+   vargs="+define+SEED=$4 +define+$5 +define+NODUMP"
 else
-
-    NODUMP=${OMSP_NODUMP-0}
-    if [ $NODUMP -eq 1 ] ; then
-       vargs="+define+SEED=$4 +define+$5 +define+NODUMP"
-    else
-       vargs="+define+SEED=$4 +define+$5"
-    fi
-
-   case $OMSP_SIMULATOR in
-    cver* )
-       vargs="$vargs +define+VXL +define+CVER" ;;
-    verilog* )
-       vargs="$vargs +define+VXL" ;;
-    ncverilog* )
-       rm -rf INCA_libs
-       #vargs="$vargs +access+r +nclicq +ncinput+../bin/cov_ncverilog.tcl -covdut openMSP430 -covfile ../bin/cov_ncverilog.ccf -coverage all +define+TRN_FILE" ;;
-       vargs="$vargs +access+r +svseed=$4 +nclicq +define+TRN_FILE" ;;
-    vcs* )
-       rm -rf csrc simv*
-       vargs="$vargs -R -debug_pp +vcs+lic+wait +v2k +define+VPD_FILE" ;;
-    vsim* )
-       # Modelsim
-       if [ -d work ]; then  vdel -all; fi
-       vlib work
-       exec vlog +acc=prn -f $3 $vargs -R -c -do "run -all" ;;
-    isim )
-       # Xilinx simulator
-       rm -rf fuse* isim*
-       fuse tb_openMSP430 -prj $3 -o isim.exe -i ../../../bench/verilog/ -i ../../../rtl/verilog/ -i ../../../rtl/verilog/periph/
-       echo "run all" > isim.tcl
-       ./isim.exe -tclbatch isim.tcl
-       exit
-   esac
-
-   echo "Running: $OMSP_SIMULATOR -f $3 $vargs"
-   exec $OMSP_SIMULATOR -f $3 $vargs
+   vargs="+define+SEED=$4 +define+$5"
 fi
+
+rm -rf csrc simv*
+vargs="$vargs -R -debug_pp +vcs+lic+wait +v2k +define+VPD_FILE" 
+
+echo "Running: $OMSP_SIMULATOR -f $3 $vargs"
+exec $OMSP_SIMULATOR -f $3 $vargs

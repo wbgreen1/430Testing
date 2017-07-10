@@ -1,96 +1,70 @@
 {
+    "CompileStatus": "Successful",
     "MlibObjs": {},
-    "CurCompileUdps": {},
-    "PrevCompiledModules": {},
     "SIMBData": {
         "out": "amcQwB.o",
         "bytes": 95422,
-        "archive": "archive.0/_17268_archive_1.a"
+        "archive": "archive.0/_28826_archive_1.a"
     },
+    "PrevCompiledModules": {},
+    "stat": {
+        "ru_self_cgstart": {
+            "ru_utime_sec": 0.51361199999999996,
+            "ru_maxrss_kb": 57368,
+            "ru_stime_sec": 0.023026999999999999,
+            "ru_minflt": 17645,
+            "ru_majflt": 0,
+            "ru_nvcsw": 39,
+            "ru_nivcsw": 134
+        },
+        "ru_childs_cgstart": {
+            "ru_utime_sec": 0.0,
+            "ru_maxrss_kb": 16512,
+            "ru_stime_sec": 0.0039769999999999996,
+            "ru_minflt": 579,
+            "ru_majflt": 0,
+            "ru_nvcsw": 1,
+            "ru_nivcsw": 2
+        },
+        "mopSpeed": 190092.4234042434,
+        "mop/quad": 3.0355589265398084,
+        "nMops": 136075,
+        "ru_self_end": {
+            "ru_utime_sec": 1.2294480000000001,
+            "ru_maxrss_kb": 66524,
+            "ru_stime_sec": 0.037012999999999997,
+            "ru_minflt": 20885,
+            "ru_majflt": 0,
+            "ru_nvcsw": 39,
+            "ru_nivcsw": 175
+        },
+        "nQuads": 44827,
+        "Frontend(%)": 41.775821344213007,
+        "ru_childs_end": {
+            "ru_utime_sec": 0.0,
+            "ru_maxrss_kb": 16512,
+            "ru_stime_sec": 0.0039769999999999996,
+            "ru_minflt": 579,
+            "ru_majflt": 0,
+            "ru_nvcsw": 1,
+            "ru_nivcsw": 2
+        },
+        "totalObjSize": 1130839,
+        "quadSpeed": 62621.885459798039,
+        "outputSizePerQuad": 25.0,
+        "CodeGen(%)": 58.224178655786993,
+        "peak_mem_kb": 167384
+    },
+    "CurCompileUdps": {},
     "NameTable": {
-        "template_periph_16b": [
-            "template_periph_16b",
-            "wqZCM",
+        "omsp_timerA": [
+            "omsp_timerA",
+            "Hq8sW",
             "module"
         ],
         "std": [
             "std",
             "reYIK",
-            "module"
-        ],
-        "tb_openMSP430": [
-            "tb_openMSP430",
-            "xPI6e",
-            "module"
-        ],
-        "...MASTER...": [
-            "SIM",
-            "amcQw",
-            "module"
-        ],
-        "ram": [
-            "ram",
-            "qeN1k",
-            "module"
-        ],
-        "omsp_dbg_hwbrk": [
-            "omsp_dbg_hwbrk",
-            "tV8Lp",
-            "module"
-        ],
-        "omsp_sync_cell": [
-            "omsp_sync_cell",
-            "HBI8U",
-            "module"
-        ],
-        "omsp_watchdog": [
-            "omsp_watchdog",
-            "eIhcf",
-            "module"
-        ],
-        "openMSP430": [
-            "openMSP430",
-            "Pnk6S",
-            "module"
-        ],
-        "ram_0000": [
-            "ram_0000",
-            "dD6nr",
-            "module"
-        ],
-        "io_cell": [
-            "io_cell",
-            "kdVbP",
-            "module"
-        ],
-        "omsp_gpio": [
-            "omsp_gpio",
-            "s8RjV",
-            "module"
-        ],
-        "omsp_multiplier": [
-            "omsp_multiplier",
-            "Srkd8",
-            "module"
-        ],
-        "msp_debug": [
-            "msp_debug",
-            "VsVDd",
-            "module"
-        ],
-        "omsp_sfr": [
-            "omsp_sfr",
-            "auTRH",
-            "module"
-        ],
-        "omsp_mem_backbone": [
-            "omsp_mem_backbone",
-            "Iq7e2",
-            "module"
-        ],
-        "template_periph_8b": [
-            "template_periph_8b",
-            "n4Fp6",
             "module"
         ],
         "omsp_dbg": [
@@ -103,67 +77,93 @@
             "iTVdW",
             "module"
         ],
+        "template_periph_16b": [
+            "template_periph_16b",
+            "wqZCM",
+            "module"
+        ],
+        "omsp_gpio": [
+            "omsp_gpio",
+            "s8RjV",
+            "module"
+        ],
+        "io_cell": [
+            "io_cell",
+            "kdVbP",
+            "module"
+        ],
+        "tb_openMSP430": [
+            "tb_openMSP430",
+            "xPI6e",
+            "module"
+        ],
+        "ram_0000": [
+            "ram_0000",
+            "dD6nr",
+            "module"
+        ],
+        "omsp_sfr": [
+            "omsp_sfr",
+            "auTRH",
+            "module"
+        ],
+        "ram": [
+            "ram",
+            "qeN1k",
+            "module"
+        ],
+        "msp_debug": [
+            "msp_debug",
+            "VsVDd",
+            "module"
+        ],
+        "openMSP430": [
+            "openMSP430",
+            "Pnk6S",
+            "module"
+        ],
+        "omsp_mem_backbone": [
+            "omsp_mem_backbone",
+            "Iq7e2",
+            "module"
+        ],
         "omsp_clock_mux": [
             "omsp_clock_mux",
             "JG5F1",
             "module"
         ],
-        "omsp_timerA": [
-            "omsp_timerA",
-            "Hq8sW",
+        "omsp_watchdog": [
+            "omsp_watchdog",
+            "eIhcf",
+            "module"
+        ],
+        "omsp_dbg_hwbrk": [
+            "omsp_dbg_hwbrk",
+            "tV8Lp",
+            "module"
+        ],
+        "omsp_multiplier": [
+            "omsp_multiplier",
+            "Srkd8",
+            "module"
+        ],
+        "omsp_sync_cell": [
+            "omsp_sync_cell",
+            "HBI8U",
+            "module"
+        ],
+        "template_periph_8b": [
+            "template_periph_8b",
+            "n4Fp6",
+            "module"
+        ],
+        "...MASTER...": [
+            "SIM",
+            "amcQw",
             "module"
         ]
     },
-    "PEModules": [],
     "CompileStrategy": "fullobj",
-    "stat": {
-        "ru_self_end": {
-            "ru_utime_sec": 1.3267370000000001,
-            "ru_nivcsw": 174,
-            "ru_minflt": 21303,
-            "ru_maxrss_kb": 66500,
-            "ru_stime_sec": 0.049027000000000001,
-            "ru_majflt": 0,
-            "ru_nvcsw": 37
-        },
-        "ru_self_cgstart": {
-            "ru_utime_sec": 0.52200100000000005,
-            "ru_nivcsw": 133,
-            "ru_minflt": 17650,
-            "ru_maxrss_kb": 57356,
-            "ru_stime_sec": 0.025000000000000001,
-            "ru_majflt": 0,
-            "ru_nvcsw": 37
-        },
-        "CodeGen(%)": 60.655276818239031,
-        "ru_childs_cgstart": {
-            "ru_utime_sec": 0.00091699999999999995,
-            "ru_nivcsw": 2,
-            "ru_minflt": 578,
-            "ru_maxrss_kb": 16508,
-            "ru_stime_sec": 0.0018339999999999999,
-            "ru_majflt": 0,
-            "ru_nvcsw": 1
-        },
-        "ru_childs_end": {
-            "ru_utime_sec": 0.00091699999999999995,
-            "ru_nivcsw": 2,
-            "ru_minflt": 578,
-            "ru_maxrss_kb": 16508,
-            "ru_stime_sec": 0.0018339999999999999,
-            "ru_majflt": 0,
-            "ru_nvcsw": 1
-        },
-        "peak_mem_kb": 167380,
-        "nMops": 136075,
-        "mopSpeed": 169092.72109114044,
-        "nQuads": 44827,
-        "totalObjSize": 1130839,
-        "quadSpeed": 55703.982424049624,
-        "mop/quad": 3.0355589265398084,
-        "outputSizePerQuad": 25.0,
-        "Frontend(%)": 39.344723181760969
-    },
     "CurCompileModules": [
         "...MASTER...",
         "...MASTER...",
@@ -208,20 +208,20 @@
         "template_periph_16b",
         "template_periph_16b"
     ],
-    "CompileStatus": "Successful",
     "LVLData": [
         "SIM"
     ],
+    "PEModules": [],
+    "CompileProcesses": [
+        "cgproc.28826.json"
+    ],
     "Misc": {
+        "archive_dir": "archive.0",
+        "default_output_dir": "csrc",
         "cwd": "/home/eceftl6/Documents/Research/430Testing/core/sim/rtl_sim/run",
         "csrc": "csrc",
         "csrc_abs": "/home/eceftl6/Documents/Research/430Testing/core/sim/rtl_sim/run/csrc",
         "daidir": "simv.daidir",
-        "archive_dir": "archive.0",
-        "daidir_abs": "/home/eceftl6/Documents/Research/430Testing/core/sim/rtl_sim/run/simv.daidir",
-        "default_output_dir": "csrc"
-    },
-    "CompileProcesses": [
-        "cgproc.17268.json"
-    ]
+        "daidir_abs": "/home/eceftl6/Documents/Research/430Testing/core/sim/rtl_sim/run/simv.daidir"
+    }
 }

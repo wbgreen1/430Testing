@@ -6,6 +6,7 @@ msp430sim mpy_basic simlinks filename to stimulus.v (mpy_basic.v -> stimulus.v &
 	and creates pmem.mem from IHEX file.  pmem.mem is sent to rtlsim.sh
 msp430sim mpy_basic --> rtlsim.sh stimulus.v pmem.mem ../src/submit.f RANDOMSEED DMA_VERIFICATION=1/0
 
+
 rtlsim calls vcs with below arguments
 
 
@@ -63,3 +64,7 @@ FILES		: openMSP430_defines.v openMSP430.v omsp_frontend.v omsp_execution_unit.v
 		  omsp_dbg_i2c.v omsp_dbg_hwbrk.v omsp_multiplier.v omsp_sync_reset.v
 		  omsp_sync_cell.v omsp_scan_mux.v omsp_and_gate.v omsp_wakeup_cell.v
 		  omsp_clock_gate.v omsp_clock_mux.v
+
+
+
+
